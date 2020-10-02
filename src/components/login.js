@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Row, Card, Form, Checkbox, Col,Input, Button } from 'antd';
-import { BrowserRouter, Route, Link, NavLink, Redirect } from 'react-router-dom';
+
 
 const layout = {
     labelCol: {
@@ -17,51 +17,28 @@ const tailLayout = {
     },
 };
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
-        console.log(values.username);
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
 
 
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {isLoggedIn: false};
-    }
-
-    // state = {
-    //
-    //     loginInfo : [
-    //         {
-    //             userName : 'mukesh',
-    //             passWord : '1234'
-    //         },
-    //         {
-    //             userName : 'mukesh12',
-    //             passWord : '5678'
-    //         },
-    //         {
-    //             userName : 'mukesh13',
-    //             passWord : '9012'
-    //         }
-    //     ]
-    // }
-
-state ={
-   loggedIn : false
-};
-loginHandle = () =>
-{
-    this.setState({loggedIn : true})
-};
 
 
+    onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+
+    };
+
+    onFinish = (values) => {
+
+            let userName   = values.username;
+            let passWord = values.password;
+              this.props.history.push(`/menumain`);
+            sessionStorage.setItem("username", userName);
+        if((userName == "mukesh") && (passWord == '1234')){
+            sessionStorage.removeItem('username');
+            let adminUser = sessionStorage.setItem("username", "Admin");
+        }
+    };
 
     loginBox = () => {
         return{
@@ -77,28 +54,11 @@ loginHandle = () =>
 
 
 
-
     render(){
-        //remove header and footer when we are in login page
-
-        window.onload = function () {
-            document.querySelector('header').remove();
-            document.querySelector('footer').remove();
-        }
-
-
-
-
-        if(window.location.href == 'http://localhost:3000/'){
-
-
-        }
-
         return (
 
-            <Row>
+            <Row className = "loginRow" >
                 <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-
                 </Col>
                 <Col style= {this.loginBox() }>
                     <Card title="Login" bordered={false} style={{ width: 400 }}>
@@ -108,9 +68,9 @@ loginHandle = () =>
                             initialValues={{
                                 remember: true,
                             }}
-                            onFinish={onFinish}
-                            onFinishFailed={onFinishFailed}>
-                            <Form.Item label="Username" name="username"
+                            onFinish={this.onFinish}
+                            onFinishFailed={this.onFinishFailed}>
+                            <Form.Item label="Username" name="username" id="userName"
                                 rules={[
                                     {
                                         required: true,
@@ -121,7 +81,7 @@ loginHandle = () =>
                                 <Input />
                             </Form.Item>
 
-                            <Form.Item  label="Password" name="password"
+                            <Form.Item  label="Password" name="password" id="passWord"
                                 rules={[
                                     {
                                         required: true,
@@ -137,7 +97,7 @@ loginHandle = () =>
                             </Form.Item>
 
                             <Form.Item {...tailLayout}>
-                                <Button type="primary" htmlType="submit" onClick={this.loginHandle.bind(this)}>
+                                <Button type="primary" htmlType="submit">
                                     Submit
                                 </Button>
                             </Form.Item>
@@ -145,9 +105,7 @@ loginHandle = () =>
                     </Card>
 
                 </Col>
-                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-
-                </Col>
+                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}></Col>
             </Row>
         )
     }

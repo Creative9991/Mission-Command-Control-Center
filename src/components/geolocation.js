@@ -1,32 +1,65 @@
 import React, {Component} from 'react';
-import PropsTypes from 'prop-types';
-import { Row, Col } from 'antd';
+import '../App.css';
+
+
+
+const data = {
+    content: {
+      body: [
+        {
+          imgName : "nasa",
+          imgUrl : require("../assets/nasa.jpg")
+        },
+        {
+             imgName : "esa",
+             imgUrl : require("../assets/esa.jpg")
+        },
+        {
+             imgName : "cnsa",
+             imgUrl : require("../assets/cnsa.png")
+        },
+        {
+            imgName : "isro",
+            imgUrl : require("../assets/isro.jpg")
+          }, {
+            imgName : "jaxa",
+            imgUrl : require("../assets/jaxa.jpg")
+          }, {
+            imgName : "roscosmos",
+            imgUrl : require("../assets/roscosmos.png")
+          }, {
+            imgName : "spacex",
+            imgUrl : require("../assets/spacex.png")
+          },
+          {
+            imgName : "blueorigin",
+            imgUrl : require("../assets/blueorigin.png")
+          }
+      ]
+    }
+  };
+
+
+function changeBackground(e) {
+    e.target.style.opacity = '80%';
+  }
+
+  function outBackground(e) {
+    e.target.style.opacity = '100%';
+  }
 
 class Geolocation extends Component {
 
-
-    listGeoStyle = () => {
-
-        return{
-            background: '#FFFFFF' ,
-            minHeight : '300px',
-            width : '300px' ,
-            padding : '50px',
-            border : '10px solid black'
-        }
-    }
-
+  
+    
     render(){
-
         return (
-            <Row>
-                <Col span={8} className="nasa" style={ this.listGeoStyle() } onClick={() => this.nextPath('/nasa') }>col-12</Col>
-                <Col span={8} style={this.listGeoStyle() }>col-12</Col>
-                <Col span={8} style={this.listGeoStyle() }>col-12</Col>
-                <Col span={8} style={this.listGeoStyle() }>col-12</Col>
-                <Col span={8} style={this.listGeoStyle() }>col-12</Col>
-                <Col span={8} style={this.listGeoStyle() }>col-12</Col>
-            </Row>
+            <div className="grid-container">
+            {data.content.body.map(block =>
+            {return (<div onMouseOver={changeBackground} onMouseOut={outBackground} style={{backgroundImage: `url(${block.imgUrl})`}}></div>)})}
+          </div>
+
+          
         )
     }
 }
