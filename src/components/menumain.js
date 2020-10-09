@@ -5,6 +5,7 @@ import { faRocket, faSpaceShuttle } from '@fortawesome/free-solid-svg-icons';
 import { faSatellite } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { FontRocket } from '@fortawesome/react-fontawesome';
+import {  Link } from 'react-router-dom';
 
 
 const carouselData = {
@@ -45,34 +46,46 @@ const contentStyle = {
 
 function changeBackground(e) {
   e.target.style.opacity = '50%'
+  e.target.style.backgroundColor = 'light-wheat'
 }
 
 function outBackground(e) {
   e.target.style.opacity = '100%';
 }
 
-function menuClick(){
-  this.props.history.push(`/geolocation`);
-}
-console.log(carouselData.carouselContent.body.scrollText);
 
 class MenuMain extends Component {
 
   
+  headeragecy = () => {
+    return{
+   position : 'relative',
+   top : '190px',
+   color : 'red'
+    }
+};
     
     render(){
         return (
           <div>
             <br/><br/><br/>   <br/><br/><br/>
             <Row className = "menuItems">
-            <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} onClick={menuClick} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <FontAwesomeIcon icon={faSpaceShuttle} style={{ width :'150px', height : '150px', top : '70px', position: 'relative', color: 'lightsteelblue'}} />
+            <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+            <Link to="/space_agencies">
+            <FontAwesomeIcon icon={faSpaceShuttle} style={{ width :'150px', height : '150px', top : '170px', position: 'relative', color: 'lightsteelblue'}} />
+            <h3 style = {this.headeragecy()}>Agencies</h3>
+            </Link>
             </Col>
+          
             <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground}  xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <FontAwesomeIcon icon={faSatellite} style={{ width :'150px', height : '150px', top : '70px', position: 'relative' ,color: 'lightsteelblue'}} />
+            <Link to="/satelitte_iss">
+            <FontAwesomeIcon icon={faSatellite} style={{ width :'150px', height : '150px', top : '170px', position: 'relative' ,color: 'lightsteelblue'}} />
+            <h3 style = {this.headeragecy()}>Satellite</h3>
+            </Link>
             </Col>
             <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground}  xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <FontAwesomeIcon icon={faRocket} style={{ width :'150px', height : '150px', top : '70px', position: 'relative', color: 'lightsteelblue'}} />
+            <FontAwesomeIcon icon={faRocket} style={{ width :'150px', height : '150px', top : '170px', position: 'relative', color: 'lightsteelblue'}} />
+            <h3 style = {this.headeragecy()}>Rockets</h3>
             </Col>
           </Row> 
           <br/><br/><br/>   <br/><br/><br/>

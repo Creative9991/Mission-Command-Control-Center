@@ -64,10 +64,8 @@ class Practise extends Component {
                                 <Button style={{display : "inline", position : "relative"}} type="primary">Button</Button>
                                 <br />
                                 <p>
-
                                     <Todos todos={this.state.todos} markComplete =  {this.markComplete} />
                                 </p>
-
                             </header>
                         </Col>
                     </Row>

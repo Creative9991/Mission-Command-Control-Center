@@ -1,26 +1,30 @@
 import React,{Component} from 'react';
 import './App.css';
 import Contact from './components/contact';
-import Geolocation from './components/geolocation';
+import Space_agencies from './components/space_agencies';
 import About from './components/about';
 import { AutoComplete, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Practise from "./components/practise";
-import Nasa from "./components/nasa";
+import Nasa from "./components/agency/nasa";
 import Login from "./components/login";
 import Scratch from './components/scratch';
 import MenuMain from './components/menumain';
+import Satelitte_Iss  from './components/satelitte_iss';
 import space from './assets/space.jpeg';
 import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import MenuItem from 'antd/lib/menu/MenuItem';
+
 
 const { Option } = AutoComplete;
 const { Header, Content, Footer } = Layout;
 
+
+
 class App extends Component {
+  
    
     render() {
 
@@ -36,7 +40,6 @@ class App extends Component {
           function headerOver(e){
             e.target.style.backgroundColor = '';
           }
-
          if((currentURL == 'http://localhost:3000/') || (currentURL == 'http://localhost:3000/login')){
             return (
                 <div className="App">
@@ -45,12 +48,13 @@ class App extends Component {
                         <main>
                             <Switch>
                                 <Route path="/practise" component={Practise} />
-                                <Route path="/geolocation" component={Geolocation} />
+                                <Route path="/space_agencies" component={Space_agencies} />
                                 <Route path="/about" component={About} />
                                 <Route path="/contact" component={Contact} />
                                 <Route path="/nasa" component={Nasa} />
                                 <Route path="/scratch" component={Scratch} />
                                 <Route path="/menumain" component={MenuMain} />
+                                <Route path="/satelitte_iss" component={Satelitte_Iss} />
                                 <Route path="/" component={Login} />
     
                             </Switch>
@@ -69,10 +73,9 @@ class App extends Component {
                         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} >
                             <Menu.Item ley="1"><Link to='/menumain'> <FontAwesomeIcon icon={faUserAstronaut} style={{ width :'80px', height : '80px', color: 'yellow'}} /></Link></Menu.Item>
                             <Menu.Item key="2"><Link to="/practise">Practise</Link></Menu.Item>
-                            <Menu.Item key="3"><Link to="/geolocation">Geo Location</Link></Menu.Item>
                             <Menu.Item key="4"><Link to="/about">About</Link></Menu.Item>
                             <Menu.Item key="5"><Link to="/contact">Contact</Link></Menu.Item>
-                            <Menu.Item key="6" className = "logoutInfo" style={{ float : 'right' }} ><a href="http://localhost:3000">Hey <span style={{color : 'red', fontSize : 'bold'}} ><b>{loginInfo}</b> </span>
+                            <Menu.Item key="6" className = "logoutInfo" style={{ float : 'right' }} ><a href="http://localhost:3000">Hey <span className="logout" style={{color : 'red', fontSize : 'bold'}} ><b>{loginInfo}</b> </span>
                             </a>  <Avatar style={{ backgroundColor: '#87d068',}} icon={<UserOutlined />}/></Menu.Item>
                         </Menu>
                     </Header>
@@ -80,12 +83,13 @@ class App extends Component {
                         <main>
                             <Switch>
                                 <Route path="/practise" component={Practise} />
-                                <Route path="/geolocation" component={Geolocation} />
+                                <Route path="/space_agencies" component={Space_agencies} />
                                 <Route path="/about" component={About} />
                                 <Route path="/contact" component={Contact} />
-                                <Route path="/nasa" component={Nasa} />
+                                <Route path="/agency/:id" component={Nasa} />
                                 <Route path="/scratch" component={Scratch} />
                                 <Route path="/menumain" component={MenuMain} />
+                                <Route path="/satelitte_iss" component={Satelitte_Iss} />
                                 <Route path="/" component={Login} />
     
                             </Switch>
@@ -93,7 +97,7 @@ class App extends Component {
     
                     </Content>
                     <hr style={{ color : 'black', width : '100%', height : '10px'}} />
-                    <Footer style={{ textAlign: 'center', fontSize: "20px" }}>Space Insight © <span style={{color: 'red'}}>{currerntYear}</span> </Footer>
+                    <Footer className='footerMain'>Space Insight © <span style={{color: 'red'}}>{currerntYear}</span> </Footer>
                 </Layout>
                 </div>
             );
