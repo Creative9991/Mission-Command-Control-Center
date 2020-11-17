@@ -12,22 +12,22 @@ const carouselData = {
     carouselContent: {
     body: [
       {
-        scrollText  : 1,
+        scrollText  : 'The private spaceflight company is planning to send four astronauts to the International space station',
         imgName : "nasa",
         imgUrl : require("../assets/nasa.jpg")
       },
       {
-          scrollText  : 2,
+          scrollText  : 'There’s Water and Ice on the Moon, and in More Places Than NASA Thought',
            imgName : "esa",
            imgUrl : require("../assets/esa.jpg")
       },
       {
-           scrollText  : 3,
+           scrollText  : 'The China National Space Administration released mid-flight images of Mars probe Tianwen-1 as the country National Day coincided with the Mid-Autumn Festival on Thursday',
            imgName : "cnsa",
            imgUrl : require("../assets/cnsa.png")
       },
       {
-         scrollText  : 4,
+         scrollText  : 'ISRO releases draft policy to regulate space communication by private players',
           imgName : "isro",
           imgUrl : require("../assets/isro.jpg")
         }
@@ -35,27 +35,18 @@ const carouselData = {
   }
 };
 
-
-const contentStyle = {
-  height: '500px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-};
-
 function changeBackground(e) {
   e.target.style.opacity = '50%'
-  e.target.style.backgroundColor = 'light-wheat'
 }
 
 function outBackground(e) {
   e.target.style.opacity = '100%';
 }
-
+console.log(carouselData.carouselContent.body.scrollText);
 
 class MenuMain extends Component {
 
+ 
   
   headeragecy = () => {
     return{
@@ -90,9 +81,10 @@ class MenuMain extends Component {
           </Row> 
           <br/><br/><br/>   <br/><br/><br/>
 
-          <Carousel autoplay>
-            {carouselData.carouselContent.body.map(block =>
-            {return (<div style={{backgroundImage: `url(${block.imgUrl})`}}> <h3 style={contentStyle}>{carouselData.carouselContent.body.scrollText}</h3></div>)})}
+          <Carousel autoplay style={{ height: '500px',color: '#fff',lineHeight: '160px',textAlign: 'center',background: '#364d79',}}>
+            {carouselData.carouselContent.body.map(headerText =>
+            {return (
+            <h3 style={{backgroundImage: `url(${headerText.imgUrl})`}}>{headerText.scrollText}</h3>)})}
          </Carousel>
          <br/><br/><br/>   <br/><br/><br/>
           </div>  

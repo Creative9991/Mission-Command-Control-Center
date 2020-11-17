@@ -12,7 +12,7 @@ class Practise extends Component {
             position : 'relative',
             display : 'in-line !important'
         }
-    }
+    };
     state = {
         todos : [
             {

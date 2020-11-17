@@ -12,6 +12,7 @@ import Nasa from "./components/agency/nasa";
 import Login from "./components/login";
 import Scratch from './components/scratch';
 import MenuMain from './components/menumain';
+import Persons from './components/persons';
 import Satelitte_Iss  from './components/satelitte_iss';
 import space from './assets/space.jpeg';
 import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
@@ -21,18 +22,75 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const { Option } = AutoComplete;
 const { Header, Content, Footer } = Layout;
 
-
+const data = {
+    content: {
+      body: [
+        {
+            id: 1,
+            imgName : "nasa",
+            imgAsset : require("./assets/nasa.jpg"),
+            agency : '/nasa'
+        },
+        {
+             id: 2,
+             imgName : "esa",
+             imgAsset : require("./assets/esa.jpg"),
+             agency : '/esa'
+        },
+        { 
+             id: 3,
+             imgName : "cnsa",
+             imgAsset : require("./assets/cnsa.png"),
+             agency : '/cnsa'
+        },
+        {
+            id: 4,
+            imgName : "isro",
+            imgAsset : require("./assets/isro.jpg"),
+            agency : '/isro'
+          },
+           {
+            id: 5,
+            imgName : "jaxa",
+            imgAsset : require("./assets/jaxa.jpg"),
+            agency : '/jaxa'
+          },
+           {
+            id: 6,
+            imgName : "roscosmos",
+            imgAsset : require("./assets/roscosmos.png"),
+            agency : '/roscosmos'
+          },
+           {
+            id: 7,
+            imgName : "spacex",
+            imgAsset : require("./assets/spacex.png"),
+            agency : '/spacex'
+          },
+          {
+            id: 8,
+            imgName : "blueorigin",
+            imgAsset : require("./assets/blueorigin.png"),
+            agency : '/nasa'
+          }
+      ]
+    }
+  };
 
 class App extends Component {
   
    
     render() {
+        data.content.body.map(ee => {
+            console.log('check data: ', ee.agency);
+            return ee;
+        })
 
+        // Getting the Current yeat
         let date = new Date();
         let currerntYear = date.getFullYear();
-
+        //setting up the sessionStorage from the given username
         sessionStorage.getItem("username");
-
         let loginInfo = sessionStorage.getItem("username");
           let currentURL = window.location.href;
 
@@ -48,13 +106,19 @@ class App extends Component {
                         <main>
                             <Switch>
                                 <Route path="/practise" component={Practise} />
-                                <Route path="/space_agencies" component={Space_agencies} />
+
+                                {
+                                        data.content.body.map((org) => {
+                                            return(<Route key={`agency${org.agency}`} exact path={`/agency${org.agency}`} component={() => <Nasa  urlName={`/agency${org.agency}`}/>} /> )
+                                        })
+                                }
+                                <Route path="/space_agencies" component={() => <Space_agencies data= {data} />} />
                                 <Route path="/about" component={About} />
                                 <Route path="/contact" component={Contact} />
-                                <Route path="/nasa" component={Nasa} />
                                 <Route path="/scratch" component={Scratch} />
-                                <Route path="/menumain" component={MenuMain} />
+                                <Route path="/menumain" component={() => <MenuMain data= {data} />} />
                                 <Route path="/satelitte_iss" component={Satelitte_Iss} />
+                                <Route path="/persons" component={Persons} />
                                 <Route path="/" component={Login} />
     
                             </Switch>
@@ -86,9 +150,14 @@ class App extends Component {
                                 <Route path="/space_agencies" component={Space_agencies} />
                                 <Route path="/about" component={About} />
                                 <Route path="/contact" component={Contact} />
-                                <Route path="/agency/:id" component={Nasa} />
+                                {
+                                        data.content.body.map((org) => {
+                                            return(<Route key={`agency${org.agency}`} exact path={`/agency${org.agency}`} component={() => <Nasa />} /> )
+                                        })
+                                }
                                 <Route path="/scratch" component={Scratch} />
                                 <Route path="/menumain" component={MenuMain} />
+                                <Route path="/persons" component={Persons} />
                                 <Route path="/satelitte_iss" component={Satelitte_Iss} />
                                 <Route path="/" component={Login} />
     

@@ -20,7 +20,8 @@ const tailLayout = {
 
 
 
-class Login extends Component {
+export default class login extends React.Component{
+
 
 
     onFinishFailed = (errorInfo) => {
@@ -32,7 +33,27 @@ class Login extends Component {
 
             let userName   = values.username;
             let passWord = values.password;
-              this.props.history.push(`/menumain`);
+            let listUsernames = ["mukesh",  "user1", "user2", "user3", "user4"];
+        let listPasswords = ["1234", "user1", "user2", "user3", "user4"];
+          function validate(username, password) {
+            for (var i=0; i <listUsernames.length; i++) {
+                if ((username === listUsernames[i]) && (password === listPasswords[i])) {
+                    return true; // match found
+                }
+            }
+            return false; // match not found
+        }
+        var valid = validate(userName, passWord);
+
+        if(valid) {
+            this.props.history.push(`/menumain`);
+          }
+          else {
+            alert("invalid credentials please enter valid username and password");
+          }
+
+
+
             sessionStorage.setItem("username", userName);
         if((userName == "mukesh") && (passWord == '1234')){
             sessionStorage.removeItem('username');
@@ -110,4 +131,3 @@ class Login extends Component {
         )
     }
 }
-export default Login;
