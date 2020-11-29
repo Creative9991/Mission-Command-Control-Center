@@ -1,10 +1,65 @@
 import React, {Component} from 'react';
 import { Route , withRouter} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import '../App.css';
+import { Card } from 'antd';
 
 
 
-
+const data = {
+  content: {
+    body: [
+      {
+        id: 1,
+        imgName : "nasa",
+        imgAsset : require("../assets/nasa.jpg"),
+        agency : '/nasa'
+      },
+      {
+        id: 2,
+        imgName : "esa",
+        imgAsset : require("../assets/esa.jpg"),
+        agency : '/esa'
+      },
+      {
+        id: 3,
+        imgName : "cnsa",
+        imgAsset : require("../assets/cnsa.png"),
+        agency : '/cnsa'
+      },
+      {
+        id: 4,
+        imgName : "isro",
+        imgAsset : require("../assets/isro.jpg"),
+        agency : '/isro'
+      },
+      {
+        id: 5,
+        imgName : "jaxa",
+        imgAsset : require("../assets/jaxa.jpg"),
+        agency : '/jaxa'
+      },
+      {
+        id: 6,
+        imgName : "roscosmos",
+        imgAsset : require("../assets/roscosmos.png"),
+        agency : '/roscosmos'
+      },
+      {
+        id: 7,
+        imgName : "spacex",
+        imgAsset : require("../assets/spacex.png"),
+        agency : '/spacex'
+      },
+      {
+        id: 8,
+        imgName : "blueorigin",
+        imgAsset : require("../assets/blueorigin.png"),
+        agency : '/nasa'
+      }
+    ]
+  }
+};
 
 
 function changeBackground(e) {
@@ -19,26 +74,51 @@ function changeBackground(e) {
 
 
 class Space_Agencies extends Component {
-
-  constructor(){
-    super();
-
+  constructor(props) {
+    super(props);
   }
-  newRoutes = (orgName) => {
-    this.props.history.push('/agency' + orgName);
-  console.log(this.props.data.content.body);
+
+  state = {
+    id: null,
+    agencyDetails: false,
+  };
+
+
+  goToAgencyDetails = (agencyId) => {
+    if (agencyId !== null) {
+      this.setState({ id: agencyId, agencyDetails: true });
+    }
   }
     render(){
-      // let match=this.props.match
-      // let id = this.props.id
-      console.log('check the props: ', this.props.data);
-       
+      //console.log();
+      if(this.state.id){
+        return (<Redirect to={`/agency/${this.state.id}`} />);
+      }else {
+
         return (
+
+            <div className="space-agencies">
+              <h1 className="header-agency">Top Space Agencies Around The World</h1>
             <div className="grid-container">
-           {this.props.data.content.body.map(block =>
-            {return (<div className = "geolocation"  onClick={() =>  this.newRoutes(block.agency)} onMouseOver={changeBackground} onMouseOut={outBackground} style={{backgroundImage: `url(${block.imgAsset})`}}></div>)})}
-          </div>
+
+              {
+                data.content.body.map(block => (
+                    <Card
+                key={block.id}
+                onClick={() => this.goToAgencyDetails(block.id)}
+                onMouseOver={changeBackground}
+                onMouseOut={outBackground}
+                style={{backgroundImage: `url(${block.imgAsset})`}}
+                hoverable
+                >
+                </Card>
+                ))
+              }
+            </div>
+            </div>
         )
+      }
     }
+
 }
-export default withRouter(Space_Agencies);
+export default Space_Agencies;

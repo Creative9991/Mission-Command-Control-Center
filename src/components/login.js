@@ -55,7 +55,7 @@ export default class login extends React.Component{
 
 
             sessionStorage.setItem("username", userName);
-        if((userName == "mukesh") && (passWord == '1234')){
+        if((userName === "mukesh") && (passWord === '1234')){
             sessionStorage.removeItem('username');
             let adminUser = sessionStorage.setItem("username", "Admin");
         }

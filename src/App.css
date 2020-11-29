@@ -43,9 +43,17 @@
   grid-template-columns: auto auto auto auto;
   grid-gap: 10px;
   padding: 10px;
-  padding-top: 100px;
+  padding-top: 40px;
 }
 
+.header-agency {
+  margin-top : 30px;
+  border: 5px solid black;
+  border-radius: 25px;
+  font-size: xx-large;
+  color: #ffffff;
+  background-color: #e1b65b;
+}
 .grid-container > div {
   background-color: rgba(255, 255, 255, 0.8);
   border: 5px solid black;
