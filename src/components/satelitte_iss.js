@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import '../App.css';
+import Space_Agencies from "./space_agencies";
+import { Card } from 'antd';
 
 
 
-
-const data = {
+const satelitteData = {
     content: {
       body: [
         {
@@ -34,11 +35,18 @@ class Satelitte_Iss extends Component {
     
     render(){
         return (
-            <div className="grid-container">
-            {data.content.body.map(block =>
-            {return (<div className="satellite-iss" onMouseOver={changeBackground} onMouseOut={outBackground} style={{backgroundImage: `url(${block.imgUrl})`}}></div>)})}
-          </div>
-
+          //   <div className="grid-container">
+          //   {data.content.body.map(block =>
+          //   {return (<div className="satellite-iss" onMouseOver={changeBackground} onMouseOut={outBackground} style={{backgroundImage: `url(${block.imgUrl})`}}></div>)})}
+          // </div>
+            <Space_Agencies>
+                <Card
+                    key={satelitteData.content.body.id}
+                    onClick={() => this.goToAgencyDetails(satelitteData.content.body.id)}
+                    style={{backgroundImage: `url(${satelitteData.content.body.imgUrl})`}}
+                    hoverable
+                />
+            </Space_Agencies>
           
         )
     }
