@@ -1,19 +1,15 @@
 import React from 'react';
 import '../styles/persons.css';
 import { Row, Col, Button , AutoComplete } from 'antd';
-import axios from 'axios';
 import {PersonsList} from "../services/agencyAPI";
 const numbers = [2,3,4,5,6,7] ;
-const doubled = numbers.map((number) => {
-     return <li style={{color : 'red'}}>{number}</li>
+const doubled = numbers.map((number, listKey) => {
+     return <li style={{color : 'red'}} key={listKey}>{number}</li>
 }); 
 
 
 
 export default class Persons extends React.Component {
-    constructor(props){
-        super(props);
-    }
     state = {
         persons: [],
         loading: true,
@@ -41,12 +37,12 @@ export default class Persons extends React.Component {
     }
 
 
-personsAdd(){
-let newPerson = document.querySelector('AutoComplete').value;
-}
+// personsAdd(){
+// let newPerson = document.querySelector('AutoComplete').value;
+// }
 
   render() {
-      const {error, loading, persons } = this.state;
+      //const {error, loading, persons } = this.state;
     return (
 <div>
 
@@ -79,20 +75,22 @@ let newPerson = document.querySelector('AutoComplete').value;
                     </Row>  
 
                  <table id="customers">
+                     <tbody>
                     <tr >
                      <th>ID</th>
                      <th>Username</th>
                      <th>Name</th>
                      <th >Email</th>
                     </tr>
-                     {typeof this.state.persons !== 'undefined' &&  this.state.persons.map(person => (
-                    <tr>
+                     {typeof this.state.persons !== 'undefined' &&  this.state.persons.map((person ,personKey) => (
+                    <tr key= {personKey}>
                     <td>{person.id}</td>
                     <td>{person.username}</td>
                      <td>{person.name}</td>
                      <td>{person.email}</td>
                     </tr>
                                                         ))}
+                                                        </tbody>
                 </table>                     
  </div>
 

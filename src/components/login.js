@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Row, Card, Form, Checkbox, Col,Input, Button } from 'antd';
 
 
@@ -57,7 +57,7 @@ export default class login extends React.Component{
             sessionStorage.setItem("username", userName);
         if((userName === "mukesh") && (passWord === '1234')){
             sessionStorage.removeItem('username');
-            let adminUser = sessionStorage.setItem("username", "Admin");
+            //let adminUser = sessionStorage.setItem("username", "Admin");
         }
     };
 
