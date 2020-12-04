@@ -4,9 +4,9 @@ import { Row , Col,Carousel  } from 'antd';
 import { faRocket, faSpaceShuttle } from '@fortawesome/free-solid-svg-icons';
 import { faSatellite } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { FontRocket } from '@fortawesome/react-fontawesome';
 import {  Link } from 'react-router-dom';
 
+//let loginInfo = sessionStorage.getItem("username"); 
 
 const carouselData = {
     carouselContent: {
@@ -82,9 +82,9 @@ class MenuMain extends Component {
           <br/><br/><br/>   <br/><br/><br/>
 
           <Carousel autoplay style={{ height: '500px',color: '#fff',lineHeight: '160px',textAlign: 'center',background: '#364d79',}}>
-            {carouselData.carouselContent.body.map((headerText, key) =>
+            {carouselData.carouselContent.body.map((headerText, carouselKey) =>
             {return (
-            <h3 style={{backgroundImage: `url(${headerText.imgUrl})`}}>{headerText.scrollText}</h3>)})}
+            <h3 style={{backgroundImage: `url(${headerText.imgUrl})`}} key={carouselKey}>{headerText.scrollText}</h3>)})}
          </Carousel>
          <br/><br/><br/>   <br/><br/><br/>
           </div>  
