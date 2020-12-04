@@ -1,11 +1,30 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../../styles/agency.scss';
+import {AgencyListId} from "../../services/agencyAPI";
 
 
 
-class Agency extends Component {
+export default class Agency extends React.Component {
+
+    state = {
+        agenciesId : true,
+        loading: true,
+        error: false,
+    };
+
+    async componentDidMount() {
+        try {
+            const agenciesId = await AgencyListId(this.props.match.params.id);
+            console.log(agenciesId + 'Inside catch');
+            this.setState({ agenciesId, loading: false });
+        } catch (err) {
+            console.log('outside catch', err);
+            this.setState({ loading: false, error: true });
+        }
+    }
 
     render(){
+        //const {error, loading, agenciesId } = this.state;
       return(
           <div className="movie-details-poster-wrapper">
               <img
@@ -20,12 +39,10 @@ class Agency extends Component {
                   <strong>Establishied Date:</strong>dfdfd
               </div>
               <div>
-                  <strong>Imp Mission:</strong> dfdff
+                 
               </div>
           </div>
           </div>
       )
     }
 }
-
-export default Agency;
