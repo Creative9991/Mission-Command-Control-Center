@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Route , withRouter} from 'react-router-dom';
+//import { Route , withRouter} from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import '../App.css';
 import { Card } from 'antd';
@@ -74,9 +74,6 @@ function changeBackground(e) {
 
 
 class Space_Agencies extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   state = {
     id: null,
