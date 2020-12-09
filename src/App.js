@@ -50,11 +50,11 @@ class App extends Component {
                     <Header style={{height : '100px'}} onMouseOver= {headerOver}>
                         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} >
                             <Menu.Item ley="1"><Link to='/menumain'> <FontAwesomeIcon icon={faUserAstronaut} style={{ width :'80px', height : '80px', color: 'yellow'}} /></Link></Menu.Item>
-                            <Menu.Item key="2"><Link to="/practise">Practise</Link></Menu.Item>
+                            {/* <Menu.Item key="2"><Link to="/practise">Practise</Link></Menu.Item> */}
                             <Menu.Item key="4"><Link to="/about">About</Link></Menu.Item>
                             <Menu.Item key="5"><Link to="/contact">Contact</Link></Menu.Item>
-                            <Menu.Item key="6" className = "logoutInfo" style={{ float : 'right' }} onClick={logoutClick} ><Link to='/login'> Hey <span className="logout" style={{color : 'red', fontSize : 'bold'}} ><b>{loginInfo}</b> </span></Link> 
-                             <Avatar style={{ backgroundColor: '#87d068',}} icon={<UserOutlined />}/></Menu.Item>
+                            {/* <Menu.Item key="6" className = "logoutInfo" style={{ float : 'right' }} onClick={logoutClick} ><Link to='/login'> Hey <span className="logout" style={{color : 'red', fontSize : 'bold'}} ><b>{loginInfo}</b> </span></Link> 
+                             <Avatar style={{ backgroundColor: '#87d068',}} icon={<UserOutlined />}/></Menu.Item> */}
                         </Menu>
                     </Header>
                     <Content style={{ padding: '0 50px', minHeight : '800px', backgroundImage : `url(${space})`}} >
@@ -68,7 +68,7 @@ class App extends Component {
                                 <Route path="/menumain" component={MenuMain} />
                                 <Route path="/persons" component={Persons} />
                                 <Route path="/satelitte_iss" component={Satelitte_Iss} />
-                                <Route path="/" component={Login} />
+                                <Route path="/" component={MenuMain} />
     
                             </Switch>
                         </main>

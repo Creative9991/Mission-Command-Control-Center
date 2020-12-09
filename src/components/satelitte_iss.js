@@ -3,6 +3,7 @@ import '../App.css';
 
 
 
+
 // const satelitteData = {
 //     content: {
 //       body: [
@@ -22,22 +23,19 @@ import '../App.css';
 
 class Satelitte_Iss extends Component {
 
+    constructor(props){
+    super(props);
+    }
   
     
     render(){
         return (
-            <div className="grid-container">
-   
-          </div>
-            // <Space_Agencies>
-            //     <Card
-            //         key={satelitteData.content.body.id}
-            //         onClick={() => this.goToAgencyDetails(satelitteData.content.body.id)}
-            //         style={{backgroundImage: `url(${satelitteData.content.body.imgUrl})`}}
-            //         hoverable
-            //     />
-            // </Space_Agencies>
-          
+            <div></div>
+                    // <Space_Agencies  
+                    // key={satelitteData.content.body.id}
+                    // onClick={() => this.goToAgencyDetails(satelitteData.content.body.id)}
+                    // style={{backgroundImage: `url(${satelitteData.content.body.imgUrl})`}}
+                    // hoverable/>  
         )
     }
 }

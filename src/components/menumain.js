@@ -42,7 +42,6 @@ function changeBackground(e) {
 function outBackground(e) {
   e.target.style.opacity = '100%';
 }
-console.log(carouselData.carouselContent.body.scrollText);
 
 class MenuMain extends Component {
 

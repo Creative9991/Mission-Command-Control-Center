@@ -4,43 +4,51 @@ import {AgencyListId} from "../../services/agencyAPI";
 
 
 
-export default class Agency extends React.Component {
 
+export default class Agency extends React.Component {
+  
     state = {
-        agenciesId : true,
+        agenciesId: {},
         loading: true,
         error: false,
     };
+  
 
     async componentDidMount() {
         try {
             const agenciesId = await AgencyListId(this.props.match.params.id);
-            console.log(agenciesId + 'Inside catch');
-            this.setState({ agenciesId, loading: false });
+            this.setState({ agenciesId , loading: false });
         } catch (err) {
             console.log('outside catch', err);
-            this.setState({ loading: false, error: true });
         }
     }
 
     render(){
+        
+       
         //const {error, loading, agenciesId } = this.state;
       return(
+  <div className="space-agency-details">
+      <h1 className="space-header-paragraph"><p className="space-agency-detials-header"><strong>{this.state.agenciesId.imgName}</strong></p> </h1>
           <div className="movie-details-poster-wrapper">
               <img
                   className="movie-details-poster"
                   alt="movie poster"
               />
-          <div className="movie-details-info">
-              <div className="movie-details-info__overview">
-                  <strong>Agency Overview:</strong>
-              </div>
-              <div>
-                  <strong>Establishied Date:</strong>dfdfd
-              </div>
+                <div className="movie-details-info">
+                <div className="movie-details-info__overview">
+                  <strong>Agency Overview  : </strong>
+                  <strong> {this.state.agenciesId.imgName}</strong><br/>
+                  <strong>Year Established  : </strong>
+                  <strong>{this.state.agenciesId.year}</strong>
+                </div>
+                <div>
+                  <strong>{this.state.agenciesId.content}</strong>
+                </div>
               <div>
                  
               </div>
+          </div>
           </div>
           </div>
       )

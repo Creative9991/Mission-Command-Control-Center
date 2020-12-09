@@ -20,12 +20,7 @@ export default class Persons extends React.Component {
   uiCLick = () => {
     this.props.history.number.push('2');
   };
-
-
-
-
     async componentDidMount() {
-        console.log('dfsgfsgfg');
         try {
             const persons = await PersonsList();
             console.log(persons + 'Inside catch');
@@ -36,13 +31,8 @@ export default class Persons extends React.Component {
         }
     }
 
-
-// personsAdd(){
-// let newPerson = document.querySelector('AutoComplete').value;
-// }
-
   render() {
-      //const {error, loading, persons } = this.state;
+    
     return (
 <div>
 
