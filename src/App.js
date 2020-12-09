@@ -7,7 +7,6 @@ import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import Practise from "./components/practise";
 import Login from "./components/login";
 import MenuMain from './components/menumain';
 import Agency from './components/Agency/agency';
@@ -50,7 +49,6 @@ class App extends Component {
                     <Header style={{height : '100px'}} onMouseOver= {headerOver}>
                         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} >
                             <Menu.Item ley="1"><Link to='/menumain'> <FontAwesomeIcon icon={faUserAstronaut} style={{ width :'80px', height : '80px', color: 'yellow'}} /></Link></Menu.Item>
-                            {/* <Menu.Item key="2"><Link to="/practise">Practise</Link></Menu.Item> */}
                             <Menu.Item key="4"><Link to="/about">About</Link></Menu.Item>
                             <Menu.Item key="5"><Link to="/contact">Contact</Link></Menu.Item>
                             {/* <Menu.Item key="6" className = "logoutInfo" style={{ float : 'right' }} onClick={logoutClick} ><Link to='/login'> Hey <span className="logout" style={{color : 'red', fontSize : 'bold'}} ><b>{loginInfo}</b> </span></Link> 
@@ -60,7 +58,6 @@ class App extends Component {
                     <Content style={{ padding: '0 50px', minHeight : '800px', backgroundImage : `url(${space})`}} >
                         <main>
                             <Switch>
-                                <Route path="/practise" component={Practise} />
                                 <Route path="/space_agencies" component={Space_agencies} />
                                 <Route path="/about" component={About} />
                                 <Route path="/contact" component={Contact} />
