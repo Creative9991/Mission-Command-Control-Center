@@ -79,7 +79,7 @@ let myList = favSuperHeros.map((favSuperHeros) => <li>{favSuperHeros}</li>)
                     {   
                         typeof this.state.users !== 'undefined' && typeof this.state.users.users !== 'undefined' &&  this.state.users.users.map(person => {
                             return (
-                                <tr>
+                                <tr key="person">
                                 <td>{person.address}</td>
                                 <td>{person.city}</td>
                                  <td>{person.email}</td>

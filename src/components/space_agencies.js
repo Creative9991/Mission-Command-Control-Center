@@ -74,6 +74,7 @@ function changeBackground(e) {
 
 
 class Space_Agencies extends Component {
+  
 
   state = {
     id: null,
@@ -87,7 +88,6 @@ class Space_Agencies extends Component {
     }
   }
     render(){
-      //console.log();
       if(this.state.id){
         return (<Redirect to={`/agency/${this.state.id}`} />);
       }else {
