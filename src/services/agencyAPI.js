@@ -3,15 +3,17 @@ import {
 PERSONS_LIST_PATH 
 } from '../constants/constants.js';
 
-import {AGENCY_DETAILS} from '../constants/constants.js'
+import {AGENCY_DETAILS} from '../constants/constants.js';
+import {SATELITTE_DETAILS} from '../constants/constants.js';
 
 export let persons = [];
 export let agencies = [];
 export let agenciesId;
+export let satelittes = [];
 //const id;
 export const PersonsList = async () => {
     if (persons.length) {
-        console.log(persons);
+        //console.log(persons);
         return persons;
     }
     try {
@@ -19,10 +21,10 @@ export const PersonsList = async () => {
         `${PERSONS_LIST_PATH }`,
       );
         persons = response.data;
-        console.log(persons);
+        //console.log(persons);
         return persons;
     } catch (err) {
-      console.error(`Something went wrong fetching the now playing data: ${err}`);
+      console.error(`Something went wrong fetching the persons data: ${err}`);
       throw err;
     }
   };
@@ -36,12 +38,30 @@ export const AgencyList = async () => {
             `${AGENCY_DETAILS }`,
         );
         agencies = response.data;
-        console.log(agencies);
+        //console.log(agencies);
         return agencies;
     } catch (err) {
-        console.error(`Something went wrong fetching the now playing data: ${err}`);
+        console.error(`Something went wrong fetching the Agencies data: ${err}`);
         throw err;
     }
+};
+
+export const SateliiteList = async () => {
+  if (satelittes.length) {
+      //console.log(agencies);
+      return satelittes;
+  }
+  try {
+      const response = await axios.get(
+          `${SATELITTE_DETAILS }`,
+      );
+      satelittes = response.data;
+      //console.log(satelittes);
+      return satelittes;
+  } catch (err) {
+      console.error(`Something went wrong fetching the Satelittes data: ${err}`);
+      throw err;
+  }
 };
 
 
@@ -58,7 +78,7 @@ export const AgencyListId = async id => {
       agenciesId = agencyResponse.data;
       return agenciesId;
   } catch (err) {
-      console.error(`Something went wrong fetching the now space agency pages: ${err}`);
+      console.error(`Something went wrong fetching the space agency pages: ${err}`);
       throw err;
   }
 };

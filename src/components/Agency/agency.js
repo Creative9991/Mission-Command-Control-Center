@@ -6,12 +6,17 @@ import {AgencyListId} from "../../services/agencyAPI";
 
 
 export default class Agency extends React.Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            agenciesId: {},
+            loading: true,
+            error: false,
+        };
+    }
   
-    state = {
-        agenciesId: {},
-        loading: true,
-        error: false,
-    };
+ 
   
 
     async componentDidMount() {
