@@ -5,30 +5,30 @@ import {SateliiteList} from '../services/agencyAPI';
 import {Redirect} from 'react-router-dom';
 
 
-class Satelitte_Iss extends Component {
+class satellite_Iss extends Component {
 
     state = {
-        satelittes: [],
+        satellites: [],
         loading: true,
         error: false,
         id: null,
-        satelitteDetails: false,
+        satelliteDetails: false,
     };
  
 
     async componentDidMount() {
         try {
-            const satelittes = await SateliiteList();
-            this.setState({ satelittes , loading: false });
+            const satellites = await SateliiteList();
+            this.setState({ satellites , loading: false });
         } catch (err) {
             console.log('outside catch', err);
         }
     }
 
-    goToSatelitteDetails = (satelitteId) => {
-        console.log('click satelitte details')
-        if (satelitteId !== null) {
-          this.setState({ id: satelitteId, satelitteDetails: true });
+    goTosatelliteDetails = (satelliteId) => {
+        //console.log('click satellite details')
+        if (satelliteId !== null) {
+          this.setState({ id: satelliteId, satelliteDetails: true });
         }
       }
   
@@ -40,12 +40,12 @@ class Satelitte_Iss extends Component {
    
         return (
             <div className="space-agencies">
-              <h1 className="header-agency">Top Satelitte Around The World</h1>
+              <h1 className="header-agency">Top satellite Around The World</h1>
               <div className="grid-container">
-            { typeof this.state.satelittes !== 'undefined' &&  this.state.satelittes.map(satelitte => (
+            { typeof this.state.satellites !== 'undefined' &&  this.state.satellites.map(satellite => (
                     <ReusableGrid
-                    key={satelitte.id}
-                    onClick={this.goToSatelitteDetails}
+                    key={satellite.id}
+                    onClick={this.goTosatelliteDetails}
                     hoverable/>    
                 )
                 )
@@ -57,4 +57,4 @@ class Satelitte_Iss extends Component {
             
     }
 }
-export default Satelitte_Iss
+export default satellite_Iss
