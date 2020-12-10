@@ -9,7 +9,7 @@ const Reusable_Grid = props => (
 <>
     <Card 
     hoverable
-    onClick={() => props.goToSatelitteDetails(props.satelitteId)}>
+    onClick={() => props.goToSatelliteDetails(props.satelliteId)}>
     </Card>
 </>
 )

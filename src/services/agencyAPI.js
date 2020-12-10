@@ -4,12 +4,12 @@ PERSONS_LIST_PATH
 } from '../constants/constants.js';
 
 import {AGENCY_DETAILS} from '../constants/constants.js';
-import {SATELITTE_DETAILS} from '../constants/constants.js';
+import {satellite_DETAILS} from '../constants/constants.js';
 
 export let persons = [];
 export let agencies = [];
 export let agenciesId;
-export let satelittes = [];
+export let satellites = [];
 //const id;
 export const PersonsList = async () => {
     if (persons.length) {
@@ -47,19 +47,19 @@ export const AgencyList = async () => {
 };
 
 export const SateliiteList = async () => {
-  if (satelittes.length) {
+  if (satellites.length) {
       //console.log(agencies);
-      return satelittes;
+      return satellites;
   }
   try {
       const response = await axios.get(
-          `${SATELITTE_DETAILS }`,
+          `${satellite_DETAILS }`,
       );
-      satelittes = response.data;
-      //console.log(satelittes);
-      return satelittes;
+      satellites = response.data;
+      //console.log(satellites);
+      return satellites;
   } catch (err) {
-      console.error(`Something went wrong fetching the Satelittes data: ${err}`);
+      console.error(`Something went wrong fetching the satellites data: ${err}`);
       throw err;
   }
 };

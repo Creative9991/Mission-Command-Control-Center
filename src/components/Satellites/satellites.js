@@ -5,7 +5,7 @@ import React from 'react';
 
 
 
-export default class Satelittes extends React.Component {
+export default class Satellites extends React.Component {
   
   
 

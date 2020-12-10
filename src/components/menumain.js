@@ -68,7 +68,7 @@ class MenuMain extends Component {
             </Col>
           
             <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground}  xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <Link to="/satelitte_iss">
+            <Link to="/satellite_iss">
             <FontAwesomeIcon icon={faSatellite} style={{ width :'150px', height : '150px', top : '170px', position: 'relative' ,color: 'lightsteelblue'}} />
             <h3 style = {this.headeragecy()}>Satellite</h3>
             </Link>

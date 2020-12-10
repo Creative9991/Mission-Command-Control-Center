@@ -10,9 +10,9 @@ import MenuMain from './components/menumain';
 import Cheat1 from './components/Cheat-sheet/cheat1';
 import Cheat_Sheet from './components/Cheat-sheet/cheat_sheet';
 import Agency from './components/Agency/agency';
-import Satelittes from './components/Satelittes/satelittes';
+import satellites from './components/Satellites/satellites';
 import Persons from './components/persons';
-import Satelitte_Iss  from './components/satelitte_iss';
+import satellite_Iss  from './components/satellite_iss';
 import space from './assets/space.jpeg';
 import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -105,12 +105,12 @@ class App extends Component {
                                 <Route path="/about" component={About} />
                                 <Route path="/contact" component={Contact} />
                                 <Route path="/agency/:id" component={Agency} />
-                                <Route path="/satelitte_iss/:id" component={Satelittes} />
+                                <Route path="/satellite_iss/:id" component={satellites} />
                                 <Route path="/menumain" component={MenuMain} />
                                 <Route path="/persons" component={Persons} />
                                 <Route path="/cheat_sheet"component={Cheat_Sheet}/>
                                 <Route path="/cheat1" component={Cheat1}/>
-                                <Route path="/satelitte_iss" component={Satelitte_Iss} />
+                                <Route path="/satellite_iss" component={satellite_Iss} />
                                 <Route path="/" component={MenuMain} />
     
                             </Switch>
