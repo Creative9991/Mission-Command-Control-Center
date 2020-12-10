@@ -2,14 +2,15 @@ import React,{Component} from 'react';
 import './App.css';
 import Contact from './components/contact';
 import Space_agencies from './components/space_agencies';
+//import {createStore} from 'redux';
 import About from './components/about';
-import { Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import Login from "./components/login";
 import MenuMain from './components/menumain';
+import Cheat1 from './components/Cheat-sheet/cheat1';
+import Cheat_Sheet from './components/Cheat-sheet/cheat_sheet';
 import Agency from './components/Agency/agency';
+import Satelittes from './components/Satelittes/satelittes';
 import Persons from './components/persons';
 import Satelitte_Iss  from './components/satelitte_iss';
 import space from './assets/space.jpeg';
@@ -17,10 +18,52 @@ import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
+// //Store 
+
+// //Action
+
+// const increment  = () =>{
+//     return{
+//         type : 'INCREMENT'
+//     }
+// }
+
+// const decrement = () =>{
+//     return {
+//         type : 'DECREMENT'
+//     }
+// }
+
+// //Reducer
+
+// const counter = (state = 0 , action) => {
+//     switch(action.type){
+//         case 'INCREMENT' :
+            
+            
+//            return state +1;
+    
+//     case 'DECREMENT' :
+        
+//         return state-1; 
+//     }
+// }
+
+// let store = createStore(counter);
+
+// store.subscribe(() => console.log(store.getState()))
+
+// //Dispatch
+
+// store.dispatch(increment());
+
 const { Header, Content, Footer } = Layout;
 
 
 class App extends Component {
+ 
+
+
   
    
     render() {
@@ -30,18 +73,18 @@ class App extends Component {
         let currerntYear = date.getFullYear();
         //setting up the sessionStorage from the given username
         sessionStorage.getItem("username");
-        let loginInfo = sessionStorage.getItem("username"); 
+        //let loginInfo = sessionStorage.getItem("username"); 
 
 
           function headerOver(e){
             e.target.style.backgroundColor = '';
           }
 
-          function logoutClick(){
-            sessionStorage.removeItem('username');
-            sessionStorage.clear();
-            console.log("removed");
-          }
+        //   function logoutClick(){
+        //     sessionStorage.removeItem('username');
+        //     sessionStorage.clear();
+        //     console.log("removed");
+        //   }
             return (
                 <div className="App">
                     <BrowserRouter>
@@ -62,8 +105,11 @@ class App extends Component {
                                 <Route path="/about" component={About} />
                                 <Route path="/contact" component={Contact} />
                                 <Route path="/agency/:id" component={Agency} />
+                                <Route path="/satelitte_iss/:id" component={Satelittes} />
                                 <Route path="/menumain" component={MenuMain} />
                                 <Route path="/persons" component={Persons} />
+                                <Route path="/cheat_sheet"component={Cheat_Sheet}/>
+                                <Route path="/cheat1" component={Cheat1}/>
                                 <Route path="/satelitte_iss" component={Satelitte_Iss} />
                                 <Route path="/" component={MenuMain} />
     
