@@ -1,6 +1,10 @@
 
 .space-agency-details{
 
+  h1{
+    color : red;
+  }
+
   .space-header-paragraph{
     color: red;
     height: 80px;
@@ -10,13 +14,22 @@
     margin-top: 60px;
     font-family: cursive;
 
+    .agency-arrow-left{
+      right: 600px;
+      position: relative;
+      height: 100px;
+      top: 9px;
+    }
 
     .space-agency-detials-header{
       font-size: 30px;
-      margin-top: 8px;
+      top: 10px;
+      position: relative;
+      display: inline;
     }
   }
-.movie-details-poster-wrapper {
+.agency-details-poster-wrapper {
+  height: 570px;
   width: 100%;
   overflow: hidden;
   display: grid;
@@ -25,13 +38,13 @@
   grid-gap: 15px;
   justify-items: center;
 
-  .movie-details-poster {
+  .agency-details-poster {
     border-radius: 10px;
     border: solid #847f86 10px;
     grid-row: 2;
   }
 
-  .movie-details-info {
+  .agency-details-info {
     grid-row: 2 / 3;
     display: flex;
     flex-direction: column;
@@ -44,7 +57,7 @@
     font-size: 20px;
     overflow: scroll;
 
-    .movie-details-info__overview {
+    .agency-details-info__overview {
       max-height: 400px;
       margin-bottom: 20px;
       overflow: scroll;

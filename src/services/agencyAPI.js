@@ -13,7 +13,6 @@ export let satellites = [];
 //const id;
 export const PersonsList = async () => {
     if (persons.length) {
-        //console.log(persons);
         return persons;
     }
     try {
@@ -30,7 +29,6 @@ export const PersonsList = async () => {
   };
 export const AgencyList = async () => {
     if (agencies.length) {
-        //console.log(agencies);
         return agencies;
     }
     try {
@@ -47,10 +45,6 @@ export const AgencyList = async () => {
 };
 
 export const SateliiteList = async () => {
-  if (satellites.length) {
-      //console.log(agencies);
-      return satellites;
-  }
   try {
       const response = await axios.get(
           `${satellite_DETAILS }`,
@@ -68,9 +62,6 @@ export const SateliiteList = async () => {
 //API call for each individual space agency page : 
 
 export const AgencyListId = async id => {
-  if (agenciesId) {
-      return agenciesId;
-  }
   try {
       const agencyResponse = await axios.get(
         `${AGENCY_DETAILS}${id}`
