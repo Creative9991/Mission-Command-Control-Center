@@ -114,6 +114,12 @@ Link{
     position: relative;
 }
 
+.home-horizontal-line{
+  color : black;
+  width : 100%;
+  height : 10px;
+}
+
 .ant-layout-footer{
   padding: 0px 0px;
 }

@@ -7,26 +7,29 @@ import {Redirect} from 'react-router-dom';
 
 class satellite_Iss extends Component {
 
-    state = {
-        satellites: [],
-        loading: true,
-        error: false,
-        id: null,
-        satelliteDetails: false,
-    };
- 
 
+  constructor(props){
+    super(props)
+
+    this.state = {
+      satellites: [],
+      loading: true,
+      error: false,
+      id: null,
+      satelliteDetails: false,
+  };
+  }
     async componentDidMount() {
         try {
             const satellites = await SateliiteList();
             this.setState({ satellites , loading: false });
+            console.log(satellites);
         } catch (err) {
             console.log('outside catch', err);
         }
     }
 
     goTosatelliteDetails = (satelliteId) => {
-        //console.log('click satellite details')
         if (satelliteId !== null) {
           this.setState({ id: satelliteId, satelliteDetails: true });
         }
