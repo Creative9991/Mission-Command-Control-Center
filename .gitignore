@@ -12,6 +12,10 @@
 # production
 /build
 
+# learning purpose
+
+/reducers
+
 # misc
 .DS_Store
 .env.local

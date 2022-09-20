@@ -5,9 +5,8 @@ import Space_agencies from './components/space_agencies';
 import About from './components/about';
 import { Layout, Menu } from 'antd';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import MenuMain from './components/menumain';
-import Cheat1 from './components/Cheat-sheet/cheat1';
-import Cheat_Sheet from './components/Cheat-sheet/cheat_sheet';
+import Space_insight from './components/space_insight';
+import Rockets from './components/rockets';
 import Agency from './components/Agency/agency';
 import satellites from './components/Satellites/satellites';
 import Persons from './components/persons';
@@ -15,47 +14,53 @@ import satellite_Iss  from './components/satellite_iss';
 import space from './assets/space.jpeg';
 import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import {createStore} from 'redux';
-// import allReducers from './reducers';
+import {createStore} from 'redux';
+import allReducers from './reducers';
+import Login from './components/login';
 
 
-//const store = createStore(allReducers);
+const store = createStore(allReducers);
 
 
-// //Store 
+//Store 
 
-// //Action
+//Action
 
-// const increment  = () =>{
-//     return{
-//         type : 'INCREMENT'
-//     }
-// }
-
-// const decrement = () =>{
-//     return {
-//         type : 'DECREMENT'
-//     }
-// }
-
-// //Reducer
+const increment  = () =>{
+    return{
+        type : 'INCREMENT'
+    }
+}
 
 
 
-// let store = createStore(counter);
+//Reducer
 
-// store.subscribe(() => console.log(store.getState()))
 
-// //Dispatch
 
-// store.dispatch(increment());
+
+
+store.subscribe(() => console.log(store.getState()))
+
+//Dispatch
+
+store.dispatch(increment());
 
 const { Header, Content, Footer } = Layout;
 
 
+
+
+
+
 class App extends Component {
+    
+     
+    
  
     render() {
+
+        
 
         // Getting the Current yeat
         let date = new Date();
@@ -71,7 +76,7 @@ class App extends Component {
                 <Layout className="layout">
                     <Header style={{height : '100px'}} onMouseOver= {headerOver}>
                         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} >
-                            <Menu.Item ley="1"><Link to='/menumain'> <FontAwesomeIcon icon={faUserAstronaut} style={{ width :'80px', height : '80px', color: 'yellow'}} /></Link></Menu.Item>
+                            <Menu.Item ley="1"><Link to='/space_insight'> <FontAwesomeIcon icon={faUserAstronaut} style={{ width :'80px', height : '80px', color: 'yellow'}} /></Link></Menu.Item>
                             <Menu.Item key="4"><Link to="/about">About</Link></Menu.Item>
                         </Menu>
                     </Header>
@@ -83,12 +88,12 @@ class App extends Component {
                                 <Route path="/contact" component={Contact} />
                                 <Route path="/agency/:id" component={Agency} />
                                 <Route path="/satellite_iss/:id" component={satellites} />
-                                <Route path="/menumain" component={MenuMain} />
+                                <Route path="/space_insight" component={Space_insight} />
                                 <Route path="/persons" component={Persons} />
-                                <Route path="/cheat_sheet"component={Cheat_Sheet}/>
-                                <Route path="/cheat1" component={Cheat1}/>
+                                <Route path="/rockets" component={Rockets}/>
+                                <Route path="/login" component={Login}/>
                                 <Route path="/satellite_iss" component={satellite_Iss} />
-                                <Route path="/" component={MenuMain} />
+                                <Route path="/" component={Space_insight} />
     
                             </Switch>
                         </main>

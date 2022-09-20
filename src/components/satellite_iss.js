@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import '../App.css';
-import ReusableGrid from './Reusable-Grid/reusable-grid';
-import {SateliiteList} from '../services/agencyAPI';
 import {Redirect} from 'react-router-dom';
 
 
@@ -17,43 +15,64 @@ class satellite_Iss extends Component {
       error: false,
       id: null,
       satelliteDetails: false,
+      isroSpacecraft : []
   };
   }
-    async componentDidMount() {
-        try {
-            const satellites = await SateliiteList();
-            this.setState({ satellites , loading: false });
-            console.log(satellites);
-        } catch (err) {
-            console.log('outside catch', err);
-        }
-    }
-
+    
+     componentDidMount() {
+      fetch('https://isro.vercel.app/api/spacecrafts')
+      .then((response) => response.json())
+      .then(data => {
+         console.log(data.spacecrafts);
+          this.setState({ isroSpacecraft: data.spacecrafts});
+      });
+  }
+    
     goTosatelliteDetails = (satelliteId) => {
         if (satelliteId !== null) {
           this.setState({ id: satelliteId, satelliteDetails: true });
         }
       }
+
+    
   
     
     render(){
+
+     
+
         if(this.state.id){
             return (<Redirect to={`/sateliite_iss/${this.state.id}`} />);
           }else {
    
         return (
             <div className="space-agencies">
-              <h1 className="header-agency">Top satellite Around The World</h1>
-              <div className="grid-container">
-            { typeof this.state.satellites !== 'undefined' &&  this.state.satellites.map(satellite => (
-                    <ReusableGrid
-                    key={satellite.id}
-                    onClick={this.goTosatelliteDetails}
-                    hoverable/>    
-                )
-                )
-            }
-             </div>
+              <h1 className="header-agency">Top satellites around the world</h1>
+     
+         {/* <ul>
+         {this.state.isroSpacecraft.map((item) => (
+                    <li key={item.id} style={{color : 'white'}}>{item.name}</li>
+                ))}
+         </ul> */}
+         <table id="isro">
+                     <tbody id="isro-body">
+                    <tr >
+                     <th className="isro-tablehead">Mission ID</th>
+                     <th className="isro-tablehead">Mission Name</th>
+                    </tr>
+                    { 
+      //console.log(this.state.agenciesId.launches)
+      typeof this.state.isroSpacecraft !== 'undefined' && this.state.isroSpacecraft.map((spacecraft , id) =>{
+          return(
+                    <tr key= {spacecraft.id} className="isro-table-row">
+                    <td>{spacecraft.id}</td>
+                    <td>{spacecraft.name}</td>
+                    </tr>
+                  )})
+    }
+              </tbody>
+                </table> 
+
              </div>
         )
           }

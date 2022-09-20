@@ -3,8 +3,8 @@ import {
 PERSONS_LIST_PATH 
 } from '../constants/constants.js';
 
-import {AGENCY_DETAILS} from '../constants/constants.js';
-import {satellite_DETAILS} from '../constants/constants.js';
+
+const { REACT_APP_API_URL } = process.env;
 
 export let persons = [];
 export let agencies = [];
@@ -33,10 +33,10 @@ export const AgencyList = async () => {
     }
     try {
         const response = await axios.get(
-            `${AGENCY_DETAILS }`,
+            `${REACT_APP_API_URL }`,
         );
         agencies = response.data;
-        //console.log(agencies);
+        console.log(response);
         return agencies;
     } catch (err) {
         console.error(`Something went wrong fetching the Agencies data: ${err}`);
@@ -44,32 +44,50 @@ export const AgencyList = async () => {
     }
 };
 
-export const SateliiteList = async () => {
-  try {
-      const response = await axios.get(
-          `${satellite_DETAILS }`,
-      );
-      satellites = response.data;
-      //console.log(satellites);
-      return satellites;
-  } catch (err) {
-      console.error(`Something went wrong fetching the satellites data: ${err}`);
-      throw err;
-  }
-};
+// export const SateliiteList = async () => {
+//   try {
+//       const response = await axios.get(
+//           `${satellite_DETAILS }`,
+//       );
+//       satellites = response.data;
+//       //console.log(satellites);
+//       return satellites;
+//   } catch (err) {
+//       console.error(`Something went wrong fetching the satellites data: ${err}`);
+//       throw err;
+//   }
+// };
 
 
 //API call for each individual space agency page : 
 
+
+// export const isroSatellite = async() => {
+//   try{
+//     const isroReponse = await axios.get(
+//       `${ISRO_API}`,
+//     );
+//       isroRes = isroResponse.data;
+//       console.log(response);
+//       return isroRes;
+//   }catch (err) {
+//     console.error(`Something went wrong fetching the Agencies data: ${err}`);
+//     throw err;
+// }
+// };
+
+
 export const AgencyListId = async id => {
   try {
       const agencyResponse = await axios.get(
-        `${AGENCY_DETAILS}${id}`
+        `${REACT_APP_API_URL}${id}`
       );
       agenciesId = agencyResponse.data;
+      console.log(agencyResponse);
       return agenciesId;
   } catch (err) {
       console.error(`Something went wrong fetching the space agency pages: ${err}`);
       throw err;
   }
 };
+
