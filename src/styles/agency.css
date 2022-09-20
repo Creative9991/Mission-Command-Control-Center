@@ -11,14 +11,14 @@
   font-family: cursive;
 }
 .space-agency-details .space-header-paragraph .agency-arrow-left {
-  right: 600px;
   position: relative;
-  height: 100px;
-  top: 9px;
+  float: left;
+  padding-top: 20px;
+  padding-left: 13px;
 }
 .space-agency-details .space-header-paragraph .space-agency-detials-header {
-  font-size: 30px;
-  top: 10px;
+  font-size: 40px;
+  top: 5px;
   position: relative;
   display: inline;
 }
@@ -43,7 +43,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   width: 90%;
-  background: rgba(132, 127, 134, 0.7);
+  background: whitesmoke;
   padding: 20px;
   border-radius: 10px;
   font-family: monospace;

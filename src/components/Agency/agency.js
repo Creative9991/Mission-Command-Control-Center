@@ -1,10 +1,59 @@
 import React from 'react';
-import '../../styles/agency.scss';
 import {AgencyListId} from "../../services/agencyAPI";
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Link} from 'react-router-dom';
 import { Card } from 'antd';
 
+const agencyImages = {
+    content: {
+ body: [
+    {
+        1 : {
+            imgAsset: require("../../assets/nasa.jpg")
+        }
+    },
+    {
+        2 : {
+            imgAsset: require("../../assets/esa.jpg")
+        }
+    },
+    {
+         3 : {
+            imgAsset: require("../../assets/cnsa.png")
+    }
+    },
+     {
+         4 : {
+             imgAsset: require("../../assets/nasa.jpg")
+         }
+     },
+     {
+         5 : {
+             imgAsset: require("../../assets/esa.jpg")
+         }
+     },
+     {
+         6 : {
+             imgAsset: require("../../assets/cnsa.png")
+         }
+     },
+     {
+         7 : {
+             imgAsset: require("../../assets/cnsa.png")
+         }
+     },
+     {
+         8 : {
+             imgAsset: require("../../assets/cnsa.png")
+         }
+     },
+     {
+         9 : {
+             imgAsset: require("../../assets/cnsa.png")
+         }
+     },
+
+]}}
 
 export default class Agency extends React.Component {
     constructor(props){
@@ -35,18 +84,17 @@ export default class Agency extends React.Component {
 
 
     render(){
+
+        console.log(this.props.isroInfo, 'fjhdjgjkdgjdfhg');
+        ///console.log(this.agencyImage.content.body);
         //const {error, loading, agenciesId } = this.state;
       return(
   <div className="space-agency-details">
-      <h1 className="space-header-paragraph">
+      <div className="space-header-paragraph">
           <span className='agency-arrow-left'><Link to="/space_agencies"><ArrowLeftOutlined /></Link> </span>
      
-          <p className="space-agency-detials-header"><strong>{this.state.agenciesId.imgName}</strong></p> </h1>
+          <p className="space-agency-detials-header"><strong>{this.state.agenciesId.imgName}</strong></p> </div>
           <div className="agency-details-poster-wrapper">
-              <img
-                  className="agency-details-poster"
-                  alt="agency poster"
-              />
                 <div className="agency-details-info">
                 <div className="agency-details-info__overview">
                   <strong>Agency Overview  : </strong>
@@ -87,8 +135,9 @@ export default class Agency extends React.Component {
     }
               </tbody>
                 </table> 
+                {this.props.isroInfo}
                 </Card>
-      
+
           </div>
       )
     }

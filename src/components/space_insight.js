@@ -43,7 +43,7 @@ function outBackground(e) {
   e.target.style.opacity = '100%';
 }
 
-class MenuMain extends Component {
+class Space_insight extends Component {
 
  
   
@@ -61,21 +61,23 @@ class MenuMain extends Component {
             <br/><br/><br/>   <br/><br/><br/>
             <Row className = "menuItems">
             <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <Link to="/space_agencies">
-            <FontAwesomeIcon icon={faSpaceShuttle} style={{ width :'150px', height : '150px', top : '170px', position: 'relative', color: 'lightsteelblue'}} />
-            <h3 style = {this.headeragecy()}>Agencies</h3>
-            </Link>
+                <Link to="/space_agencies">
+                    <FontAwesomeIcon icon={faSpaceShuttle} style={{ width :'150px', height : '150px', top : '170px', position: 'relative', color: 'lightsteelblue'}} />
+                        <h3 style = {this.headeragecy()}>Agencies</h3>
+                    </Link>
             </Col>
           
             <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground}  xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <Link to="/satellite_iss">
-            <FontAwesomeIcon icon={faSatellite} style={{ width :'150px', height : '150px', top : '170px', position: 'relative' ,color: 'lightsteelblue'}} />
-            <h3 style = {this.headeragecy()}>Satellite</h3>
-            </Link>
+                <Link to="/satellite_iss">
+                    <FontAwesomeIcon icon={faSatellite} style={{ width :'150px', height : '150px', top : '170px', position: 'relative' ,color: 'lightsteelblue'}} />
+                     <h3 style = {this.headeragecy()}>Satellite</h3>
+                </Link>
             </Col>
             <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground}  xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <FontAwesomeIcon icon={faRocket} style={{ width :'150px', height : '150px', top : '170px', position: 'relative', color: 'lightsteelblue'}} />
-            <h3 style = {this.headeragecy()}>Rockets</h3>
+             <Link to="/rockets">
+                <FontAwesomeIcon icon={faRocket} style={{ width :'150px', height : '150px', top : '170px', position: 'relative', color: 'lightsteelblue'}} />
+                 <h3 style = {this.headeragecy()}>Rockets</h3>
+             </Link>
             </Col>
           </Row> 
           <br/><br/><br/>   <br/><br/><br/>
@@ -90,4 +92,4 @@ class MenuMain extends Component {
         )
     }
 }
-export default MenuMain;
+export default Space_insight;

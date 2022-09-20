@@ -46,6 +46,32 @@
   padding-top: 40px;
 }
 
+#isro{
+background-color: white;
+overflow: scroll;
+width: 1420px;
+border-radius: 10px;
+border-color: black;
+color: tomato;
+font-weight: bold;
+margin-bottom: 50px;
+margin-left: 200px;
+}
+
+.isro-tablehead{
+  color: #282c34;
+  padding-bottom: 50px;
+  padding-top: 20px;
+  font-size: 30px;
+}
+
+.isro-table-row{
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+
 .header-agency {
   margin-top : 30px;
   border: 5px solid black;

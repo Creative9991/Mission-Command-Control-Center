@@ -9,52 +9,58 @@ const data = {
   content: {
     body: [
       {
-        id: 1,
+        id: "nasa",
         imgName : "nasa",
         imgAsset : require("../assets/nasa.jpg"),
         agency : '/nasa'
       },
       {
-        id: 2,
+        id: "esa",
         imgName : "esa",
         imgAsset : require("../assets/esa.jpg"),
         agency : '/esa'
       },
       {
-        id: 3,
+        id: "cnsa",
         imgName : "cnsa",
         imgAsset : require("../assets/cnsa.png"),
         agency : '/cnsa'
       },
       {
-        id: 4,
+        id: "isro",
         imgName : "isro",
         imgAsset : require("../assets/isro.jpg"),
         agency : '/isro'
       },
       {
-        id: 5,
+        id: "jaxa",
         imgName : "jaxa",
         imgAsset : require("../assets/jaxa.jpg"),
         agency : '/jaxa'
       },
       {
-        id: 6,
+        id: "roscosmos",
         imgName : "roscosmos",
         imgAsset : require("../assets/roscosmos.png"),
         agency : '/roscosmos'
       },
       {
-        id: 7,
+        id: "spacex",
         imgName : "spacex",
         imgAsset : require("../assets/spacex.png"),
         agency : '/spacex'
       },
       {
-        id: 8,
+        id: "blueorigin",
         imgName : "blueorigin",
         imgAsset : require("../assets/blueorigin.png"),
         agency : '/nasa'
+      },
+      {
+        id: "Virgin Galatic",
+        imgName : "Virgin Galatic",
+        imgAsset : require("../assets/virgin-galactic.png"),
+        agency : '/virgin-galatic'
       }
     ]
   }
@@ -80,6 +86,8 @@ class Space_Agencies extends Component {
     agencyDetails: false,
   };
 
+
+  
 
   goToAgencyDetails = (agencyId) => {
     if (agencyId !== null) {
