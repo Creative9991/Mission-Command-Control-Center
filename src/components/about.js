@@ -33,10 +33,11 @@ class About extends Component {
 
 
     render(){
+
         return (
          <div className= "about">
            <br/><br/>
-        <Card title="Space Insight"  style={{ width: 1320 }}>
+        <Card title="Space Insight">
              <br/>
               <p>{this.state.firstParagraphMessage}</p>
               <p>{this.state.secondParagraphMessage}</p>
