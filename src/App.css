@@ -38,6 +38,11 @@
   }
 }
 
+.main{
+  max-height: 700px;
+  overflow: scroll;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
