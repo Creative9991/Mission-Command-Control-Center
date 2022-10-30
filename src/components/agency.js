@@ -4,6 +4,7 @@ import '../styles/isro.css';
 import { Redirect } from 'react-router-dom';
 import '../App.css';
 import {spacecraftInfo} from '../constants/spacecraftInfo';
+import {spaceAgencies} from '../constants/spaceAgency';
 
 
 
@@ -19,10 +20,6 @@ function Agency(props) {
     }
   }
 
-  const cardStyle = {
-    hight : '500px',
-    width : '1000px'
-  }
 
   // const [redirect, setRedirect] = useState(false);
 
@@ -33,6 +30,28 @@ function Agency(props) {
   } else {
     return (
       <div className="isro-page">
+        
+            {
+              spaceAgencies.map(agency => {
+                if(agency.id === agencyId){
+                  return(
+                    <div className="agency-details" key={agency.id}>
+                       <Card> 
+                         <p style={{height : '300px', width : 'width', backgroundImage: `url(${agency.imgAsset})`}}></p>
+                    <Meta className = "meta-agency-details-title" title={agency.id}/>
+                  <p style={{fontFamily : 'verdana', fontSize : '20px'}}>{agency.details}</p>
+                  </Card>
+                  </div>
+                  )
+                }else{
+                  return null;
+                }
+               
+              })
+            }
+
+
+        
         <h1 className="header-agency">Top Spacecraft - Launchers - Satellites from {agencyId}</h1>
         <div className="grid-container">
           {
@@ -43,7 +62,7 @@ function Agency(props) {
                 onClick={() => navigateToAgencyData(block.agency)}
                 hoverable
               >
-                <Meta className = "meta-title" title={block.info}/>
+                <p className = "meta-title" title={block.info}></p>
               </Card>
               
             ))
