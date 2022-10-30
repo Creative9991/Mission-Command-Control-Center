@@ -167,3 +167,17 @@ Link{
 .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
   background-color: lightgrey;
 }
+
+
+.ant-card-meta-title{
+  color : tomato;
+  font-size: 40px;
+  font-style: italic;
+  font-family : verdana;
+  text-transform: capitalize;
+}
+
+.meta-title{
+  color : wheat;
+  font-size: larger;
+}
