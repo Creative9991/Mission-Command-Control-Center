@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import '../App.css';
-import ReusableGrid from './Reusable-Grid/reusable-grid';
 import {Redirect} from 'react-router-dom';
 
 
@@ -44,14 +43,7 @@ class Rockets extends Component {
                 <div className="space-agencies">
                     <h1 className="header-agency">Top satellite Around The World</h1>
                     <div className="grid-container">
-                        { typeof this.state.satellites !== 'undefined' &&  this.state.satellites.map(satellite => (
-                                <ReusableGrid
-                                    key={satellite.id}
-                                    onClick={this.goTosatelliteDetails}
-                                    hoverable/>
-                            )
-                        )
-                        }
+                      <p>Hej</p>
                     </div>
                 </div>
             )

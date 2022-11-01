@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Row, Card, Form, Checkbox, Col,Input, Button } from 'antd';
 
 
@@ -33,11 +34,13 @@ export default class login extends React.Component{
 
             let userName   = values.username;
             let passWord = values.password;
+            console.log(userName, passWord);
             let listUsernames = ["mukesh",  "user1", "user2", "user3", "user4"];
         let listPasswords = ["1234", "user1", "user2", "user3", "user4"];
           function validate(username, password) {
             for (var i=0; i <listUsernames.length; i++) {
                 if ((username === listUsernames[i]) && (password === listPasswords[i])) {
+                    sessionStorage.setItem("username", userName);
                     return true; // match found
                 }
             }
@@ -46,7 +49,8 @@ export default class login extends React.Component{
         var valid = validate(userName, passWord);
 
         if(valid) {
-            this.props.history.push(`/menumain`);
+            window.location.reload(false);
+            return (<Redirect to={`/login`} />)
           }
           else {
             alert("invalid credentials please enter valid username and password");
@@ -54,11 +58,12 @@ export default class login extends React.Component{
 
 
 
-            sessionStorage.setItem("username", userName);
-        if((userName === "mukesh") && (passWord === '1234')){
-            sessionStorage.removeItem('username');
-            //let adminUser = sessionStorage.setItem("username", "Admin");
-        }
+         
+          
+        // if((this.userName === "mukesh") && (this.passWord === '1234')){
+        //     sessionStorage.removeItem('username');
+        //     //let adminUser = sessionStorage.setItem("username", "Admin");
+        // }
     };
 
     loginBox = () => {
