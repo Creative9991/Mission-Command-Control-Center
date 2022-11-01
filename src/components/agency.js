@@ -31,16 +31,17 @@ function Agency(props) {
     return (
       <div className="isro-page">
         
-            {
+
+        <Card>
+        {
               spaceAgencies.map(agency => {
+                const newBackground = agency.imgAsset;
                 if(agency.id === agencyId){
                   return(
                     <div className="agency-details" key={agency.id}>
-                       <Card> 
-                         <p style={{height : '300px', width : 'width', backgroundImage: `url(${agency.imgAsset})`}}></p>
+                         <p style={{height : '300px', width : 'width', backgroundImage: `url(${newBackground})`}}></p>
                     <Meta className = "meta-agency-details-title" title={agency.id}/>
                   <p style={{fontFamily : 'verdana', fontSize : '20px'}}>{agency.details}</p>
-                  </Card>
                   </div>
                   )
                 }else{
@@ -49,6 +50,9 @@ function Agency(props) {
                
               })
             }
+
+        </Card>
+          
 
 
         
