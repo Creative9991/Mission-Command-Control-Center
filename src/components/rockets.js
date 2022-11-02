@@ -26,6 +26,7 @@ class Rockets extends Component {
     }
 
 
+
     render(){
         if(this.state.id){
             return (<Redirect to={`/sateliite_iss/${this.state.id}`} />);

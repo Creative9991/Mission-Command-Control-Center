@@ -8,10 +8,9 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Space_insight from './components/space_insight';
 import Rockets from './components/rockets';
 import Agency from './components/agency';
-import Persons from './components/persons';
 import satellite_Iss from './components/satellite_iss';
 import space from './assets/space.jpeg';
-import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
+import { faUserAstronaut, faUser} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createStore } from 'redux';
 import allReducers from './reducers';
@@ -101,7 +100,8 @@ class App extends Component {
                                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} >
                                     <Menu.Item ley="1"><Link to='/space_insight'> <FontAwesomeIcon icon={faUserAstronaut} style={{ width: '80px', height: '80px', color: 'yellow' }} /></Link></Menu.Item>
                                     <Menu.Item key="4"><Link to="/about">About</Link></Menu.Item>
-                                    <Menu.Item key="5" style={{ float: 'right', fontStyle : 'bold' }} onClick={usernameDelete}><Link to="/login">Hej..{userExists}</Link></Menu.Item>
+                                    <Menu.Item key="5" style={{ float: 'right' }} onClick={usernameDelete}><Link to="/login">Hej..{userExists}</Link></Menu.Item>
+                                    <Menu.Item key="6" style={{ float: 'right'}}><Link to="/dashboard"><FontAwesomeIcon icon={faUser} style={{ width: '20px', height: '20px', color: 'yellow' }} /></Link></Menu.Item>
                                     <Menu.Item style={{ float: 'right', paddingTop: 0 }}><AnalogClock {...options} /></Menu.Item>
                                 </Menu>
                             </Header> : null
@@ -113,10 +113,10 @@ class App extends Component {
                                     <Route path="/space_agencies" component={Space_agencies} />
                                     <Route path="/about" component={About} />
                                     <Route path="/contact" component={Contact} />
+                                    <Route path="/satelitte_iss" component={satellite_Iss}/>
                                     <Route path="/dashboard" component={Dashboard} />
                                     <Route path="/agency/:id" component={Agency} />
                                     <Route path="/agencyinfo/:info" component={AgencyInfo} />
-                                    <Route path="/persons" component={Persons} />
                                     <Route path="/rockets" component={Rockets} />
                                     {
                                         userExists ?

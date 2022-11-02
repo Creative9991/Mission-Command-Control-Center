@@ -32,7 +32,6 @@ const AgencyInfo = (props) => {
                                         <th className="isro-tablehead">Mission Name</th>
                                     </tr>
                                     {
-                                        //console.log(this.state.agenciesId.launches)
                                         isroSpaceCraft.map((spacecraft) => {
                                             return (
 
