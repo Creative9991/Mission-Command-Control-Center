@@ -35,7 +35,6 @@ function Agency(props) {
               spaceAgencies.map(agency => {
                 const newBackground = agency.imgAsset;
                 const currentCountryFlag = agency.countryFlag;
-                console.log(currentCountryFlag);
                 if(agency.id === agencyId){
                   return(
                     <div className="agency-details" key={agency.id}>

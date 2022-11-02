@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Row, Col, Carousel } from 'antd';
-import { faRocket, faAtom, faSpaceShuttle, faSatellite, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSpaceShuttle, faSatellite, faSun} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { carouselContent } from '../constants/carouselContent';
@@ -48,39 +48,20 @@ class Space_insight extends Component {
           <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
             <Link to="/space_agencies">
               <FontAwesomeIcon icon={faSpaceShuttle} style={fontAwesomeStyle} />
-              <h3 style={this.headeragecy()}>Agencies</h3>
+              <h3 style={this.headeragecy()}>World Space Agencies</h3>
             </Link>
           </Col>
 
           <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
             <Link to="/satellite_iss">
               <FontAwesomeIcon icon={faSatellite} style={fontAwesomeStyle} />
-              <h3 style={this.headeragecy()}>Satellite</h3>
+              <h3 style={this.headeragecy()}>International Space Station</h3>
             </Link>
           </Col>
-          <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <Link to="/rockets">
-              <FontAwesomeIcon icon={faRocket} style={fontAwesomeStyle} />
-              <h3 style={this.headeragecy()}>Rockets</h3>
-            </Link>
-          </Col>
-          <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }} style={{ marginTop: 80 }}>
-            <Link to="/rockets">
-              <FontAwesomeIcon icon={faAtom} style={fontAwesomeStyle} />
-              <h3 style={this.headeragecy()}>Telescope</h3>
-            </Link>
-          </Col>
-          <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }} style={{ marginTop: 80 }}>
-            <Link to="/rockets">
-              <FontAwesomeIcon icon={faMoon} style={fontAwesomeStyle} />
-
-              <h3 style={this.headeragecy()}>Planet Exploration</h3>
-            </Link>
-          </Col>
-          <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }} style={{ marginTop: 80 }}>
+          <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }} >
             <Link to="/rockets">
               <FontAwesomeIcon icon={faSun} style={fontAwesomeStyle} />
-              <h3 style={this.headeragecy()}>Solar Exploration</h3>
+              <h3 style={this.headeragecy()}>Planet Exploration</h3>
             </Link>
           </Col>
         </Row>
