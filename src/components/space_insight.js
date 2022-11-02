@@ -53,7 +53,7 @@ class Space_insight extends Component {
           </Col>
 
           <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <Link to="/satellite_iss">
+            <Link to="/internation-Space-station">
               <FontAwesomeIcon icon={faSatellite} style={fontAwesomeStyle} />
               <h3 style={this.headeragecy()}>International Space Station</h3>
             </Link>

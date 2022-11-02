@@ -8,8 +8,8 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Space_insight from './components/space_insight';
 import Rockets from './components/rockets';
 import Agency from './components/agency';
-import satellite_Iss from './components/satellite_iss';
-import space from './assets/space.jpeg';
+import InternationaSpaceStation from './components/InternationSpaceStation';
+import space from './assets/space-background.jpeg';
 import { faUserAstronaut, faUser} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createStore } from 'redux';
@@ -107,17 +107,18 @@ class App extends Component {
                             </Header> : null
                         }
 
-                        <Content style={{ padding: '0 50px', minHeight: '800px', backgroundImage: `url(${space})` }} >
+                        <Content style={{ padding: '0 50px', minHeight : '810px', backgroundImage: `url(${space})` }} >
                             <main>
                                 <Switch>
                                     <Route path="/space_agencies" component={Space_agencies} />
                                     <Route path="/about" component={About} />
                                     <Route path="/contact" component={Contact} />
-                                    <Route path="/satelitte_iss" component={satellite_Iss}/>
                                     <Route path="/dashboard" component={Dashboard} />
                                     <Route path="/agency/:id" component={Agency} />
                                     <Route path="/agencyinfo/:info" component={AgencyInfo} />
                                     <Route path="/rockets" component={Rockets} />
+                                    {/* <Route path='*' component={PageNotfound} /> */}
+                                    <Route path="/internation-Space-station" component={InternationaSpaceStation} />
                                     {
                                         userExists ?
                 
@@ -126,9 +127,6 @@ class App extends Component {
                                             :
                                             <Route path="/" component={Login} />
                                     }
-                                    <Route path="/satellite_iss" component={satellite_Iss} />
-                                    <Route path='*' component={PageNotfound} />
-
                                 </Switch>
                             </main>
                         </Content>
