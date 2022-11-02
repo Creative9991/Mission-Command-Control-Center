@@ -1,9 +1,10 @@
 export const spaceAgencies = [
     {
-        id: "nasa",
-        imgName: "nasa",
+        id: "NASA",
+        imgName: "NASA",
         imgAsset: require("../assets/nasa.jpg"),
-        agency: '/nasa',
+        countryFlag : require("../assets/usaFlag.jpg"),
+        agency: '/NASA',
         details: `The National Aeronautics and Space Administration (NASA /ˈnæsə/) is an independent agency of the US federal government responsible for the civil space program, aeronautics research, and space research
       NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics (NACA), to give the U.S. space development effort a distinctly civilian orientation, 
       emphasizing peaceful applications in space science.Since its establishment,
@@ -12,19 +13,26 @@ export const spaceAgencies = [
       oversight of launch operations and countdown management for uncrewed NASA launches.`
     },
     {
-        id: "esa",
-        imgName: "esa",
+        id: "ESA",
+        imgName: "ESA",
         imgAsset: require("../assets/esa.jpg"),
-        agency: '/esa',
+        countryFlag : require("../assets/esaCountryFlag.png"),
+        agency: '/ESA',
         details: `The European Space Agency (ESA; French: Agence spatiale européenne pronunciation (help·info), ASE;[5][6] German: Europäische Weltraumorganisation) is an 
       intergovernmental organisation of 22 member states[7] dedicated to the exploration of space. Established 
-      in 1975 and headquartered in Paris, ESA has a worldwide staff of about 2,200 in 2018[8] and an annual budget of about €7.2 billion in 2022.`
+      in 1975 and headquartered in Paris, ESA has a worldwide staff of about 2,200 in 2018[8] and an annual budget of about €7.2 billion in 2022.
+      ESA's space flight programme includes human spaceflight (mainly through participation in the International Space Station program); the launch 
+      and operation of unmanned exploration missions to other planets and the Moon; Earth observation, science and telecommunication; designing launch 
+      vehicles; and maintaining a major spaceport, the Guiana Space Centre at Kourou (French Guiana), France. The main European launch vehicle Ariane 5 is
+       operated through Arianespace with ESA sharing in the costs of launching and further developing this launch vehicle. The agency is also working with NASA
+        to manufacture the Orion spacecraft service module that will fly on the Space Launch System`
     },
     {
-        id: "cnsa",
-        imgName: "cnsa",
+        id: "CNSA",
+        imgName: "CNSA",
         imgAsset: require("../assets/cnsa.png"),
-        agency: '/cnsa',
+        countryFlag : require("../assets/chineseFlag.png"),
+        agency: '/CNSA',
         details: `China National Space Administration (CNSA; Chinese: 中国国家航天局; pinyin: 
         Zhōngguó Guójiā Hángtiān Jú) is the government agency of the People's Republic of China 
         that is responsible for civil space administration and international space cooperation,
@@ -33,10 +41,11 @@ export const spaceAgencies = [
          Technology,[3][need quotation to verify] its headquarters are located in Haidian, Beijing.`
     },
     {
-        id: "isro",
-        imgName: "isro",
+        id: "ISRO",
+        imgName: "ISRO",
         imgAsset: require("../assets/isro.jpg"),
-        agency: '/isro',
+        countryFlag : require("../assets/indianFlag.png"),
+        agency: '/ISRO',
         details: `The Indian Space Research Organisation[a] (ISRO; /ˈɪsroʊ/) is the national 
       space agency of India, headquartered in Bangalore. It operates under the Department of 
       Space (DOS) which is directly overseen by the Prime Minister of India, while the Chairman of 
@@ -46,10 +55,11 @@ export const spaceAgencies = [
        launch extraterrestrial missions and operate large fleets of artificial satellites.`
     },
     {
-        id: "jaxa",
-        imgName: "jaxa",
+        id: "JAXA",
+        imgName: "JAXA",
         imgAsset: require("../assets/jaxa.jpg"),
-        agency: '/jaxa',
+        countryFlag : require("../assets/japaneseFlag.png"),
+        agency: '/JAXA',
         details: `The Japan Aerospace Exploration Agency (JAXA) (国立研究開発法人宇宙航空研究開発機構, Kokuritsu-kenkyū-kaihatsu-hōjin Uchū Kōkū Kenkyū Kaihatsu Kikō, 
             literally "National Research and Development Agency Aerospace Research and Development Organisation") is the Japanese national air and space agency. 
             Through the merger of three previously independent organizations, JAXA was formed on 1 October 2003. JAXA is responsible for research, technology development 
@@ -57,10 +67,11 @@ export const spaceAgencies = [
             Its motto is One JAXA[3] and its corporate slogan is Explore to Realize (formerly Reaching for the skies, exploring space).`
     },
     {
-        id: "roscosmos",
-        imgName: "roscosmos",
+        id: "ROSCOSMOS",
+        imgName: "ROSCOSMOS",
         imgAsset: require("../assets/roscosmos.png"),
-        agency: '/roscosmos',
+        countryFlag : require("../assets/russianFlag.png"),
+        agency: '/ROSCOSMOS',
         details: `The State Space Corporation "Roscosmos"[2] (Russian: Государственная корпорация по космической деятельности «Роскосмос»), 
         commonly known simply as Roscosmos (Russian: Роскосмос), is a state corporation of the Russian Federation responsible for space flights, 
         cosmonautics programs, and aerospace research.[3]
@@ -76,10 +87,11 @@ export const spaceAgencies = [
          and largest spaceport, and Vostochny Cosmodrome, which is being built in the Russian Far East in Amur Oblast. Its director since July 2022 is Yury Borisov.[8]`
     },
     {
-        id: "spacex",
-        imgName: "spacex",
+        id: "SPACEX",
+        imgName: "SPACEX",
         imgAsset: require("../assets/spacex.png"),
-        agency: '/spacex',
+        countryFlag : require("../assets/usaFlag.jpg"),
+        agency: '/SPACEX',
         details: `Space Exploration Technologies Corp. (doing business as SpaceX) is an American spacecraft manufacturer,
        space launch provider, and a satellite communications corporation headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk, with the goal of reducing space 
       transportation costs to enable the colonization of Mars. It manufactures the Falcon 9 and Falcon Heavy launch vehicles, several rocket engines, Cargo Dragon, 
@@ -93,10 +105,11 @@ export const spaceAgencies = [
         scheduled for 2022 pending launch license.[8]`
     },
     {
-        id: "blueorigin",
-        imgName: "blueorigin",
+        id: "BLUEORIGIN",
+        imgName: "BLUEORIGIN",
         imgAsset: require("../assets/blueorigin.png"),
-        agency: '/nasa',
+        countryFlag : require("../assets/usaFlag.jpg"),
+        agency: '/BLUEORIGIN',
         details: `Blue Origin, LLC is an American privately funded aerospace manufacturer and sub-orbital spaceflight services company
          headquartered in Kent, Washington.[3][4] Founded in 2000 by Jeff Bezos, the founder and executive chairman of Amazon, the company 
          is led by CEO Bob Smith and aims to make access to space cheaper and more reliable through reusable launch vehicles.[5][6] Rob Meyerson
@@ -114,10 +127,11 @@ export const spaceAgencies = [
           booster successfully soft landing.`
     },
     {
-        id: "Virgin Galatic",
-        imgName: "Virgin Galatic",
+        id: "VIRGIN GALACTIC",
+        imgName: "VIRGIN GALACTIC",
         imgAsset: require("../assets/virgin-galactic.png"),
-        agency: '/virgin-galactic',
+        countryFlag : require("../assets/usaFlag.jpg"),
+        agency: '/VIRGIN GALACTIC',
         details: `Virgin Galactic is an American spaceflight company founded by Richard Branson and his British Virgin Group retains an 11.9% stake through Virgin
          Investments Limited.[1] It is headquartered in California, USA, and operates from New Mexico. The company is developing commercial spacecraft and aims to 
          provide suborbital spaceflights to space tourists. Virgin Galactic's suborbital spacecraft are air launched from beneath a carrier airplane known as White 

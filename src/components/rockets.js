@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
 import {Redirect} from 'react-router-dom';
-import {isroApi} from '../services/agencyAPI';
+//import {isroApi} from '../services/agencyAPI';
 
 
 class Rockets extends Component {
@@ -17,16 +17,6 @@ class Rockets extends Component {
             id: null,
             satelliteDetails: false,
         };
-    }
-    async componentDidMount() {
-        try {
-          
-            isroApi().then((data) => {
-                console.log(data);
-            })
-        } catch (err) {
-            console.log('outside catch', err);
-        }
     }
 
     goTosatelliteDetails = (satelliteId) => {

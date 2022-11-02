@@ -133,6 +133,10 @@ margin-left: 200px;
   border-radius: 25px;
 }
 
+.columnClass:hover{
+background-color: white!important;
+}
+
 Link{
   color: yellow;
 }
