@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Row, Col, Carousel } from 'antd';
-import { faRocket, faSpaceShuttle,  faShuttleSpace, faSatellite, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faRocket, faAtom, faSpaceShuttle, faSatellite, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { carouselContent } from '../constants/carouselContent';
@@ -66,7 +66,7 @@ class Space_insight extends Component {
           </Col>
           <Col className="columnClass" onMouseOver={changeBackground} onMouseOut={outBackground} xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }} style={{ marginTop: 80 }}>
             <Link to="/rockets">
-              <FontAwesomeIcon icon={faShuttleSpace} style={fontAwesomeStyle} />
+              <FontAwesomeIcon icon={faAtom} style={fontAwesomeStyle} />
               <h3 style={this.headeragecy()}>Telescope</h3>
             </Link>
           </Col>

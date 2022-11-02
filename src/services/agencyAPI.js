@@ -93,16 +93,4 @@ export const AgencyListId = async id => {
 
 
 
-export const isroApi = async() => {
-  try{
-    (await fetch(`https://api.nasa.gov/planetary/apod?api_key=Z9mZMXbueXYaeKuKHcjWdaSSxrgqm2g8MKve5l5s`)).then(data => {
-      console.log(data)
-      return data.json();
-    }).then(key => {
-      console.log(key)
-    })
-  }catch{
-    console.log("Error")
-  }
-}
 

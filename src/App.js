@@ -101,7 +101,7 @@ class App extends Component {
                                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} >
                                     <Menu.Item ley="1"><Link to='/space_insight'> <FontAwesomeIcon icon={faUserAstronaut} style={{ width: '80px', height: '80px', color: 'yellow' }} /></Link></Menu.Item>
                                     <Menu.Item key="4"><Link to="/about">About</Link></Menu.Item>
-                                    <Menu.Item key="5" style={{ float: 'right' }} onClick={usernameDelete}><Link to="/login">Hej..{userExists}</Link></Menu.Item>
+                                    <Menu.Item key="5" style={{ float: 'right', fontStyle : 'bold' }} onClick={usernameDelete}><Link to="/login">Hej..{userExists}</Link></Menu.Item>
                                     <Menu.Item style={{ float: 'right', paddingTop: 0 }}><AnalogClock {...options} /></Menu.Item>
                                 </Menu>
                             </Header> : null
@@ -120,7 +120,10 @@ class App extends Component {
                                     <Route path="/rockets" component={Rockets} />
                                     {
                                         userExists ?
-                                            <Route path="/" component={Space_insight} /> :
+                
+                                         <Route path="/" component={Space_insight} /> 
+                                
+                                            :
                                             <Route path="/" component={Login} />
                                     }
                                     <Route path="/satellite_iss" component={satellite_Iss} />

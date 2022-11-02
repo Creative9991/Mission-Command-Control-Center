@@ -21,8 +21,6 @@ function Agency(props) {
   }
 
 
-  // const [redirect, setRedirect] = useState(false);
-
   const agencyId = props.match.params.id;
 
   if (info !== null && agencyDetails === true) {
@@ -36,12 +34,18 @@ function Agency(props) {
         {
               spaceAgencies.map(agency => {
                 const newBackground = agency.imgAsset;
+                const currentCountryFlag = agency.countryFlag;
+                console.log(currentCountryFlag);
                 if(agency.id === agencyId){
                   return(
                     <div className="agency-details" key={agency.id}>
-                         <p style={{height : '300px', width : 'width', backgroundImage: `url(${newBackground})`}}></p>
-                    <Meta className = "meta-agency-details-title" title={agency.id}/>
-                  <p style={{fontFamily : 'verdana', fontSize : '20px'}}>{agency.details}</p>
+                      <Meta className = "meta-agency-details-title" title={agency.id}/>
+                         <p style={{display : 'inline-block',height : '300px', width : '300px', textAlign : "center",backgroundRepeat : 'no-repeat', backgroundImage: `url(${newBackground})`}}></p>
+                         <p style={{height : '300px', display : 'inline-block', width : '300px', backgroundSize : 'contain', backgroundRepeat : 'no-repeat', backgroundImage: `url(${currentCountryFlag})`}}></p>
+                    
+                    <p style={{fontFamily : 'verdana', fontSize : '20px'}}>{agency.details}</p>
+                 
+                 
                   </div>
                   )
                 }else{

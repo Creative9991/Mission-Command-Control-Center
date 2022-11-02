@@ -37,7 +37,7 @@ class About extends Component {
         return (
          <div className= "about">
            <br/><br/>
-        <Card title="Space Insight">
+        <Card title="Space-Insight">
              <br/>
               <p>{this.state.firstParagraphMessage}</p>
               <p>{this.state.secondParagraphMessage}</p>
