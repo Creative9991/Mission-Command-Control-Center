@@ -67,10 +67,10 @@ class Space_insight extends Component {
         </Row>
         <br /><br /><br />   <br /><br /><br />
 
-        <Carousel autoplay style={{ height: '500px', color: '#fff', lineHeight: '160px', textAlign: 'center', background: '#364d79', }}>
-          {carouselContent.map((headerText, carouselKey) => {
+        <Carousel autoplay style={{ height: '500px', color: '#fff', lineHeight: '160px', textAlign: 'center', background: '#364d79'}}>
+          {carouselContent.map((headerText, id) => {
             return (
-              <h3 style={{ backgroundImage: `url(${headerText.imgUrl})` }} key={carouselKey}>{headerText.scrollText}</h3>)
+              <div key={id} style={{backgroundImage: `url(${headerText.imgUrl})`, height: '500px' }}>{headerText.scrollText}</div>)
           })}
         </Carousel>
         <br /><br /><br />   <br /><br /><br />

@@ -13,6 +13,26 @@ export const spaceAgencies = [
       oversight of launch operations and countdown management for uncrewed NASA launches.`
     },
     {
+        id: "ROSCOSMOS",
+        imgName: "ROSCOSMOS",
+        imgAsset: require("../assets/roscosmos.png"),
+        countryFlag : require("../assets/russianFlag.png"),
+        agency: '/ROSCOSMOS',
+        details: `The State Space Corporation "Roscosmos"[2] (Russian: Государственная корпорация по космической деятельности «Роскосмос»), 
+        commonly known simply as Roscosmos (Russian: Роскосмос), is a state corporation of the Russian Federation responsible for space flights, 
+        cosmonautics programs, and aerospace research.[3]
+
+        Originating from the Soviet space program founded in the 1950s, Roscosmos emerged following the dissolution of the Soviet Union in 1991.
+         It initially began as the Russian Space Agency, which was established on 25 February 1992[4][Note 1] and restructured in 1999 and 2004,
+          as the Russian Aviation and Space Agency[Note 2] and the Federal Space Agency (Roscosmos), respectively.[Note 3][4] In 2015, the Federal
+           Space Agency (Roscosmos) was merged with the United Rocket and Space Corporation, a government corporation, to re-nationalize the Russian 
+           space industry, leading to Roscosmos in its current form.[5][6][7]
+        
+        Roscosmos is headquartered in Moscow, with its main Mission Control Center in the nearby city of Korolyov, and the Yuri Gagarin Cosmonaut 
+        Training Center located in Star City in Moscow Oblast. Its launch facilities include Baikonur Cosmodrome in Kazakhstan, the world's first
+         and largest spaceport, and Vostochny Cosmodrome, which is being built in the Russian Far East in Amur Oblast. Its director since July 2022 is Yury Borisov.[8]`
+    },
+    {
         id: "ESA",
         imgName: "ESA",
         imgAsset: require("../assets/esa.jpg"),
@@ -65,26 +85,6 @@ export const spaceAgencies = [
             Through the merger of three previously independent organizations, JAXA was formed on 1 October 2003. JAXA is responsible for research, technology development 
             and launch of satellites into orbit, and is involved in many more advanced missions such as asteroid exploration and possible human exploration of the Moon.[2] 
             Its motto is One JAXA[3] and its corporate slogan is Explore to Realize (formerly Reaching for the skies, exploring space).`
-    },
-    {
-        id: "ROSCOSMOS",
-        imgName: "ROSCOSMOS",
-        imgAsset: require("../assets/roscosmos.png"),
-        countryFlag : require("../assets/russianFlag.png"),
-        agency: '/ROSCOSMOS',
-        details: `The State Space Corporation "Roscosmos"[2] (Russian: Государственная корпорация по космической деятельности «Роскосмос»), 
-        commonly known simply as Roscosmos (Russian: Роскосмос), is a state corporation of the Russian Federation responsible for space flights, 
-        cosmonautics programs, and aerospace research.[3]
-
-        Originating from the Soviet space program founded in the 1950s, Roscosmos emerged following the dissolution of the Soviet Union in 1991.
-         It initially began as the Russian Space Agency, which was established on 25 February 1992[4][Note 1] and restructured in 1999 and 2004,
-          as the Russian Aviation and Space Agency[Note 2] and the Federal Space Agency (Roscosmos), respectively.[Note 3][4] In 2015, the Federal
-           Space Agency (Roscosmos) was merged with the United Rocket and Space Corporation, a government corporation, to re-nationalize the Russian 
-           space industry, leading to Roscosmos in its current form.[5][6][7]
-        
-        Roscosmos is headquartered in Moscow, with its main Mission Control Center in the nearby city of Korolyov, and the Yuri Gagarin Cosmonaut 
-        Training Center located in Star City in Moscow Oblast. Its launch facilities include Baikonur Cosmodrome in Kazakhstan, the world's first
-         and largest spaceport, and Vostochny Cosmodrome, which is being built in the Russian Far East in Amur Oblast. Its director since July 2022 is Yury Borisov.[8]`
     },
     {
         id: "SPACEX",

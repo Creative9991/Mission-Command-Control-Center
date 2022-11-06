@@ -51,7 +51,7 @@
   padding-top: 40px;
 }
 
-#isro{
+.isro{
 background-color: white;
 overflow: scroll;
 width: 1420px;
@@ -184,4 +184,11 @@ Link{
 .meta-title{
   color : wheat;
   font-size: larger;
+}
+
+#invoiceCapture {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

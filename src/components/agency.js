@@ -39,7 +39,7 @@ function Agency(props) {
                   return(
                     <div className="agency-details" key={agency.id}>
                       <Meta className = "meta-agency-details-title" title={agency.id}/>
-                         <p style={{display : 'inline-block',height : '300px', width : '300px', textAlign : "center",float : 'left',backgroundRepeat : 'no-repeat', backgroundImage: `url(${newBackground})`}}></p>
+                         <p style={{display : 'inline-block',height : '300px', width : '300px', textAlign : "center",float : 'left',backgroundRepeat : 'no-repeat', backgroundSize :'contain', backgroundImage: `url(${newBackground})`}}></p>
                          <p style={{height : '300px', display : 'inline-block', width : '300px', backgroundSize : 'contain',  float : 'right',backgroundRepeat : 'no-repeat', backgroundImage: `url(${currentCountryFlag})`}}></p>
                     
                     <p style={{fontFamily : 'verdana', fontSize : '20px'}}>{agency.details}</p>
@@ -65,7 +65,7 @@ function Agency(props) {
             spacecraftInfo.map(block => (
               <Card
                 key={block.info}
-                style={{ backgroundImage: `url(${block.imgAsset})` }}
+                style={{ backgroundImage: `url(${block.imgAsset})`, backgroundSize :'contain' }}
                 onClick={() => navigateToAgencyData(block.agency)}
                 hoverable
               >

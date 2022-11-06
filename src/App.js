@@ -18,7 +18,7 @@ import Login from './components/login';
 import AgencyInfo from './components/AgencyInfo';
 import AnalogClock from 'analog-clock-react';
 import Dashboard from './components/Dashboard';
-import PageNotfound from './components/PageNotfound';
+// import PageNotfound from './components/PageNotfound';
 
 
 const store = createStore(allReducers);
