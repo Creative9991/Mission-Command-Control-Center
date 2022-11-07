@@ -18,6 +18,7 @@ import Login from './components/login';
 import AgencyInfo from './components/AgencyInfo';
 import AnalogClock from 'analog-clock-react';
 import Dashboard from './components/Dashboard';
+import NasaDetailedData from './components/NasaDetailedData';
 // import PageNotfound from './components/PageNotfound';
 
 
@@ -116,6 +117,7 @@ class App extends Component {
                                     <Route path="/dashboard" component={Dashboard} />
                                     <Route path="/agency/:id" component={Agency} />
                                     <Route path="/agencyinfo/:info" component={AgencyInfo} />
+                                    <Route path='/nasaDetailedData' component={NasaDetailedData}/>
                                     <Route path="/rockets" component={Rockets} />
                                     {/* <Route path='*' component={PageNotfound} /> */}
                                     <Route path="/internation-Space-station" component={InternationaSpaceStation} />

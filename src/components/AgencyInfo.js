@@ -5,6 +5,8 @@ import { FaSpinner } from 'react-icons/fa';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Button } from 'antd';
+import * as api from '../services/isroApi';
+
 
 const AgencyInfo = (props) => {
 
@@ -27,18 +29,17 @@ const AgencyInfo = (props) => {
             pdf.save('invoice-001.pdf');
         });
     }
-
+    const currentAgency = props.match.params.info;
     const [isroSpaceCraft, setIsroSpaceCraft] = useState([]);
+
+    // Calling Isro API to get data
     useEffect(() => {
-        fetch(`https://isro.vercel.app/api/spacecrafts`)
-            .then((response) =>
-                response.json())
-            .then((data) =>
-                setIsroSpaceCraft(data.spacecrafts)
-            )
+        api.isroDataList().then((data) => {
+            setIsroSpaceCraft(data.spacecrafts);
+        });
     }, [])
 
-    const currentAgency = props.match.params.info;
+
 
     return (
         <>
@@ -66,17 +67,11 @@ const AgencyInfo = (props) => {
                                                     <td>{spacecraft.name}</td>
                                                 </tr>
                                             )
-
-
                                         })
                                     }
                                 </tbody>
                             </table>
-
                     }
-
-
-
                 </div>
             </div>
         </>

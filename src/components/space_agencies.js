@@ -38,8 +38,6 @@ class Space_Agencies extends Component {
             <div className="space-agencies">
               <h1 className="header-agency">Top Space Agencies Around The World</h1>
             <div className="grid-container">
-
-
               {
                 spaceAgencies.map(block => (
                     <Card

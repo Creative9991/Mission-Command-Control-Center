@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import '../App.css';
 import {spacecraftInfo} from '../constants/spacecraftInfo';
 import {spaceAgencies} from '../constants/spaceAgency';
+import Nasa from './Nasa';
 
 
 
@@ -30,7 +31,7 @@ function Agency(props) {
       <div className="isro-page">
         
 
-        <Card>
+        <Card style={{borderRadius : 20}}>
         {
               spaceAgencies.map(agency => {
                 const newBackground = agency.imgAsset;
@@ -70,11 +71,13 @@ function Agency(props) {
                 hoverable
               >
                 <p className = "meta-title" title={block.info}></p>
-              </Card>
-              
+              </Card> 
             ))
-          }
+          }  
         </div>
+        {
+             agencyId === 'NASA' ? <Nasa agencyDetails={agencyDetails}/> : null
+          }
       </div>
     )
   }
