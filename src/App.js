@@ -108,7 +108,7 @@ class App extends Component {
                             </Header> : null
                         }
 
-                        <Content style={{ padding: '0 50px', minHeight : '810px', backgroundImage: `url(${space})` }} >
+                        <Content style={{ padding: '0 50px', minHeight : '810px', backgroundImage: `url(${space})`, backgroundRepeat : 'no-repeat', backgroundColor : 'black' }} >
                             <main>
                                 <Switch>
                                     <Route path="/space_agencies" component={Space_agencies} />

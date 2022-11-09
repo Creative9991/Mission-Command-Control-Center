@@ -89,7 +89,7 @@ export const spaceAgencies = [
     {
         id: "SPACEX",
         imgName: "SPACEX",
-        imgAsset: require("../assets/spacex.png"),
+        imgAsset: require("../assets/spacex.jpeg"),
         countryFlag : require("../assets/usaFlag.jpg"),
         agency: '/SPACEX',
         details: `Space Exploration Technologies Corp. (doing business as SpaceX) is an American spacecraft manufacturer,
@@ -147,5 +147,14 @@ export const spaceAgencies = [
           VF-01, with a member of the team floating within the cabin during a spaceflight that reached 89.9 kilometres (55.9 mi).
         
         On 11 July 2021, the company founder Richard Branson and three other employees rode on a flight as passengers, marking the first time a spaceflight company founder has travelled on his own ship into outer space (according to the NASA definition of outer space beginning at 50 miles above the Earth).`
+    },
+    {
+        id: "BOEING",
+        imgName: "BOEING",
+        imgAsset: require("../assets/boeing.png"),
+        countryFlag : require("../assets/usaFlag.jpg"),
+        agency: '/BOEING',
+        details : `Boeing Defense, Space & Security (BDS) is a division (business unit) of The Boeing Company based in Arlington, Virginia. It is responsible for defense and aerospace products and services. It was formerly known as Boeing Integrated Defense Systems (IDS).
+        Boeing Integrated Defense Systems was formed in 2002 by combining the former "Military Aircraft and Missile Systems" and "Space and Communications" divisions.[4] Boeing Defense, Space & Security makes Boeing the second-largest defense contractor in the world, and was responsible for 45% of the company's income in 2011.`
     }
 ]

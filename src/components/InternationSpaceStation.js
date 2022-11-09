@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component,  } from 'react';
 import '../App.css';
 import '../styles/internationalSpaceStation.css';
 import { internationSpaceStationData } from '../constants/internationSpaceStations';
 import { Card } from 'antd';
 import '../styles/internationalSpaceStation.css';
+//import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 const { Meta } = Card;
 
