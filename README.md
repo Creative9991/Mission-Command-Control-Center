@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Space Agencies Application
+
+This is a Space Agencies related application, user should have to loggedin to see the complete data related to space agencies around the world.
+
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -15,7 +15,6 @@ const Nasa = (props) => {
         }
     }
 
-console.log(props);
     if (nasaDetails === true) {
         return (<Redirect to={`/nasaDetailedData`} />);
     } else {
