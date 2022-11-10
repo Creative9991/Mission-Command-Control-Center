@@ -25,7 +25,7 @@ function Agency(props) {
   const agencyId = props.match.params.id;
 
   if (info !== null && agencyDetails === true) {
-    return (<Redirect to={`/agencyinfo/${agencyId}/${info}`} />);
+    return (<Redirect to={`/agencyinfo/${agencyId}/${info}`}/>);
   } else {
     return (
       <div className="isro-page">

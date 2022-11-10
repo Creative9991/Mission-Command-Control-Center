@@ -9,7 +9,10 @@ app.get('/', (req, res) => {
 const port = process.env.PORT || 3100;
 
 app.use(express.json());
-
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 app.get('/characters', async (req, res) => {
     try {
         const characters = await getCharacters();

@@ -32,12 +32,18 @@ const AgencyInfo = (props) => {
     const currentAgency = props.match.params.info;
     const [isroSpaceCraft, setIsroSpaceCraft] = useState([]);
 
+
     // Calling Isro API to get data
     useEffect(() => {
-        api.isroDataList().then((data) => {
-            setIsroSpaceCraft(data.spacecrafts);
-        });
-    }, [])
+        if(currentAgency === 'ISRO'){
+            api.isroDataList().then((data) => {
+                setIsroSpaceCraft(data.spacecrafts);
+            });
+        }else{
+            window.alert(`I am still working on ` + currentAgency + ` data. 
+            Please go back to the previous page`)
+        }
+    }, [currentAgency])
 
 
 
