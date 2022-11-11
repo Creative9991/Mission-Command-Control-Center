@@ -3,6 +3,27 @@
     top : '265px'
 }
 
-.international-space-station{
+.international-space-station, .iss-image{
     border-radius: 20px;
+}
+
+.long-lat{
+    top : 15px;
+    font-style: italic;
+    font-weight: bolder;
+    color : red;
+    border-radius: 20px;
+    border: 5px solid lightsalmon;
+}
+
+.iss-image{
+    top: 30px;
+}
+
+.iss-header{
+    color : white;
+    font-size: 30px;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
 }
