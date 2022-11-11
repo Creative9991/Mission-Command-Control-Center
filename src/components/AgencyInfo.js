@@ -26,7 +26,7 @@ const AgencyInfo = (props) => {
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
             pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-            pdf.save('invoice-001.pdf');
+            pdf.save('agencyInfomation.pdf');
         });
     }
     const currentAgency = props.match.params.info;
