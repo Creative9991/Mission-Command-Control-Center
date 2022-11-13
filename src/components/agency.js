@@ -15,6 +15,7 @@ function Agency(props) {
   const [agencyDetails, setAgencyDetails] = useState(false);
 
   const navigateToAgencyData = (currentAgency) => {
+    console.log(currentAgency);
     if (currentAgency !== null) {
       setInfo(currentAgency);
       setAgencyDetails(true);
@@ -43,9 +44,7 @@ function Agency(props) {
                          <p style={{display : 'inline-block',height : '300px', width : '300px', textAlign : "center",float : 'left',backgroundRepeat : 'no-repeat', backgroundSize :'contain', backgroundImage: `url(${newBackground})`}}></p>
                          <p style={{height : '300px', display : 'inline-block', width : '300px', backgroundSize : 'contain',  float : 'right',backgroundRepeat : 'no-repeat', backgroundImage: `url(${currentCountryFlag})`}}></p>
                     
-                    <p style={{fontFamily : 'verdana', fontSize : '20px'}}>{agency.details}</p>
-                 
-                 
+                    <p style={{fontFamily : 'verdana', fontSize : '20px'}}>{agency.details}</p>     
                   </div>
                   )
                 }else{

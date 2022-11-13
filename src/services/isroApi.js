@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const { REACT_APP_NASA_API_KEY } = process.env;
+const { REACT_APP_NASA_API_KEY} = process.env;
 
 
 export let isroData = [];
@@ -29,7 +29,7 @@ export const isroDataList = async () => {
     }
     try {
       const response = await axios.get(
-        `https://isro.vercel.app/api/spacecrafts`,
+        `http://localhost:3100/spacecrafts`,
       );
         isroData = response.data;
         return isroData;
