@@ -1,0 +1,15 @@
+.nasaDetailedImage{
+    height: 500px;
+    width: 500px;
+    background-size: 'contain' ;
+     border-radius: 20px; 
+     border: thin #c0c0c0 solid;
+      height: '500px'; 
+      width: '500px';
+}
+
+.nasaInfo{
+    top : 30px;
+    font-style: italic;
+    border-radius: 20px;
+}

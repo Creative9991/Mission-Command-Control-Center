@@ -13,27 +13,27 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
   });
-app.get('/characters', async (req, res) => {
-    try {
-        const characters = await getCharacters();
-        res.json(characters);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ err: 'soenthing went wrong' })
-    }
-})
+// app.get('/characters', async (req, res) => {
+//     try {
+//         const characters = await getCharacters();
+//         res.json(characters);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ err: 'soenthing went wrong' })
+//     }
+// })
 
 
-app.get('/characters/:id', async (req, res) => {
-    const id = req.params.id;
-    try {
-        const characters = await getCharactersById(id);
-        res.json(characters);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ err: 'soenthing went wrong' })
-    }
-})
+// app.get('/characters/:id', async (req, res) => {
+//     const id = req.params.id;
+//     try {
+//         const characters = await getCharactersById(id);
+//         res.json(characters);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ err: 'soenthing went wrong' })
+//     }
+// })
 
 app.post('/characters/', async (req, res) => {
     const characters = req.body;
@@ -69,6 +69,31 @@ app.delete('/characters/:id', async (req, res) => {
         res.status(500).json({ err: 'soenthing went wrong' })
     }
 })
+
+
+app.get('/spacecrafts', async (req, res) => {
+    try {
+        const characters = await getCharacters();
+        res.json(characters);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ err: 'soenthing went wrong' })
+    }
+})
+
+
+app.get('/spacecrafts/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const characters = await getCharactersById(id);
+        res.json(characters);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ err: 'soenthing went wrong' })
+    }
+})
+
+
 
 app.listen(port, () => {
     console.log(`listing on the port port`)

@@ -9,7 +9,7 @@ AWS.config.update({
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient();
 
-const TABLE_NAME = "spaceAgencies";
+const TABLE_NAME = "isroInformation";
 
 
 const getCharacters = async () => {

@@ -100,7 +100,7 @@ export default class login extends React.Component{
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Please input your username!',
+                                        message: 'Please enter your username!',
                                     },
                                 ]}
                             >
@@ -111,7 +111,7 @@ export default class login extends React.Component{
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Please input your password!',
+                                        message: 'Please enter your password!',
                                     },
                                 ]}
                             >
