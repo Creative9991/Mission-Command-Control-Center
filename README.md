@@ -3,7 +3,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Space Agencies Application
 
-This is a Space Agencies related application, user should have to loggedin to see the complete data related to space agencies around the world.
+As a space exploration enthusiat, I have created a small app that gives you more insight in to the space agencies around the world and other outer space related information. 
+
+Special thanks to:
+
+Nasa Open Public APIs
+Isro/api github
+International space station current location tracker (Open Notify APIS)
+
+
+## Technologies
+
+Reactjs, Nodejs, Expressjs, AWS Dynamodb,jspdf, html2canvas etc
 
 
 ## Available Scripts
