@@ -20,7 +20,6 @@ const tailLayout = {
 
 
 
-
 export default class login extends React.Component{
 
 
@@ -68,9 +67,9 @@ export default class login extends React.Component{
 
     loginBox = () => {
         return{
-            top : '80px',
+            top : '200px',
             position : 'relative' ,
-            left : '50px',
+            left : '360px',
             border  : '2px solid black',
             borderRadius : '10px',
             padding : '40px',
@@ -83,11 +82,9 @@ export default class login extends React.Component{
     render(){
         return (
 
-            <Row className = "loginRow" >
-                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-                </Col>
-                <Col style= {this.loginBox() }>
-                    <Card title="Login" bordered={false} style={{ width: 400 }}>
+            <Row className = "loginRow">
+                <Col className="login-section" style= {this.loginBox() }>
+                    <Card title="Mission Command Control" bordered={false} style={{ width: 400 }}>
                         <Form
                             {...layout}
                             name="basic"
@@ -129,9 +126,7 @@ export default class login extends React.Component{
                             </Form.Item>
                         </Form>
                     </Card>
-
                 </Col>
-                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}></Col>
             </Row>
         )
     }

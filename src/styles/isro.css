@@ -1,6 +1,5 @@
 .isro-page{
-    margin-top: 200px;
-    margin-left: 70px;
+    margin-top: 70px;
 }
 
 .meta-title{
@@ -9,7 +8,12 @@
 
 .isro {
     width:100%; margin:0;
+    border-radius: 20px;
+    border: 2px;
 }
+
+
+
 
 
 .spinner {

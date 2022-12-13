@@ -1,0 +1,9 @@
+.ant-col.login-section{
+    top : '200px';
+    position : 'relative' ;
+    left : '360px';
+    border  : '2px solid black';
+    border-radius : '10px';
+    padding : '40';
+    background-color : '#B1C4C4';
+}

@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## Space Agencies Application
+## Mission Command Control  Application
 
 As a space exploration enthusiat, I have created a small app that gives you more insight in to the space agencies around the world and other outer space related information. 
 
