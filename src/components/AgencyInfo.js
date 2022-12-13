@@ -33,16 +33,18 @@ const AgencyInfo = (props) => {
     const [isroSpaceCraft, setIsroSpaceCraft] = useState([]);
 
     // Calling Isro API to get data
+
+
     useEffect(() => {
-        if(currentAgency === 'ISRO'){
-            api.isroDataList().then((data) => {
-                setIsroSpaceCraft(data.Items);
-            });
-        }else{
-            window.alert(`I am still working on ` + currentAgency + ` data. 
-            Please go back to the previous page`)
-        }
+        api.isroDataList().then((data) => {
+            data.Items.map(specificAgency => {
+                return setIsroSpaceCraft(specificAgency);
+            })
+        });
     }, [currentAgency])
+
+
+    const agencSatelittes = isroSpaceCraft.satelittes;
 
 
 
@@ -57,19 +59,21 @@ const AgencyInfo = (props) => {
                     {
                         isroSpaceCraft.length === 0 ? <FaSpinner icon="spinner" className="spinner" /> :
 
-                            <table className="isro" id="invoiceCapture" border="2">
+                            <table className="isro" id="invoiceCapture">
                                 <tbody id="isro-body">
                                     <tr>
-                                        <th className="isro-tablehead">Mission ID</th>
+                                        <th className="isro-tablehead">Mission Id</th>
+                                        <th className="isro-tablehead">Mission Year</th>
                                         <th className="isro-tablehead">Mission Name</th>
                                     </tr>
                                     {
-                                        isroSpaceCraft.map((spacecraft) => {
+                                        agencSatelittes.map((spacecraft) => {
                                             return (
 
                                                 <tr key={spacecraft.id} className="isro-table-row">
                                                     <td>{spacecraft.id}</td>
-                                                    <td>{spacecraft.name}</td>
+                                                    <td>{spacecraft.year}</td>
+                                                    <td>{spacecraft.spacecraftName}</td>
                                                 </tr>
                                             )
                                         })

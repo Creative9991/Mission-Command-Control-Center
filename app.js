@@ -1,5 +1,5 @@
 const express = require('express');
-const { getCharacters, getCharactersById, addOrUpdateCharacter, deleteCharacters } = require('./dynamodb');
+const { getSpaceAgenciesData, getSpaceAgenciesDataById, addOrUpdateAgencies, deleteAgencies } = require('./dynamodb');
 const app = express();
 
 app.get('/', (req, res) => {
@@ -13,10 +13,10 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
   });
-// app.get('/characters', async (req, res) => {
+// app.get('/agencies', async (req, res) => {
 //     try {
-//         const characters = await getCharacters();
-//         res.json(characters);
+//         const agencies = await getSpaceAgenciesData();
+//         res.json(agencies);
 //     } catch (error) {
 //         console.error(error);
 //         res.status(500).json({ err: 'soenthing went wrong' })
@@ -24,46 +24,46 @@ app.use((req, res, next) => {
 // })
 
 
-// app.get('/characters/:id', async (req, res) => {
+// app.get('/agencies/:id', async (req, res) => {
 //     const id = req.params.id;
 //     try {
-//         const characters = await getCharactersById(id);
-//         res.json(characters);
+//         const agencies = await getSpaceAgenciesDataById(id);
+//         res.json(agencies);
 //     } catch (error) {
 //         console.error(error);
 //         res.status(500).json({ err: 'soenthing went wrong' })
 //     }
 // })
 
-app.post('/characters/', async (req, res) => {
-    const characters = req.body;
+app.post('/agencies/', async (req, res) => {
+    const agencies = req.body;
     try {
-        const newCharacters = await addOrUpdateCharacter(characters);
-        res.json(newCharacters);
+        const newAgencies = await addOrUpdateAgencies(agencies);
+        res.json(newAgencies);
     } catch (error) {
         console.error(error);
         res.status(500).json({ err: 'soenthing went wrong' })
     }
 })
 
-app.put('/characters/:id', async (req, res) => {
-    const characters = req.body;
+app.put('/agencies/:id', async (req, res) => {
+    const agencies = req.body;
     const {id} = req.params;
-    characters.id = id;
+    agencies.id = id;
     try {
-        const updateCharacters = await updateCharacters(characters);
-        res.json(updateCharacters);
+        const updateAgencies = await updateAgencies(agencies);
+        res.json(updateAgencies);
     } catch (error) {
         console.error(error);
         res.status(500).json({ err: 'soenthing went wrong' })
     }
 })
 
-app.delete('/characters/:id', async (req, res) => {
+app.delete('/agencies/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const deleteMyCharacters = await deleteCharacters(id);
-        res.json(deleteMyCharacters);
+        const deleteMyAgencies = await deleteAgencies(id);
+        res.json(deleteMyAgencies);
     } catch (error) {
         console.error(error);
         res.status(500).json({ err: 'soenthing went wrong' })
@@ -73,8 +73,8 @@ app.delete('/characters/:id', async (req, res) => {
 
 app.get('/spacecrafts', async (req, res) => {
     try {
-        const characters = await getCharacters();
-        res.json(characters);
+        const agencies = await getSpaceAgenciesData();
+        res.json(agencies);
     } catch (error) {
         console.error(error);
         res.status(500).json({ err: 'soenthing went wrong' })
@@ -85,8 +85,8 @@ app.get('/spacecrafts', async (req, res) => {
 app.get('/spacecrafts/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const characters = await getCharactersById(id);
-        res.json(characters);
+        const agencies = await getSpaceAgenciesDataById(id);
+        res.json(agencies);
     } catch (error) {
         console.error(error);
         res.status(500).json({ err: 'soenthing went wrong' })
@@ -96,5 +96,5 @@ app.get('/spacecrafts/:id', async (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`listing on the port port`)
+    console.log(`listing on the 3100 port`)
 })

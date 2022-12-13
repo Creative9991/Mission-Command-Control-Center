@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 
 const Dashboard = () => {
 
-    const [data, setData] = useState([])
+    //const [data, setData] = useState([])
 
 
-    useEffect(() => {
-        const dataUrl = `http://localhost:3100/characters`
-        fetch(dataUrl).then((data) => {
-            return data.json();
-        }).then((myData) => {
-            setData(myData.Items);
-        })
-    }, [])
+    // useEffect(() => {
+    //     const dataUrl = `http://localhost:3100/characters`
+    //     fetch(dataUrl).then((data) => {
+    //         return data.json();
+    //     }).then((myData) => {
+    //         setData(myData.Items);
+    //     })
+    // }, [])
 
     return (
         <>
             <h1 style={{ color: 'white', fontSize: '40px' }}>Hey...{sessionStorage.getItem("username")}</h1>
-            <table style={{ color: 'white' }} border={2}>
+            {/* <table style={{ color: 'white' }} border={2}>
                 <tbody>
                     <tr>
                         <th>Id</th><th>Completed</th><th>userId</th><th>title</th>
@@ -36,7 +36,7 @@ const Dashboard = () => {
                         })
                     }
                 </tbody>
-            </table>
+            </table> */}
         </>
 
     )

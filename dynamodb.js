@@ -9,29 +9,28 @@ AWS.config.update({
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient();
 
-const TABLE_NAME = "isroInformation";
+const TABLE_NAME = "spaceAgenciesData";
 
 
-const getCharacters = async () => {
+const getSpaceAgenciesData = async () => {
     const params = {
         TableName: TABLE_NAME
     };
-    const characters = await dynamoClient.scan(params).promise();
-    console.log(characters);
-    return characters
+    const agencies = await dynamoClient.scan(params).promise();
+    return agencies
 }
 
 
-const addOrUpdateCharacter = async (characters) => {
+const addOrUpdateAgencies = async (agencies) => {
     const params = {
         TableName: TABLE_NAME,
-        Item: characters,
+        Item: agencies,
     }
     return await dynamoClient.put(params).promise();
 };
 
 
-const getCharactersById = async (id) => {
+const getSpaceAgenciesDataById = async (id) => {
     const params = {
         TableName: TABLE_NAME,
         Key: {
@@ -42,7 +41,7 @@ const getCharactersById = async (id) => {
 }
 
 
-const deleteCharacters = async (id) => {
+const deleteAgencies = async (id) => {
     const params = {
         TableName: TABLE_NAME,
         Key: {
@@ -54,8 +53,8 @@ const deleteCharacters = async (id) => {
 
 module.exports = {
     dynamoClient,
-    getCharacters,
-    getCharactersById,
-    addOrUpdateCharacter,
-    deleteCharacters
+    getSpaceAgenciesData,
+    getSpaceAgenciesDataById,
+    addOrUpdateAgencies,
+    deleteAgencies
 }
