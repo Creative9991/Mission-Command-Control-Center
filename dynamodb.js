@@ -21,10 +21,28 @@ const getSpaceAgenciesData = async () => {
 }
 
 
+
+const getAllPosts = async() => {
+    const params = {
+        TableName : TABLE_NAME
+    };
+    const allPosts =  await dynamoClient.scan(params).promise();
+    return allPosts
+}
+
+
 const addOrUpdateAgencies = async (agencies) => {
     const params = {
         TableName: TABLE_NAME,
         Item: agencies,
+    }
+    return await dynamoClient.put(params).promise();
+};
+
+const createPost = async (post) => {
+    const params = {
+        TableName: TABLE_NAME,
+        Item: post,
     }
     return await dynamoClient.put(params).promise();
 };
@@ -56,5 +74,7 @@ module.exports = {
     getSpaceAgenciesData,
     getSpaceAgenciesDataById,
     addOrUpdateAgencies,
-    deleteAgencies
+    deleteAgencies,
+    createPost,
+    getAllPosts
 }

@@ -1,5 +1,5 @@
 const express = require('express');
-const { getSpaceAgenciesData, getSpaceAgenciesDataById, addOrUpdateAgencies, deleteAgencies } = require('./dynamodb');
+const { getSpaceAgenciesData, getSpaceAgenciesDataById, getAllPosts, addOrUpdateAgencies, deleteAgencies } = require('./dynamodb');
 const app = express();
 
 app.get('/', (req, res) => {
@@ -46,6 +46,18 @@ app.post('/agencies/', async (req, res) => {
     }
 })
 
+
+app.post('/posts/', async (req, res) => {
+    const create = req.body;
+    try {
+        const newPost = await createPost(create);
+        res.json(newPost);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ err: 'soenthing went wrong' })
+    }
+})
+
 app.put('/agencies/:id', async (req, res) => {
     const agencies = req.body;
     const {id} = req.params;
@@ -78,6 +90,17 @@ app.get('/spacecrafts', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ err: 'soenthing went wrong' })
+    }
+})
+
+
+app.get('/posts', async (req, res) => {
+    try {
+        const allPosts = await getAllPosts();
+        res.json(allPosts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ err: 'something went wrong' })
     }
 })
 

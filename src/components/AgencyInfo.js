@@ -9,8 +9,6 @@ import * as api from '../services/isroApi';
 
 
 const AgencyInfo = (props) => {
-
-
     /// Download Html2Canvas and jsPdf data
 
     const GenericPdfDownloader = () => {
@@ -38,15 +36,19 @@ const AgencyInfo = (props) => {
     useEffect(() => {
         api.isroDataList().then((data) => {
             data.Items.map(specificAgency => {
-                return setIsroSpaceCraft(specificAgency);
+                let currentAgencyVar = props.match.params.info;
+                currentAgencyVar = currentAgencyVar.toLowerCase();
+                if (currentAgencyVar === specificAgency.agency) {
+                    specificAgency.agency = currentAgencyVar;
+                    return setIsroSpaceCraft(specificAgency);
+                }
+
             })
         });
-    }, [currentAgency])
+    }, [currentAgency, props.match.params.info])
 
 
-    const agencSatelittes = isroSpaceCraft.satelittes;
-
-
+    const agencySatelittes = isroSpaceCraft.satelittes;
 
     return (
         <>
@@ -62,15 +64,18 @@ const AgencyInfo = (props) => {
                             <table className="isro" id="invoiceCapture">
                                 <tbody id="isro-body">
                                     <tr>
+                                        <th className="isro-tablehead">Agency</th>
                                         <th className="isro-tablehead">Mission Id</th>
                                         <th className="isro-tablehead">Mission Year</th>
                                         <th className="isro-tablehead">Mission Name</th>
                                     </tr>
                                     {
-                                        agencSatelittes.map((spacecraft) => {
+                                        agencySatelittes.map((spacecraft) => {
                                             return (
 
+
                                                 <tr key={spacecraft.id} className="isro-table-row">
+                                                    <td>{isroSpaceCraft.agency}</td>
                                                     <td>{spacecraft.id}</td>
                                                     <td>{spacecraft.year}</td>
                                                     <td>{spacecraft.spacecraftName}</td>

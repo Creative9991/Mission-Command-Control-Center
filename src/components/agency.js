@@ -15,7 +15,6 @@ function Agency(props) {
   const [agencyDetails, setAgencyDetails] = useState(false);
 
   const navigateToAgencyData = (currentAgency) => {
-    console.log(currentAgency);
     if (currentAgency !== null) {
       setInfo(currentAgency);
       setAgencyDetails(true);

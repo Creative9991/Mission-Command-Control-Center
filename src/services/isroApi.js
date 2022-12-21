@@ -6,6 +6,7 @@ const { REACT_APP_NASA_API_KEY} = process.env;
 
 export let isroData = [];
 export let nasaData = [];
+export let allPost = [];
 
 export const nasaDataList = async () => {
     if (nasaData.length) {
@@ -39,3 +40,19 @@ export const isroDataList = async () => {
     }
   };
 
+
+  export const allPosts = async () => {
+    if (allPost.length) {
+        return allPost;
+    }
+    try {
+      const response = await axios.get(
+        `http://localhost:3100/posts`,
+      );
+        allPost = response.data;
+        return allPost;
+    } catch (err) {
+      console.error(`Something went wrong fetching the nasaData data: ${err}`);
+      throw err;
+    }
+  };
