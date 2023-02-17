@@ -3,6 +3,23 @@
   text-align: center;
 }
 
+@media only screen and (max-width: 1450px) {
+  .create{
+    left : 0px !important;
+  }
+  #createpost{
+      margin-left: 1100px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #createpost{
+      margin-right: 200px;
+  }
+}
+
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
