@@ -58,6 +58,16 @@ const getSpaceAgenciesDataById = async (id) => {
     return await dynamoClient.get(params).promise();
 }
 
+const getPostById = async (id) => {
+    const params = {
+        TableName: TABLE_NAME,
+        Key: {
+            id
+        }
+    }
+    return await dynamoClient.get(params).promise();
+}
+
 
 const deleteAgencies = async (id) => {
     const params = {
@@ -76,5 +86,6 @@ module.exports = {
     addOrUpdateAgencies,
     deleteAgencies,
     createPost,
-    getAllPosts
+    getAllPosts,
+    getPostById
 }

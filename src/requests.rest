@@ -1,0 +1,11 @@
+GET http://localhost:3100/usernames
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2F0aXBhbGx5IiwiaWF0IjoxNjc0NTE0NjU4fQ.b8GnhLm2uNmdaDEHfcCQyerX3zPTC89a_Ux6-ppX-Uc
+
+###
+
+POST http://localhost:3100/login
+Content-Type: application/json
+
+{
+"username" : "Katipally"
+}

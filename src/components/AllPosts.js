@@ -1,45 +1,89 @@
-import React,{useState, useEffect} from 'react';
-import * as api from '../services/isroApi';
+import React, { useState, useEffect, useRef } from "react";
+import * as api from "../services/isroApi";
+import * as d3 from "d3";
 
-const AllPosts = () => { 
+const AllPosts = () => {
+  const [allPosts, setAllPosts] = useState([]);
 
-const [allPosts, setAllPosts] = useState([]);
+  const [data] = useState([25, 50, 35, 15, 94, 10]);
+  const svgRef = useRef();
 
-
-useEffect(() => {
+  useEffect(() => {
     api.allPosts().then((data) => {
-        data.Items.map(specificAgency => {
-            if(specificAgency.agency === 'posts'){
-                specificAgency.posts.map(post => {
-                    return setAllPosts(post);
-                })
-               
-            }
-                
-        })
+      data.map((post) => {
+        return setAllPosts(post);
+      });
     });
-}, [])
-return(
-    <div className="allposts">
-        <h3>List of all Posts</h3>
-                 <table border='2'>
-                 <tbody key={allPosts.postname}>
-                     <tr>
-                     <th>Name</th>
-                     <th>Description</th>
-                     </tr>
-                         <tr>
-                         <td>{allPosts.postname}</td>
-                             <td>
-                                 {allPosts.description}
-                             </td>
-                         </tr>
-                     </tbody>
-                 </table>
-    </div>
-)
+  }, []);
 
-}
+  useEffect(() => {
+    //setting the svgs
+    const w = 400;
+    const h = 100;
+    const svg = d3
+      .select(svgRef.current)
+      .attr("width", w)
+      .attr("height", h)
+      .style("background", "#d3d3d3")
+      .style("margin-top", "50")
+      .style("margin-bottom", "50")
+      .style("overflow", "visible");
+
+    //setting the scalling
+
+    const xScale = d3
+      .scaleLinear()
+      .domain([0, data.length - 1])
+      .range([0, w]);
+
+    const yScale = d3.scaleLinear().domain([0, h]).range([h, 0]);
+
+    const generateScaledLine = d3
+      .line()
+      .x((d, i) => xScale(i))
+      .y(yScale)
+      .curve(d3.curveCardinal);
+
+    // setting the axes
+
+    const xAxis = d3
+      .axisBottom(xScale)
+      .ticks(data.length)
+      .tickFormat((i) => i + 1);
+
+    const yAxis = d3.axisLeft(yScale).ticks(5);
+
+    svg.append("g").call(xAxis).attr("transform", `translate(0, ${h})`);
+    svg.append("g").call(yAxis);
+    // setting up the data for the svg
+    svg
+      .selectAll(".line")
+      .data([data])
+      .join("path")
+      .attr("d", (d) => generateScaledLine(d))
+      .attr("fill", "none")
+      .attr("stroke", "black");
+  }, [data]);
+  return (
+    <div className="allposts">
+      <h3>List of all Posts</h3>
+      <table border="2">
+        <tbody key={allPosts.postname}>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>{allPosts.postname}</td>
+            <td>{allPosts.description}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div className="my-svg" style={{ backgroundColor: "white" }}>
+        <svg ref={svgRef}></svg>
+      </div>
+    </div>
+  );
+};
 
 export default AllPosts;
-

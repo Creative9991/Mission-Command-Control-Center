@@ -1,10 +1,9 @@
-export const spaceAgencies = [
+export const planets = [
   {
-    id: "NASA",
-    imgName: "NASA",
-    imgAsset: require("../assets/nasa.jpg"),
-    countryFlag: require("../assets/usaFlag.jpg"),
-    agency: "/NASA",
+    id: "MERCURY",
+    imgName: "MERCURY",
+    imgAsset: require("../assets/mercury.jpeg"),
+    agency: "/MERCURY",
     details: `The National Aeronautics and Space Administration (NASA /ˈnæsə/) is an independent agency of the US federal government responsible for the civil space program, aeronautics research, and space research
       NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics (NACA), to give the U.S. space development effort a distinctly civilian orientation, 
       emphasizing peaceful applications in space science.Since its establishment,
@@ -13,11 +12,10 @@ export const spaceAgencies = [
       oversight of launch operations and countdown management for uncrewed NASA launches.`,
   },
   {
-    id: "ROSCOSMOS",
-    imgName: "ROSCOSMOS",
-    imgAsset: require("../assets/roscosmos.png"),
-    countryFlag: require("../assets/russianFlag.png"),
-    agency: "/ROSCOSMOS",
+    id: "VENUS",
+    imgName: "VENUS",
+    imgAsset: require("../assets/venus.jpeg"),
+    agency: "/VENUS",
     details: `The State Space Corporation "Roscosmos"[2] (Russian: Государственная корпорация по космической деятельности «Роскосмос»), 
         commonly known simply as Roscosmos (Russian: Роскосмос), is a state corporation of the Russian Federation responsible for space flights, 
         cosmonautics programs, and aerospace research.[3]
@@ -33,11 +31,10 @@ export const spaceAgencies = [
          and largest spaceport, and Vostochny Cosmodrome, which is being built in the Russian Far East in Amur Oblast. Its director since July 2022 is Yury Borisov.[8]`,
   },
   {
-    id: "ESA",
-    imgName: "ESA",
-    imgAsset: require("../assets/esa.jpg"),
-    countryFlag: require("../assets/esaCountryFlag.png"),
-    agency: "/ESA",
+    id: "EARTH",
+    imgName: "EARTH",
+    imgAsset: require("../assets/earth.jpeg"),
+    agency: "/EARTH",
     details: `The European Space Agency (ESA; French: Agence spatiale européenne pronunciation (help·info), ASE;[5][6] German: Europäische Weltraumorganisation) is an 
       intergovernmental organisation of 22 member states[7] dedicated to the exploration of space. Established 
       in 1975 and headquartered in Paris, ESA has a worldwide staff of about 2,200 in 2018[8] and an annual budget of about €7.2 billion in 2022.
@@ -48,11 +45,10 @@ export const spaceAgencies = [
         to manufacture the Orion spacecraft service module that will fly on the Space Launch System`,
   },
   {
-    id: "CNSA",
-    imgName: "CNSA",
-    imgAsset: require("../assets/cnsa.png"),
-    countryFlag: require("../assets/chineseFlag.png"),
-    agency: "/CNSA",
+    id: "MARS",
+    imgName: "MARS",
+    imgAsset: require("../assets/mars-planet.jpeg"),
+    agency: "/MARS",
     details: `China National Space Administration (CNSA; Chinese: 中国国家航天局; pinyin: 
         Zhōngguó Guójiā Hángtiān Jú) is the government agency of the People's Republic of China 
         that is responsible for civil space administration and international space cooperation,
@@ -61,11 +57,10 @@ export const spaceAgencies = [
          Technology,[3][need quotation to verify] its headquarters are located in Haidian, Beijing.`,
   },
   {
-    id: "ISRO",
-    imgName: "ISRO",
-    imgAsset: require("../assets/isro.jpg"),
-    countryFlag: require("../assets/indianFlag.png"),
-    agency: "/ISRO",
+    id: "JUIPTER",
+    imgName: "JUIPTER",
+    imgAsset: require("../assets/juitar.jpeg"),
+    agency: "/JUIPTER",
     details: `The Indian Space Research Organisation[a] (ISRO; /ˈɪsroʊ/) is the national 
       space agency of India, headquartered in Bangalore. It operates under the Department of 
       Space (DOS) which is directly overseen by the Prime Minister of India, while the Chairman of 
@@ -75,11 +70,10 @@ export const spaceAgencies = [
        launch extraterrestrial missions and operate large fleets of artificial satellites.`,
   },
   {
-    id: "JAXA",
-    imgName: "JAXA",
-    imgAsset: require("../assets/jaxa.jpg"),
-    countryFlag: require("../assets/japaneseFlag.png"),
-    agency: "/JAXA",
+    id: "SATURN",
+    imgName: "SATURN",
+    imgAsset: require("../assets/saturn.png"),
+    agency: "/SATURN",
     details: `The Japan Aerospace Exploration Agency (JAXA) (国立研究開発法人宇宙航空研究開発機構, Kokuritsu-kenkyū-kaihatsu-hōjin Uchū Kōkū Kenkyū Kaihatsu Kikō, 
             literally "National Research and Development Agency Aerospace Research and Development Organisation") is the Japanese national air and space agency. 
             Through the merger of three previously independent organizations, JAXA was formed on 1 October 2003. JAXA is responsible for research, technology development 
@@ -87,11 +81,10 @@ export const spaceAgencies = [
             Its motto is One JAXA[3] and its corporate slogan is Explore to Realize (formerly Reaching for the skies, exploring space).`,
   },
   {
-    id: "SPACEX",
-    imgName: "SPACEX",
-    imgAsset: require("../assets/spacex.jpeg"),
-    countryFlag: require("../assets/usaFlag.jpg"),
-    agency: "/SPACEX",
+    id: "URANUS",
+    imgName: "URANUS",
+    imgAsset: require("../assets/uranus.jpeg"),
+    agency: "/URANUS",
     details: `Space Exploration Technologies Corp. (doing business as SpaceX) is an American spacecraft manufacturer,
        space launch provider, and a satellite communications corporation headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk, with the goal of reducing space 
       transportation costs to enable the colonization of Mars. It manufactures the Falcon 9 and Falcon Heavy launch vehicles, several rocket engines, Cargo Dragon, 
@@ -105,11 +98,10 @@ export const spaceAgencies = [
         scheduled for 2022 pending launch license.[8]`,
   },
   {
-    id: "BLUEORIGIN",
-    imgName: "BLUEORIGIN",
-    imgAsset: require("../assets/blueorigin.png"),
-    countryFlag: require("../assets/usaFlag.jpg"),
-    agency: "/BLUEORIGIN",
+    id: "NEPTUNE",
+    imgName: "NEPTUNE",
+    imgAsset: require("../assets/neptune.jpg"),
+    agency: "/NEPTUNE",
     details: `Blue Origin, LLC is an American privately funded aerospace manufacturer and sub-orbital spaceflight services company
          headquartered in Kent, Washington.[3][4] Founded in 2000 by Jeff Bezos, the founder and executive chairman of Amazon, the company 
          is led by CEO Bob Smith and aims to make access to space cheaper and more reliable through reusable launch vehicles.[5][6] Rob Meyerson
@@ -125,36 +117,5 @@ export const spaceAgencies = [
           date for when they would begin. On nearly every one of the test flights since 2015, the uncrewed vehicle has reached a test altitude of more than 100 
           kilometers (330,000 ft) and achieved a top speed of more than Mach 3, reaching space above the Kármán line, with both the space capsule and its rocket 
           booster successfully soft landing.`,
-  },
-  {
-    id: "VIRGINGALACTIC",
-    imgName: "VIRGINGALACTIC",
-    imgAsset: require("../assets/virgin-galactic.png"),
-    countryFlag: require("../assets/usaFlag.jpg"),
-    agency: "/VIRGINGALACTIC",
-    details: `Virgin Galactic is an American spaceflight company founded by Richard Branson and his British Virgin Group retains an 11.9% stake through Virgin
-         Investments Limited.[1] It is headquartered in California, USA, and operates from New Mexico. The company is developing commercial spacecraft and aims to 
-         provide suborbital spaceflights to space tourists. Virgin Galactic's suborbital spacecraft are air launched from beneath a carrier airplane known as White 
-         Knight Two. Virgin Galactic‘s maiden spaceflight occurred in 2018 with its VSS Unity spaceship.[2] Branson had originally hoped to see a maiden spaceflight 
-         by 2010,[3] but the date was delayed for several years, primarily due to the October 2014 crash of VSS Enterprise.
-
-        The company did the early work on the satellite launch development of LauncherOne before this was hived off to a separate company, Virgin Orbit, in 2017. 
-        The company also has aspirations for suborbital transport and in 2017, Branson has said that Virgin Galactic was "in the best position in the world" to 
-        provide rocket-powered, point-to-point 3,000 mph (4,800 km/h) air travel.[4][5][6][7][8]
-        
-        On 13 December 2018, VSS Unity achieved the project's first suborbital space flight, VSS Unity VP-03, with two pilots, reaching an altitude of 82.7 kilometres
-         (51.4 mi), and officially entering outer space by U.S. standards.[9][10] In February 2019, the project carried three people, including a passenger, on VSS Unity
-          VF-01, with a member of the team floating within the cabin during a spaceflight that reached 89.9 kilometres (55.9 mi).
-        
-        On 11 July 2021, the company founder Richard Branson and three other employees rode on a flight as passengers, marking the first time a spaceflight company founder has travelled on his own ship into outer space (according to the NASA definition of outer space beginning at 50 miles above the Earth).`,
-  },
-  {
-    id: "BOEING",
-    imgName: "BOEING",
-    imgAsset: require("../assets/boeing.png"),
-    countryFlag: require("../assets/usaFlag.jpg"),
-    agency: "/BOEING",
-    details: `Boeing Defense, Space & Security (BDS) is a division (business unit) of The Boeing Company based in Arlington, Virginia. It is responsible for defense and aerospace products and services. It was formerly known as Boeing Integrated Defense Systems (IDS).
-        Boeing Integrated Defense Systems was formed in 2002 by combining the former "Military Aircraft and Missile Systems" and "Space and Communications" divisions.[4] Boeing Defense, Space & Security makes Boeing the second-largest defense contractor in the world, and was responsible for 45% of the company's income in 2011.`,
   },
 ];
