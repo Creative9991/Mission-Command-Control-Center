@@ -28,13 +28,16 @@ const CreatePost = () => {
 
   const handleSubmit = (e) => {
     const enteredValues = { name, description };
+    const headers = {
+      "Content-Type": "application/json",
+    };
 
-    console.log(enteredValues);
-
-    axios.post(`http://localhost:3100/posts`, { enteredValues }).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+    axios
+      .post(`http://localhost:3100/posts`, enteredValues, { headers })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   const showModal = () => {
@@ -50,7 +53,7 @@ const CreatePost = () => {
   };
   return (
     <div className="create-post">
-      {sessionStorage.username == "mukesh" ? (
+      {sessionStorage.username === "mukesh" ? (
         <Button type="primary" onClick={showModal} id="createpost">
           Create Post
         </Button>

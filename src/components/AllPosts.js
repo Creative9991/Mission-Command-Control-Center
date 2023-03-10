@@ -64,21 +64,30 @@ const AllPosts = () => {
       .attr("fill", "none")
       .attr("stroke", "black");
   }, [data]);
+
+  console.log(allPosts);
+
+  // let listOfPosts = allPosts.map((post) => {
+  //   return (
+  //     <tbody key={post.id}>
+  //       <tr>
+  //         <th>ID</th>
+  //         <th>Name</th>
+  //         <th>Description</th>
+  //       </tr>
+  //       <tr>
+  //         <td>{post.id}</td>
+  //         <td>{post.postname}</td>
+  //         <td>{post.description}</td>
+  //       </tr>
+  //     </tbody>
+  //   );
+  // });
+
   return (
     <div className="allposts">
       <h3>List of all Posts</h3>
-      <table border="2">
-        <tbody key={allPosts.postname}>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-          <tr>
-            <td>{allPosts.postname}</td>
-            <td>{allPosts.description}</td>
-          </tr>
-        </tbody>
-      </table>
+      {/* <table border="2">{listOfPosts}</table> */}
       <div className="my-svg" style={{ backgroundColor: "white" }}>
         <svg ref={svgRef}></svg>
       </div>

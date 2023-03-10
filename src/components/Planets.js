@@ -42,7 +42,7 @@ class Planets extends Component {
       return (
         <div className="space-agencies">
           <h1 className="header-agency">Top Space Agencies Around The World</h1>
-          <div className="grid-container">
+          <div className="grid-container-planets">
             {planets.map((block) => (
               <Card
                 key={block.id}

@@ -60,7 +60,7 @@
   overflow: scroll;
 }
 
-.grid-container {
+.grid-container, .grid-container-planets {
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-gap: 10px;
@@ -102,26 +102,28 @@ margin-left: 200px;
   color: #ffffff;
   background-color: #e1b65b;
 }
+
+
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 5px solid black;
   text-align: center;
   font-size: 20px;
   height: 300px;
   width: 300px;
   border-radius: 25px;
-}
-
-
-.grid-container > div {
   background-color: rgba(255, 255, 255, 0.8);
   border: 5px solid black;
+}
+
+.grid-container-planets > div {
+  border: 5px solid white;
   text-align: center;
   font-size: 20px;
   height: 300px;
   width: 300px;
   border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
+
 
 .grid-container > .satellite-iss {
   border: 1px solid white;
@@ -130,6 +132,14 @@ margin-left: 200px;
   height: 300px;
   width: 300px;
   border-radius: 25px;
+}
+
+.menuItems{
+  margin-top: 150px;
+}
+
+.ant-carousel{
+  margin-top: 150px;
 }
 
 .menuItems  > .columnClass{

@@ -1,5 +1,16 @@
 require("dotenv").config();
 
+const multer = require("multer");
+
+const fs = require("fs");
+const util = require("util");
+const unlikeFile = util.promisify(fs.unlink);
+
+const upload = multer({ dest: "downloads/" });
+
+const { uploadFile, getFileStream } = require("./src/s3");
+const cors = require("cors");
+
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const {
@@ -9,6 +20,7 @@ const {
   getAllPosts,
   addOrUpdateAgencies,
   deleteAgencies,
+  createPost,
 } = require("./dynamodb");
 const app = express();
 
@@ -47,6 +59,20 @@ app.post("/login", (req, res) => {
   res.json({ accessToken: accessToken });
 });
 
+app.get("/images/:key", (req, res) => {
+  const key = req.params.key;
+  const readStream = getFileStream(key);
+  readStream.pipe(res);
+});
+
+app.post("/images", upload.single("image"), async (req, res) => {
+  const file = req.file;
+  const result = await uploadFile(file);
+  await unlikeFile(file.path);
+  const description = req.body.description;
+  res.send({ imagePath: `/images/${result.Key}` });
+});
+
 function authenticateToken(req, res, next) {
   const authHeader = req.header["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
@@ -59,46 +85,14 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// app.get('/agencies', async (req, res) => {
-//     try {
-//         const agencies = await getSpaceAgenciesData();
-//         res.json(agencies);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ err: 'soenthing went wrong' })
-//     }
-// })
-
-// app.get('/agencies/:id', async (req, res) => {
-//     const id = req.params.id;
-//     try {
-//         const agencies = await getSpaceAgenciesDataById(id);
-//         res.json(agencies);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ err: 'soenthing went wrong' })
-//     }
-// })
-
-app.post("/agencies/", async (req, res) => {
+app.post("/agencies/:id", async (req, res) => {
   const agencies = req.body;
   try {
     const newAgencies = await addOrUpdateAgencies(agencies);
     res.json(newAgencies);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ err: "soenthing went wrong" });
-  }
-});
-
-app.post("/posts/", async (req, res) => {
-  const create = req.body;
-  try {
-    const newPost = await createPost(create);
-    res.json(newPost);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ err: "soenthing went wrong" });
+    res.status(500).json({ err: "something went wrong" });
   }
 });
 
@@ -111,7 +105,7 @@ app.put("/agencies/:id", async (req, res) => {
     res.json(updateAgencies);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ err: "soenthing went wrong" });
+    res.status(500).json({ err: "something went wrong" });
   }
 });
 
@@ -122,17 +116,44 @@ app.delete("/agencies/:id", async (req, res) => {
     res.json(deleteMyAgencies);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ err: "soenthing went wrong" });
+    res.status(500).json({ err: "something went wrong" });
   }
 });
 
 app.get("/spacecrafts", async (req, res) => {
   try {
     const agencies = await getSpaceAgenciesData();
+
     res.json(agencies);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ err: "soenthing went wrong" });
+    res.status(500).json({ err: "something went wrong" });
+  }
+});
+
+// app.get("/centers", async (req, res) => {
+//   try {
+//     const centers = await getSpaceAgenciesData();
+//     console.log(centers);
+
+//     centers.Items.map((center) => {
+//       res.json(center);
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
+app.post("/posts", async (req, res) => {
+  const create = req.body;
+  console.log(create);
+  try {
+    const newPost = await createPost(create);
+    const pushPosts = newPost.Items[0].posts;
+    res.json(pushPosts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ err: "something went wrong" });
   }
 });
 
@@ -150,8 +171,8 @@ app.get("/posts", async (req, res) => {
 app.get("/posts/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const post = await getPostById(id);
-    res.json(post);
+    const postById = await getPostById(id);
+    res.json(postById);
   } catch (error) {
     console.error(error);
     res.status(500).json({ err: "something went wrong" });
@@ -162,7 +183,6 @@ app.get("/spacecrafts/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const agencies = await getSpaceAgenciesDataById(id);
-    console.log(agencies);
     res.json(agencies);
   } catch (error) {
     console.error(error);
