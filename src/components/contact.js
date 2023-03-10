@@ -37,13 +37,6 @@ class Contact extends Component {
   };
 
   render() {
-    // const myTestArray = [2,3,34,5];
-    // myTestArray.splice(1, 1);
-    // myTestArray.unshift('higref');
-    // myTestArray.splice(2, 0 , 'hfghf', 'dfdfdf');
-    // myTestArray.splice(0);
-    // console.log(myTestArray);
-
     let favSuperHeros = ["Batman", "Spiderman", "Hulk", "Ironman"];
     favSuperHeros.sort();
     let myList = favSuperHeros.map((favSuperHeros) => <li>{favSuperHeros}</li>);

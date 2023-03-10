@@ -56,7 +56,7 @@ class Space_Agencies extends Component {
               ></Card>
             ))}
 
-            {sessionStorage.username == "mukesh" ? (
+            {sessionStorage.username === "mukesh" ? (
               <Card onClick={() => this.createNewAgency} hoverable>
                 <FontAwesomeIcon icon={faPlus} style={fontAwesomeStyle} />
               </Card>

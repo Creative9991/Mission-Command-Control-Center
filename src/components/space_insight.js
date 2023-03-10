@@ -40,11 +40,6 @@ class Space_insight extends Component {
   render() {
     return (
       <div>
-        <br />
-        <br />
-        <br /> <br />
-        <br />
-        <br />
         <Row className="menuItems">
           <Col
             className="columnClass"
@@ -84,12 +79,8 @@ class Space_insight extends Component {
             </Link>
           </Col>
         </Row>
-        <br />
-        <br />
-        <br /> <br />
-        <br />
-        <br />
         <Carousel
+          id="carousel"
           autoplay
           style={{
             height: "500px",
