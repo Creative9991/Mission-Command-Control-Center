@@ -61,7 +61,7 @@ class Space_insight extends Component {
             xs={{ span: 11, offset: 1 }}
             lg={{ span: 6, offset: 2 }}
           >
-            <Link to="/internation-Space-station">
+            <Link to="/international-Space-station">
               <FontAwesomeIcon icon={faSatellite} style={fontAwesomeStyle} />
               <h3 style={this.headeragecy()}>International Space Station</h3>
             </Link>

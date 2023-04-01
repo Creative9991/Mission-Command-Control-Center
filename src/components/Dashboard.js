@@ -3,20 +3,31 @@ import AllPosts from "./AllPosts";
 import CreatePost from "./CreatePost";
 import axios from "axios";
 
+async function postImage({ image, description }) {
+  const formData = new FormData();
+  formData.append("image", image);
+  formData.append("description", description);
+
+  const result = await axios.post("/images", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+  return result.data;
+}
+
 const Dashboard = () => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState();
+  const [description, setDescription] = useState("");
+  const [images, setImages] = useState([]);
+
   const submit = async (event) => {
     event.preventDefault();
+    const result = await postImage({ image: file, description });
+    setImages([result.image, ...images]);
+  };
 
-    // Create an object of formData
-    const formData = new FormData();
-
-    // Update the formData object
-    formData.append("myFile", setFile(file));
-
-    // Request made to the backend api
-    // Send formData object
-    axios.post("localhost:3100/images", formData);
+  const fileSelected = (event) => {
+    const file = event.target.files[0];
+    setFile(file);
   };
   return (
     <>
@@ -27,15 +38,23 @@ const Dashboard = () => {
         <CreatePost />
       </div>
       <AllPosts />
-      <form onSubmit={submit}>
-        <input
-          filename={file}
-          onChange={(e) => setFile(e.target.files[0])}
-          type="file"
-          accept="image/*"
-        ></input>
-        <button type="submit">Submit</button>
-      </form>
+      <div className="App">
+        <form onSubmit={submit}>
+          <input onChange={fileSelected} type="file" accept="image/*"></input>
+          <input
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            type="text"
+          ></input>
+          <button type="submit">Submit</button>
+        </form>
+
+        {images.map((image) => (
+          <div key={image}>
+            <img src={image}></img>
+          </div>
+        ))}
+      </div>
     </>
   );
 };

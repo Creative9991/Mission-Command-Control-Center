@@ -1,6 +1,6 @@
 require("dotenv").config();
-const S3 = require("aws-sdk/clients/s3");
 const fs = require("fs");
+const S3 = require("aws-sdk/clients/s3");
 
 const bucketName = process.env.AWS_BUCKET_NAME;
 const region = process.env.AWS_DEFAULT_REGION;
@@ -13,8 +13,7 @@ const s3 = new S3({
   secreteAccessKey,
 });
 
-//Upload the images into S3
-
+// uploads a file to s3
 function uploadFile(file) {
   const fileStream = fs.createReadStream(file.path);
 
@@ -26,11 +25,9 @@ function uploadFile(file) {
 
   return s3.upload(uploadParams).promise();
 }
+exports.uploadFile = uploadFile;
 
-exports.uploadFile = this.uploadFile;
-
-//Download the images or fetch an image
-
+// downloads a file from s3
 function getFileStream(fileKey) {
   const downloadParams = {
     Key: fileKey,
@@ -39,5 +36,4 @@ function getFileStream(fileKey) {
 
   return s3.getObject(downloadParams).createReadStream();
 }
-
 exports.getFileStream = getFileStream;

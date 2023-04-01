@@ -9,7 +9,7 @@ export const planets = [
       emphasizing peaceful applications in space science.Since its establishment,
        most American space exploration efforts have been led by NASA, including the Apollo Moon landing missions, the Skylab space station, and later the Space Shuttle. NASA supports 
       the International Space Station and oversees the development of the Orion spacecraft, the Space Launch System, Commercial Crew vehicles, and the planned Lunar Gateway space station. The agency is also responsible for the Launch Services Program, which provides 
-      oversight of launch operations and countdown management for uncrewed NASA launches.`,
+      oversight of launch operations and countdown management for uncrewesd NASA launches.`,
   },
   {
     id: "VENUS",
