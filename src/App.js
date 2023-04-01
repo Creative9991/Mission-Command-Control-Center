@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Space_insight from "./components/space_insight";
 import Planets from "./components/Planets";
 import Agency from "./components/agency";
-import InternationaSpaceStation from "./components/InternationSpaceStation";
+import InternationalSpaceStation from "./components/InternationalSpaceStation";
 import space from "./assets/space-background.jpeg";
 import { faUserAstronaut, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +17,6 @@ import AgencyInfo from "./components/AgencyInfo";
 import AnalogClock from "analog-clock-react";
 import Dashboard from "./components/Dashboard";
 import NasaDetailedData from "./components/NasaDetailedData";
-// import PageNotfound from './components/PageNotfound';
 import Todo from "./components/Todo";
 import Counter from "./components/Counter";
 
@@ -130,10 +129,9 @@ class App extends Component {
                   />
                   <Route path="/Todo" component={Todo} />
                   <Route path="/planets" component={Planets} />
-                  {/* <Route path='*' component={PageNotfound} /> */}
                   <Route
-                    path="/internation-Space-station"
-                    component={InternationaSpaceStation}
+                    path="/international-Space-station"
+                    component={InternationalSpaceStation}
                   />
                   {userExists ? (
                     <Route path="/" component={Space_insight} />
