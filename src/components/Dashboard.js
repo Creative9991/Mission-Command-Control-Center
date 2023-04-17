@@ -51,7 +51,7 @@ const Dashboard = () => {
 
         {images.map((image) => (
           <div key={image}>
-            <img src={image}></img>
+            <img src={image} alt={image}></img>
           </div>
         ))}
       </div>

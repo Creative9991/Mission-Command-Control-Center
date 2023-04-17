@@ -4,7 +4,7 @@ import "../styles/internationalSpaceStation.css";
 import { Card, Button, Modal, Collapse } from "antd";
 import logoIss from "../assets/iss.png";
 import { issDataList } from "../services/internationSpaceAPI";
-import { text, sizaMass } from "../constants/internationalSpaceStations";
+import { text, sizaMass } from "../constants/internationSpaceStations";
 
 const { Panel } = Collapse;
 

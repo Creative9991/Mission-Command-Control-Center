@@ -8,8 +8,8 @@ import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Space_insight from "./components/space_insight";
 import Planets from "./components/Planets";
 import Agency from "./components/agency";
-import InternationalSpaceStation from "./components/InternationalSpaceStation";
-import space from "./assets/space-background.jpeg";
+import InternationalSpaceStation from "./components/InternationlSpaceStation";
+import space from "./assets/space-mining.jpeg";
 import { faUserAstronaut, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Login from "./components/login";
@@ -19,6 +19,8 @@ import Dashboard from "./components/Dashboard";
 import NasaDetailedData from "./components/NasaDetailedData";
 import Todo from "./components/Todo";
 import Counter from "./components/Counter";
+import Mars from "./components/Mars";
+import NotFound from "./components/NotFound";
 
 const { Header, Content, Footer } = Layout;
 
@@ -116,13 +118,32 @@ class App extends Component {
             >
               <main>
                 <Switch>
-                  <Route path="/counter" component={Counter} />
-                  <Route path="/space_agencies" component={Space_agencies} />
-                  <Route path="/about" component={About} />
+                  {Counter ? (
+                    <Route path="/counter" component={Counter} />
+                  ) : (
+                    <Route path="/not-found" component={NotFound} />
+                  )}
+                  ,
+                  {Space_agencies ? (
+                    <Route path="/space_agencies" component={Space_agencies} />
+                  ) : (
+                    <Route path="/not-found" component={NotFound} />
+                  )}
+                  ,
+                  {About ? (
+                    <Route path="/about" component={About} />
+                  ) : (
+                    <Route path="/not-found" component={NotFound} />
+                  )}
                   <Route path="/contact" component={Contact} />
                   <Route path="/dashboard" component={Dashboard} />
                   <Route path="/agency/:id" component={Agency} />
                   <Route path="/agencyinfo/:info" component={AgencyInfo} />
+                  {Mars ? (
+                    <Route path="/mars" component={Mars} />
+                  ) : (
+                    <Route path="/not-found" component={NotFound} />
+                  )}
                   <Route
                     path="/nasaDetailedData"
                     component={NasaDetailedData}

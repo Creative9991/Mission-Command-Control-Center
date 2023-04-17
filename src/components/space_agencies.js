@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import "../App.css";
 import { Card } from "antd";
@@ -20,51 +20,43 @@ const fontAwesomeStyle = {
   top: "30px",
   position: "relative",
 };
+const Space_Agencies = () => {
+  const [id, setId] = useState(null);
+  const [agencyDetails, setAgencyDetails] = useState(false);
 
-class Space_Agencies extends Component {
-  state = {
-    id: null,
-    agencyDetails: false,
-  };
-
-  createNewAgency = () => {
-    console.log("I clicked");
-  };
-
-  goToAgencyDetails = (agencyId) => {
-    if (agencyId !== null) {
-      this.setState({ id: agencyId, agencyDetails: true });
+  const goToAgencyDetails = (agencyId) => {
+    if (agencyId !== null && agencyDetails !== true) {
+      setId(agencyId);
+      setAgencyDetails(true);
     }
   };
-  render() {
-    //console.log(this.state.id)
-    if (this.state.id) {
-      return <Redirect to={`/agency/${this.state.id}`} />;
-    } else {
-      return (
-        <div className="space-agencies">
-          <h1 className="header-agency">Top Space Agencies Around The World</h1>
-          <div className="grid-container">
-            {spaceAgencies.map((block) => (
-              <Card
-                key={block.id}
-                onClick={() => this.goToAgencyDetails(block.id)}
-                onMouseOver={changeBackground}
-                onMouseOut={outBackground}
-                style={{ backgroundImage: `url(${block.imgAsset})` }}
-                hoverable
-              ></Card>
-            ))}
+  //console.log(this.state.id)
+  if (id) {
+    return <Redirect to={`/agency/${id}`} />;
+  } else {
+    return (
+      <div className="space-agencies">
+        <h1 className="header-agency">Top Space Agencies Around The World</h1>
+        <div className="grid-container">
+          {spaceAgencies.map((block) => (
+            <Card
+              key={block.id}
+              onClick={() => goToAgencyDetails(block.id)}
+              onMouseOver={changeBackground}
+              onMouseOut={outBackground}
+              style={{ backgroundImage: `url(${block.imgAsset})` }}
+              hoverable
+            ></Card>
+          ))}
 
-            {sessionStorage.username === "mukesh" ? (
-              <Card onClick={() => this.createNewAgency} hoverable>
-                <FontAwesomeIcon icon={faPlus} style={fontAwesomeStyle} />
-              </Card>
-            ) : null}
-          </div>
+          {sessionStorage.username === "mukesh" ? (
+            <Card hoverable>
+              <FontAwesomeIcon icon={faPlus} style={fontAwesomeStyle} />
+            </Card>
+          ) : null}
         </div>
-      );
-    }
+      </div>
+    );
   }
-}
+};
 export default Space_Agencies;
