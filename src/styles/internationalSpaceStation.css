@@ -1,7 +1,14 @@
 .iss-meta{
     position: relative;
-    top : '265px'
+    top : '265px';
+    width: 50%;
 }
+@media screen and (max-width: 480px) {
+
+    .iss-image{
+        width: 20%;
+    }
+  }
 
 .international-space-station, .iss-image{
     border-radius: 20px;
