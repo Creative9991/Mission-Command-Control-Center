@@ -1,0 +1,7 @@
+.logged-in-count, h1{
+    color: white;
+}
+
+#count-login{
+    font-size: 50px;
+}

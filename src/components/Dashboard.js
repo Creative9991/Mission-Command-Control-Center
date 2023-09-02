@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AllPosts from "./AllPosts";
 import CreatePost from "./CreatePost";
 import axios from "axios";
+import "../styles/dashboard.css";
 
 async function postImage({ image, description }) {
   const formData = new FormData();
@@ -18,6 +19,7 @@ const Dashboard = () => {
   const [file, setFile] = useState();
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([]);
+  let loggedInUserCount = localStorage.getItem("loggedIn");
 
   const submit = async (event) => {
     event.preventDefault();
@@ -36,6 +38,13 @@ const Dashboard = () => {
         style={{ margin: 50, position: "relative", left: 700 }}
       >
         <CreatePost />
+      </div>
+      <div className="logged-in-count">
+        <h1>
+          You have been logged in{" "}
+          <p id="count-login">{loggedInUserCount ? loggedInUserCount : null}</p>
+          times
+        </h1>
       </div>
       <AllPosts />
       <div className="App">

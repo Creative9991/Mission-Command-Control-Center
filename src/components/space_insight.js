@@ -5,6 +5,8 @@ import {
   faSpaceShuttle,
   faSatellite,
   faSun,
+  faMoon,
+  faAreaChart,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -76,6 +78,32 @@ class Space_insight extends Component {
             <Link to="/planets">
               <FontAwesomeIcon icon={faSun} style={fontAwesomeStyle} />
               <h3 style={this.headeragecy()}>Planet Exploration</h3>
+            </Link>
+          </Col>
+          <Col
+            style={{ marginTop: 100 }}
+            className="columnClass"
+            onMouseOver={changeBackground}
+            onMouseOut={outBackground}
+            xs={{ span: 5, offset: 1 }}
+            lg={{ span: 6, offset: 2 }}
+          >
+            <Link to="/moon">
+              <FontAwesomeIcon icon={faMoon} style={fontAwesomeStyle} />
+              <h3 style={this.headeragecy()}>Moon Exploration</h3>
+            </Link>
+          </Col>
+          <Col
+            style={{ marginTop: 100 }}
+            className="columnClass"
+            onMouseOver={changeBackground}
+            onMouseOut={outBackground}
+            xs={{ span: 5, offset: 1 }}
+            lg={{ span: 6, offset: 2 }}
+          >
+            <Link to="/deepspace">
+              <FontAwesomeIcon icon={faAreaChart} style={fontAwesomeStyle} />
+              <h3 style={this.headeragecy()}>Deep Space Network</h3>
             </Link>
           </Col>
         </Row>

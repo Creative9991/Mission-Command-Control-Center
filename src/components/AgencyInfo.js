@@ -58,33 +58,34 @@ const AgencyInfo = (props) => {
         <div className="space-agencies">
           <h1 className="header-agency">Top satellites from {currentAgency}</h1>
 
-          <Button type="primary" onClick={GenericPdfDownloader}>
-            Download {currentAgency} Data
-          </Button>
-
           {agencySpaceCraft.length === 0 ? (
             <FaSpinner icon="spinner" className="spinner" />
           ) : (
-            <table className="isro" id="invoiceCapture">
-              <tbody id="isro-body">
-                <tr>
-                  <th className="isro-tablehead">Agency</th>
-                  <th className="isro-tablehead">Mission Id</th>
-                  <th className="isro-tablehead">Mission Year</th>
-                  <th className="isro-tablehead">Mission Name</th>
-                </tr>
-                {agencySatelittes.map((spacecraft) => {
-                  return (
-                    <tr key={spacecraft.id} className="isro-table-row">
-                      <td>{agencySpaceCraft.agency}</td>
-                      <td>{spacecraft.id}</td>
-                      <td>{spacecraft.year}</td>
-                      <td>{spacecraft.spacecraftName}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <>
+              <Button type="primary" onClick={GenericPdfDownloader}>
+                Download {currentAgency} Data
+              </Button>
+              <table className="isro" id="invoiceCapture">
+                <tbody id="isro-body">
+                  <tr>
+                    <th className="isro-tablehead">Agency</th>
+                    <th className="isro-tablehead">Mission Id</th>
+                    <th className="isro-tablehead">Mission Year</th>
+                    <th className="isro-tablehead">Mission Name</th>
+                  </tr>
+                  {agencySatelittes.map((spacecraft) => {
+                    return (
+                      <tr key={spacecraft.id} className="isro-table-row">
+                        <td>{agencySpaceCraft.agency}</td>
+                        <td>{spacecraft.id}</td>
+                        <td>{spacecraft.year}</td>
+                        <td>{spacecraft.spacecraftName}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </>
           )}
         </div>
       </div>
