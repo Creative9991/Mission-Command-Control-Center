@@ -43,7 +43,7 @@ const InternationalSpaceStation = () => {
         <h1>International Space Station</h1>
         <p>{text.issInfo}</p>
         <p style={{ marginTop: 20, fontWeight: "bold" }}>
-          Current postion of International Space Station -- Latitude{" "}
+          Current position of International Space Station -- Latitude{" "}
           <span style={{ color: "green", fontSize: 30 }}>{issLatitude}</span>
           ,Longitude{" "}
           <span style={{ color: "green", fontSize: 30 }}>{issLongitude}</span>
@@ -75,7 +75,7 @@ const InternationalSpaceStation = () => {
         </Panel>
       </Collapse>
       <Card className="iss-image">
-        <img src={logoIss} alt="LogoIss" />
+        <img src={logoIss} alt="LogoIss" style={{ width: "100%" }} />
       </Card>
     </div>
   );

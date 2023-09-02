@@ -5,7 +5,7 @@ import { FaSpinner } from "react-icons/fa";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { Button } from "antd";
-import * as api from "../services/isroApi";
+import * as api from "../services/agencyDataAPI";
 
 const AgencyInfo = (props) => {
   /// Download Html2Canvas and jsPdf data
@@ -27,19 +27,19 @@ const AgencyInfo = (props) => {
     });
   };
   const currentAgency = props.match.params.info;
-  const [isroSpaceCraft, setIsroSpaceCraft] = useState([]);
+  const [agencySpaceCraft, setAgencySpaceCraft] = useState([]);
 
-  // Calling Isro API to get data
+  // Calling Agency Apis
 
   useEffect(() => {
-    api.isroDataList().then((data) => {
+    api.agencyDataList().then((data) => {
       try {
         data.Items.map((specificAgency) => {
           let currentAgencyVar = props.match.params.info;
           currentAgencyVar = currentAgencyVar.toLowerCase();
           if (currentAgencyVar === specificAgency.agency) {
             specificAgency.agency = currentAgencyVar;
-            return setIsroSpaceCraft(specificAgency);
+            return setAgencySpaceCraft(specificAgency);
           } else {
             return null;
           }
@@ -50,7 +50,7 @@ const AgencyInfo = (props) => {
     });
   }, [currentAgency, props.match.params.info]);
 
-  const agencySatelittes = isroSpaceCraft.satelittes;
+  const agencySatelittes = agencySpaceCraft.satelittes;
 
   return (
     <>
@@ -62,7 +62,7 @@ const AgencyInfo = (props) => {
             Download {currentAgency} Data
           </Button>
 
-          {isroSpaceCraft.length === 0 ? (
+          {agencySpaceCraft.length === 0 ? (
             <FaSpinner icon="spinner" className="spinner" />
           ) : (
             <table className="isro" id="invoiceCapture">
@@ -76,7 +76,7 @@ const AgencyInfo = (props) => {
                 {agencySatelittes.map((spacecraft) => {
                   return (
                     <tr key={spacecraft.id} className="isro-table-row">
-                      <td>{isroSpaceCraft.agency}</td>
+                      <td>{agencySpaceCraft.agency}</td>
                       <td>{spacecraft.id}</td>
                       <td>{spacecraft.year}</td>
                       <td>{spacecraft.spacecraftName}</td>
