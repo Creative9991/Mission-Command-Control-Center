@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import * as api from "../services/isroApi";
+import * as api from "../services/agencyDataAPI";
 import * as d3 from "d3";
 
 const AllPosts = () => {
   const [allPosts, setAllPosts] = useState([]);
 
-  const [data] = useState([25, 50, 35, 15, 94, 10]);
+  const [data] = useState([1, 6]);
   const svgRef = useRef();
 
   useEffect(() => {
