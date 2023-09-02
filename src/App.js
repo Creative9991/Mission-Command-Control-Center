@@ -21,6 +21,8 @@ import Todo from "./components/Todo";
 import Counter from "./components/Counter";
 import Mars from "./components/Mars";
 import NotFound from "./components/NotFound";
+import MoonExploration from "./components/Moon-exploration";
+import DeepSpaceNetwork from "./components/Deep-Space-Network";
 
 const { Header, Content, Footer } = Layout;
 
@@ -137,6 +139,8 @@ class App extends Component {
                   )}
                   <Route path="/contact" component={Contact} />
                   <Route path="/dashboard" component={Dashboard} />
+                  <Route path="/moon" component={MoonExploration} />
+                  <Route path="/deepspace" component={DeepSpaceNetwork} />
                   <Route path="/agency/:id" component={Agency} />
                   <Route path="/agencyinfo/:info" component={AgencyInfo} />
                   {Mars ? (

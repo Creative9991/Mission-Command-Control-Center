@@ -32,6 +32,12 @@ export default class login extends React.Component {
       for (var i = 0; i < listUsernames.length; i++) {
         if (username === listUsernames[i] && password === listPasswords[i]) {
           sessionStorage.setItem("username", userName);
+          let loggedInCount = localStorage.getItem("loggedIn");
+          if (loggedInCount === null) {
+            localStorage.setItem("loggedIn", 1);
+          } else {
+            localStorage.setItem("loggedIn", ++loggedInCount);
+          }
           return true; // match found
         }
       }
