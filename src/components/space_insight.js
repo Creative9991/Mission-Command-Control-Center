@@ -106,6 +106,19 @@ class Space_insight extends Component {
               <h3 style={this.headeragecy()}>Deep Space Network</h3>
             </Link>
           </Col>
+          <Col
+            style={{ marginTop: 100 }}
+            className="columnClass"
+            onMouseOver={changeBackground}
+            onMouseOut={outBackground}
+            xs={{ span: 5, offset: 1 }}
+            lg={{ span: 6, offset: 2 }}
+          >
+            <Link to="/chinese-space-station">
+              <FontAwesomeIcon icon={faSatellite} style={fontAwesomeStyle} />
+              <h3 style={this.headeragecy()}>Chinese Space Station</h3>
+            </Link>
+          </Col>
         </Row>
         <Carousel
           id="carousel"
