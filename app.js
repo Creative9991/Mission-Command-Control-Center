@@ -66,20 +66,6 @@ app.get("/images/:key", (req, res) => {
   readStream.pipe(res);
 });
 
-app.post("/images", upload.single("image"), async (req, res) => {
-  const file = req.file;
-  console.log(file);
-
-  // apply filter
-  // resize
-
-  const result = await uploadFile(file);
-  await unlinkFile(file.path);
-  console.log(result);
-  const description = req.body.description;
-  res.send({ imagePath: `/images/${result.Key}` });
-});
-
 function authenticateToken(req, res, next) {
   const authHeader = req.header["authorization"];
   const token = authHeader && authHeader.split(" ")[1];

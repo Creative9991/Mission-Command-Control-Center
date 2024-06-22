@@ -30,11 +30,18 @@ import Dashboard from "./components/Dashboard";
 import NasaDetailedData from "./components/NasaDetailedData";
 import Todo from "./components/Todo";
 import Counter from "./components/Counter";
-import Mars from "./components/Mars";
+import Mars from "./components/Planets/Mars";
+import Earth from "./components/Planets/Earth";
+import Venus from "./components/Planets/Venus";
+import Jupiter from "./components/Planets/Jupiter";
+import Saturn from "./components/Planets/Saturn";
 import NotFound from "./components/NotFound";
 import MoonExploration from "./components/MoonExploration";
 import DeepSpaceNetwork from "./components/DeepSpaceNetwork";
 import ChineseSpaceStation from "./components/ChineseSpaceStation";
+import Mercury from "./components/Planets/Mercury";
+import Pluto from "./components/Planets/Pluto";
+import Uranus from "./components/Planets/Uranus";
 
 const { Header, Content, Footer } = Layout;
 
@@ -178,11 +185,15 @@ const App = () => {
                   path="/chinese-space-station"
                   component={ChineseSpaceStation}
                 />
-                {Mars ? (
-                  <Route path="/mars" component={Mars} />
-                ) : (
-                  <Route path="/not-found" component={NotFound} />
-                )}
+                <Route path="/planets/mars" component={Mars} />
+                <Route path="/planets/earth" component={Earth} />
+                <Route path="/planets/venus" component={Venus} />
+                <Route path="/planets/jupiter" component={Jupiter} />
+                <Route path="/planets/pluto" component={Pluto} />
+                <Route path="/planets/uranus" component={Uranus} />
+                <Route path="/planets/saturn" component={Saturn} />
+                <Route path="/planets/mercury" component={Mercury} />
+                <Route path="/planets/earth" component={Earth} />
                 <Route path="/nasaDetailedData" component={NasaDetailedData} />
                 <Route path="/Todo" component={Todo} />
                 <Route path="/planets" component={Planets} />

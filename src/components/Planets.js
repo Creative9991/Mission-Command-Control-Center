@@ -37,20 +37,19 @@ class Planets extends Component {
   render() {
     //console.log(this.state.id)
     if (this.state.id) {
-      return <Redirect to={`/planets/${this.state.id}`} />;
+      return <Redirect to={`/Planets/${this.state.id}`} />;
     } else {
       return (
         <div className="space-agencies">
           <h1 className="header-agency">Top Space Agencies Around The World</h1>
           <div className="grid-container-planets">
-            {planets.map((block) => (
+            {planets.map((planet) => (
               <Card
-                key={block.id}
-                onClick={() => this.goToAgencyDetails(block.id)}
+                key={planet.id}
+                onClick={() => this.goToAgencyDetails(planet.id)}
                 onMouseOver={changeBackground}
                 onMouseOut={outBackground}
-                style={{ backgroundImage: `url(${block.imgAsset})` }}
-                hoverable
+                style={{ backgroundImage: `url(${planet.imgAsset})` }}
               ></Card>
             ))}
           </div>
