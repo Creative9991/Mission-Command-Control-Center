@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import * as api from "../services/agencyDataAPI";
-import * as d3 from "d3";
 
 const AllPosts = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -18,8 +17,8 @@ const AllPosts = () => {
       <tbody key={post.id}>
         <tr>
           <td>{post.id}</td>
-          <td>{post.postname}</td>
           <td>{post.description}</td>
+          <td>{post.postname}</td>
         </tr>
       </tbody>
     );
@@ -28,11 +27,19 @@ const AllPosts = () => {
   return (
     <div className="allposts">
       <h3>List of all Posts</h3>
-      <table border="2" style={{ backgroundColor: "white", width: 1340 }}>
+      <table
+        border="5"
+        style={{
+          backgroundColor: "white",
+          width: 1340,
+          borderRadius: 20,
+          fontWeight: "bold",
+        }}
+      >
         <tbody>
           <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>Post</th>
             <th>Description</th>
           </tr>
         </tbody>

@@ -19,7 +19,7 @@ import InternationalSpaceStation from "./components/InternationlSpaceStation";
 import space from "./assets/space-mining.jpeg";
 import {
   faUserAstronaut,
-  faUser,
+  faEnvelope,
   faBackward,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -133,7 +133,7 @@ const App = () => {
                 <Menu.Item key="6" style={{ float: "right" }}>
                   <Link to="/dashboard">
                     <FontAwesomeIcon
-                      icon={faUser}
+                      icon={faEnvelope}
                       style={{
                         width: "20px",
                         height: "20px",

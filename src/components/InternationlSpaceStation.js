@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import "../styles/internationalSpaceStation.css";
+import { FaSpinner } from "react-icons/fa";
 import { Card, Button, Modal, Collapse } from "antd";
 import logoIss from "../assets/iss.png";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { issDataList } from "../services/internationSpaceAPI";
 import { text, sizaMass } from "../constants/internationSpaceStations";
-
-const { Panel } = Collapse;
-
 const InternationalSpaceStation = () => {
   const [currentPosition, setCurrentPosition] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,10 +29,6 @@ const InternationalSpaceStation = () => {
     lat: issLatitude, // Latitude
     lng: issLongitude, // Longitude (San Francisco)
   };
-
-  if (!currentPosition) {
-    return null;
-  }
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -75,18 +69,37 @@ const InternationalSpaceStation = () => {
           </Modal>
         </div>
       </Card>
-      <Card>
-        <LoadScript googleMapsApiKey={process.env.GOOGLE_MAPS_API_KEY}>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={mapCenter}
-            zoom={3}
-          >
-            {/* Marker can be added to indicate a location */}
-            <Marker position={mapCenter} />
-          </GoogleMap>
-        </LoadScript>
+
+      <Card className="iss-image">
+        <h1 style={{ color: "black" }}>International Space Station Modules</h1>
+        <img src={logoIss} alt="LogoIss" style={{ width: "100%" }} />
       </Card>
+
+      {mapCenter.length === 0 ||
+      !currentPosition ||
+      currentPosition === undefined ? (
+        <FaSpinner
+          icon="spinner"
+          className="spinner"
+          style={{ marginTop: 150 }}
+        />
+      ) : (
+        <Card>
+          <h1 style={{ color: "black" }}>
+            Here is the Current International Space Station Live Location
+          </h1>
+          <LoadScript googleMapsApiKey={process.env.GOOGLE_MAPS_API_KEY}>
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={mapCenter}
+              zoom={3}
+            >
+              {/* Marker can be added to indicate a location */}
+              <Marker position={mapCenter} />
+            </GoogleMap>
+          </LoadScript>
+        </Card>
+      )}
     </div>
   );
 };
