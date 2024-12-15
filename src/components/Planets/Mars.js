@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import * as api from "../../services/nasaApi";
 import { Card } from "antd";
+import "../../App.css";
 
 const Mars = () => {
   console.log("|| Mars Component Console ||");
@@ -12,6 +13,7 @@ const Mars = () => {
   });
   return (
     <>
+      <h1 className="header-agency">Mars Curiosity Rover Images</h1>
       <div className="grid-container">
         {marsImagesData.map((block) => (
           <Card

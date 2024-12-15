@@ -27,6 +27,7 @@ import Login from "./components/login";
 import AgencyInfo from "./components/AgencyInfo";
 import AnalogClock from "analog-clock-react";
 import Dashboard from "./components/Dashboard";
+import Spacex from "./components/spacex";
 import NasaDetailedData from "./components/NasaDetailedData";
 import Todo from "./components/Todo";
 import Counter from "./components/Counter";
@@ -188,6 +189,7 @@ const App = () => {
                 <Route path="/planets/mars" component={Mars} />
                 <Route path="/planets/earth" component={Earth} />
                 <Route path="/planets/venus" component={Venus} />
+                <Route path="/spacex" component={Spacex} />
                 <Route path="/planets/jupiter" component={Jupiter} />
                 <Route path="/planets/pluto" component={Pluto} />
                 <Route path="/planets/uranus" component={Uranus} />
