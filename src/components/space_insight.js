@@ -136,7 +136,7 @@ class Space_insight extends Component {
               <div
                 key={id}
                 style={{
-                  backgroundImage: `url(../assets/${headerText.imgUrl})`,
+                  backgroundImage: `url(../assets/${headerText})`,
                   height: "500px",
                 }}
               >

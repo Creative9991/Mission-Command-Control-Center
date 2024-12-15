@@ -11,6 +11,13 @@ const upload = multer({ dest: "downloads/" });
 const { uploadFile, getFileStream } = require("./src/s3");
 const cors = require("cors");
 
+// Allow CORS for your frontend (localhost:3000)
+const corsOptions = {
+  origin: "http://localhost:3000", // Adjust this to your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"], // Add headers you need
+};
+
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const {
@@ -31,6 +38,7 @@ app.get("/", (req, res) => {
 const port = process.env.PORT || 3100;
 
 app.use(express.json());
+app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();

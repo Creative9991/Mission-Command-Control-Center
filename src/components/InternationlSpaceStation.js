@@ -14,7 +14,6 @@ const InternationalSpaceStation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     issDataList().then((data) => {
-      console.log(data, "JJJJJJJ");
       setCurrentPosition(data.iss_position);
     });
   }, [currentPosition]);
@@ -54,16 +53,11 @@ const InternationalSpaceStation = () => {
       <Card className="international-space-station">
         <h1>International Space Station</h1>
         <p>{text.issInfo}</p>
-        {/* <p style={{ marginTop: 20, fontWeight: "bold" }}>
-          Current position of International Space Station -- Latitude{" "}
-          <span style={{ color: "green", fontSize: 30 }}>{issLatitude}</span>
-          ,Longitude{" "}
-          <span style={{ color: "green", fontSize: 30 }}>{issLongitude}</span>
-        </p> */}
+
         <p style={{ fontStyle: "italic", fontSize: 20 }}>{text.moreInfo}.</p>
         <div className="modal">
           <Button type="primary" onClick={showModal}>
-            Fun Facts
+            Want to know More?
           </Button>
           <Modal
             title="International Space Station"
@@ -86,7 +80,7 @@ const InternationalSpaceStation = () => {
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={mapCenter}
-            zoom={1}
+            zoom={3}
           >
             {/* Marker can be added to indicate a location */}
             <Marker position={mapCenter} />

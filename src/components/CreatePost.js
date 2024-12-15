@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Modal, Input, Button } from "antd";
+
 import axios from "axios";
 import "../App.css";
 
@@ -19,6 +20,7 @@ const tailLayout = {
 };
 
 const CreatePost = () => {
+  const { TextArea } = Input;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -27,7 +29,9 @@ const CreatePost = () => {
   const onDescriptionChange = (e) => setDescription(e.target.value);
 
   const handleSubmit = (e) => {
-    const enteredValues = { name, description };
+    let enteredValues = { name, description };
+    enteredValues = JSON.stringify(enteredValues);
+
     const headers = {
       "Content-Type": "application/json",
     };
@@ -63,6 +67,7 @@ const CreatePost = () => {
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        inert
       >
         <Form
           {...layout}
@@ -70,6 +75,7 @@ const CreatePost = () => {
           initialValues={{
             remember: true,
           }}
+          aria-hidden="true"
         >
           <Form.Item
             label="Post Name"
@@ -87,21 +93,13 @@ const CreatePost = () => {
             <Input />
           </Form.Item>
 
-          <Form.Item
-            label="Description"
-            name="discription"
-            id="description"
+          <TextArea
+            rows={4}
+            placeholder="maxLength is 6"
+            maxLength={100}
             value={description}
             onChange={onDescriptionChange}
-            rules={[
-              {
-                required: true,
-                message: "Please write a description for the post!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+          />
 
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit" onClick={handleSubmit}>

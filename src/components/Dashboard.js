@@ -39,15 +39,9 @@ const Dashboard = () => {
       >
         <CreatePost />
       </div>
-      <div className="logged-in-count">
-        <h1>
-          You have been logged in{" "}
-          <p id="count-login">{loggedInUserCount ? loggedInUserCount : null}</p>
-          times
-        </h1>
-      </div>
+      <div className="logged-in-count"></div>
       <AllPosts />
-      <div className="App">
+      {/* <div className="App">
         <form onSubmit={submit}>
           <input onChange={fileSelected} type="file" accept="image/*"></input>
           <input
@@ -63,7 +57,7 @@ const Dashboard = () => {
             <img src={image} alt={image}></img>
           </div>
         ))}
-      </div>
+      </div> */}
     </>
   );
 };

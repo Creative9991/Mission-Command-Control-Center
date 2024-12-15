@@ -64,6 +64,7 @@ const App = () => {
   };
 
   let date = new Date();
+  let utc_string = date.toUTCString().match(/..:..:.. .*/)[0];
   let currerntYear = date.getFullYear();
   function headerOver(e) {
     e.target.style.backgroundColor = "";
@@ -143,6 +144,11 @@ const App = () => {
                 </Menu.Item>
                 <Menu.Item style={{ float: "right", paddingTop: 0 }}>
                   <AnalogClock {...options} />
+                </Menu.Item>
+                <Menu.Item
+                  style={{ float: "right", paddingTop: 20, fontSize: 30 }}
+                >
+                  {utc_string}
                 </Menu.Item>
               </Menu>
             </Header>
