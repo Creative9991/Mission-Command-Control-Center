@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import "../styles/internationalSpaceStation.css";
 import { FaSpinner } from "react-icons/fa";
-import { Card, Button, Modal, Collapse } from "antd";
+import { Card, Button, Modal } from "antd";
 import logoIss from "../assets/iss.png";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { issDataList } from "../services/internationSpaceAPI";

@@ -16,7 +16,7 @@ import Space_insight from "./components/space_insight";
 import Planets from "./components/Planets";
 import Agency from "./components/agency";
 import InternationalSpaceStation from "./components/InternationlSpaceStation";
-import space from "./assets/space-mining.jpeg";
+import space from "./assets/spaceTwo.jpeg";
 import {
   faUserAstronaut,
   faEnvelope,
