@@ -1,14 +1,6 @@
 require("dotenv").config();
+const axios = require("axios");
 
-const multer = require("multer");
-
-const fs = require("fs");
-const util = require("util");
-const unlikeFile = util.promisify(fs.unlink);
-
-const upload = multer({ dest: "downloads/" });
-
-const { uploadFile, getFileStream } = require("./src/s3");
 const cors = require("cors");
 
 // Allow CORS for your frontend (localhost:3000)
@@ -67,13 +59,6 @@ app.post("/login", (req, res) => {
   res.json({ accessToken: accessToken });
 });
 
-app.get("/images/:key", (req, res) => {
-  console.log(req.params);
-  const key = req.params.key;
-  const readStream = getFileStream(key);
-  readStream.pipe(res);
-});
-
 function authenticateToken(req, res, next) {
   const authHeader = req.header["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
@@ -129,6 +114,18 @@ app.get("/spacecrafts", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ err: "something went wrong" });
+  }
+});
+
+app.get("/chineseTiangong", async (req, res) => {
+  try {
+    // Call the external API using axios
+    const response = await axios.get(process.env.CHINESETIANGONG); // External API endpoint
+    res.json(response.data); // Send the data received from the external API as the response
+  } catch (error) {
+    // Handle any errors that occur during the request
+    console.error("Error fetching data from external API:", error);
+    res.status(500).send("Error fetching data");
   }
 });
 
