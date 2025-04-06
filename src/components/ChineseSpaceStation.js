@@ -9,13 +9,11 @@ const ChineseSpaceStation = () => {
   const [currentPosition, setCurrentPosition] = useState({});
   useEffect(() => {
     chineseTiangongApi().then((data) => {
-      let check;
-      if (!Array.isArray(currentPosition) || currentPosition.error) {
-        check = <FaSpinner />;
-        return check;
+      if (data.positions[0]) {
+        setCurrentPosition(data.positions[0]);
+      } else {
+        setCurrentPosition(data);
       }
-      let checkData = data.positions ? data.positions[0] : check;
-      setCurrentPosition(checkData);
     });
   }, [currentPosition]);
   const containerStyle = {
