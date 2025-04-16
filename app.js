@@ -1,7 +1,18 @@
 require("dotenv").config();
 const axios = require("axios");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const bodyParser = require("body-parser");
 
 const cors = require("cors");
+
+const JWT_SECRET = "your_secret_key";
+
+const user = {
+  id: 1,
+  username: "testuser",
+  password: bcrypt.hashSync("test1234", 8), // hashed password
+};
 
 // Allow CORS for your frontend (localhost:3000)
 const corsOptions = {
@@ -10,7 +21,6 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"], // Add headers you need
 };
 
-const jwt = require("jsonwebtoken");
 const express = require("express");
 const {
   getSpaceAgenciesData,
@@ -22,7 +32,7 @@ const {
   createPost,
 } = require("./dynamodb");
 const app = express();
-
+app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Yes Server is running at 3100");
 });
@@ -49,6 +59,36 @@ const listOfUsernames = [
 
 app.get("/usernames", authenticateToken, (req, res) => {
   res.json(listOfUsernames.filter((e) => e.username === req.user.name));
+});
+
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  if (username !== user.username) {
+    return res.status(401).json({ message: "Invalid username" });
+  }
+
+  const passwordIsValid = bcrypt.compareSync(password, user.password);
+  if (!passwordIsValid) {
+    return res.status(401).json({ message: "Invalid password" });
+  }
+
+  const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1h" });
+
+  res.json({ auth: true, token });
+});
+
+app.get("/protected", (req, res) => {
+  const token = req.headers["authorization"]?.split(" ")[1];
+
+  if (!token) return res.status(403).json({ message: "No token provided" });
+
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err)
+      return res.status(500).json({ message: "Failed to authenticate token" });
+
+    res.json({ message: "Protected data", userId: decoded.id });
+  });
 });
 
 app.post("/login", (req, res) => {

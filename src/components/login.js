@@ -1,138 +1,80 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
-import { Row, Card, Form, Checkbox, Col, Input, Button } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, Card, Typography, message } from "antd";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+const { Title } = Typography;
+function Login({ onLogin }) {
+  const onFinish = async (values) => {
+    try {
+      const res = await fetch("http://localhost:3100/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
 
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
-
-export default class login extends React.Component {
-  onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  onFinish = (values) => {
-    let userName = values.username;
-    let passWord = values.password;
-    console.log(userName, passWord);
-    let listUsernames = ["mukesh", "user1", "user2", "user3", "user4"];
-    let listPasswords = ["1234", "user1", "user2", "user3", "user4"];
-    function validate(username, password) {
-      for (var i = 0; i < listUsernames.length; i++) {
-        if (username === listUsernames[i] && password === listPasswords[i]) {
-          sessionStorage.setItem("username", userName);
-          let loggedInCount = localStorage.getItem("loggedIn");
-          if (loggedInCount === null) {
-            localStorage.setItem("loggedIn", 1);
-          } else {
-            localStorage.setItem("loggedIn", ++loggedInCount);
-          }
-          return true; // match found
-        }
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        message.success("Login successful");
+        onLogin(data.token);
+      } else {
+        message.error(data.message || "Login failed");
       }
-      return false; // match not found
+    } catch (err) {
+      console.error(err);
+      message.error("Something went wrong!");
     }
-    var valid = validate(userName, passWord);
-
-    if (valid) {
-      window.location.reload(false);
-      return <Redirect to={`/login`} />;
-    } else {
-      alert("invalid credentials please enter valid username and password");
-    }
-
-    // if((this.userName === "mukesh") && (this.passWord === '1234')){
-    //     sessionStorage.removeItem('username');
-    //     //let adminUser = sessionStorage.setItem("username", "Admin");
-    // }
   };
 
-  loginBox = () => {
-    return {
-      top: "200px",
-      position: "relative",
-      left: "360px",
-      border: "2px solid black",
-      borderRadius: "10px",
-      padding: "40px",
-      backgroundColor: "#B1C4C4",
-    };
-  };
-
-  render() {
-    return (
-      <Row className="loginRow">
-        <Col className="login-section" style={this.loginBox()}>
-          <Card
-            title="Mission Command Control"
-            bordered={false}
-            style={{ width: 400 }}
+  return (
+    <div style={styles.container}>
+      <Card style={styles.card}>
+        <Title level={2} style={{ textAlign: "center" }}>
+          Login
+        </Title>
+        <Form
+          name="login"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          layout="vertical"
+        >
+          <Form.Item
+            name="username"
+            rules={[{ required: true, message: "Please input your username!" }]}
           >
-            <Form
-              {...layout}
-              name="basic"
-              initialValues={{
-                remember: true,
-              }}
-              onFinish={this.onFinish}
-              onFinishFailed={this.onFinishFailed}
-            >
-              <Form.Item
-                label="Username"
-                name="username"
-                id="userName"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your username!",
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
+            <Input prefix={<UserOutlined />} placeholder="Username" />
+          </Form.Item>
 
-              <Form.Item
-                label="Password"
-                name="password"
-                id="passWord"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your password!",
-                  },
-                ]}
-              >
-                <Input.Password />
-              </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: "Please input your password!" }]}
+          >
+            <Input.Password prefix={<LockOutlined />} placeholder="Password" />
+          </Form.Item>
 
-              <Form.Item
-                {...tailLayout}
-                name="remember"
-                valuePropName="unchecked"
-              >
-                <Checkbox>Remember me</Checkbox>
-              </Form.Item>
-
-              <Form.Item {...tailLayout}>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
-            </Form>
-          </Card>
-        </Col>
-      </Row>
-    );
-  }
+          <Form.Item>
+            <Button type="primary" htmlType="submit" block>
+              Log in
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
+    </div>
+  );
 }
+
+const styles = {
+  container: {
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "#f0f2f5",
+  },
+  card: {
+    width: 350,
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    borderRadius: 8,
+  },
+};
+
+export default Login;

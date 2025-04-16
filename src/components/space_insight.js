@@ -127,6 +127,7 @@ class Space_insight extends Component {
             height: "500px",
             color: "#fff",
             lineHeight: "160px",
+            borderRadius: "20px",
             textAlign: "center",
             background: "#364d79",
           }}

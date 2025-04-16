@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Contact from "./components/contact";
 import Space_agencies from "./components/space_agencies";
@@ -47,6 +47,8 @@ import Uranus from "./components/Planets/Uranus";
 const { Header, Content, Footer } = Layout;
 
 const App = () => {
+  const [data, setData] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const location = useLocation();
   let options = {
     width: "100px",
@@ -78,16 +80,44 @@ const App = () => {
     window.location.reload(false);
   };
 
-  let userExists = window.sessionStorage.getItem("username");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (token) {
+          const res = await fetch("http://localhost:3100/protected", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          const json = await res.json();
 
-  // The current location.
-  console.log(location);
+          if (res.ok) {
+            setData(json);
+          } else {
+            // Token might be expired or invalid
+            handleLogout();
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching protected data:", err);
+        handleLogout();
+      }
+    };
+
+    fetchData();
+  }, [token]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    setData(null);
+  };
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Layout className="layout">
-          {userExists ? (
+        {!token ? (
+          <Login onLogin={setToken} />
+        ) : data ? (
+          <Layout className="layout">
             <Header style={{ height: "100px" }} onMouseOver={headerOver}>
               <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
                 {location === "http://localhost:3000" ||
@@ -128,7 +158,9 @@ const App = () => {
                   style={{ float: "right" }}
                   onClick={usernameDelete}
                 >
-                  <Link to="/login">Hej..{userExists}</Link>
+                  <Link to="/login" onClick={handleLogout}>
+                    Hej..
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="6" style={{ float: "right" }}>
                   <Link to="/dashboard">
@@ -152,73 +184,69 @@ const App = () => {
                 </Menu.Item>
               </Menu>
             </Header>
-          ) : null}
-
-          <Content
-            style={{
-              padding: "0 50px",
-              minHeight: "810px",
-              backgroundImage: `url(${space})`,
-              backgroundRepeat: "no-repeat",
-              backgroundColor: "black",
-            }}
-          >
-            <main>
-              <Switch>
-                {Counter ? (
-                  <Route path="/counter" component={Counter} />
-                ) : (
-                  <Route path="/not-found" component={NotFound} />
-                )}
-                ,
-                {Space_agencies ? (
-                  <Route path="/space_agencies" component={Space_agencies} />
-                ) : (
-                  <Route path="/not-found" component={NotFound} />
-                )}
-                ,
-                {About ? (
-                  <Route path="/about" component={About} />
-                ) : (
-                  <Route path="/not-found" component={NotFound} />
-                )}
-                <Route path="/contact" component={Contact} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/moon" component={MoonExploration} />
-                <Route path="/deepspace" component={DeepSpaceNetwork} />
-                <Route path="/agency/:id" component={Agency} />
-                <Route path="/agencyinfo/:info" component={AgencyInfo} />
-                <Route
-                  path="/chinese-space-station"
-                  component={ChineseSpaceStation}
-                />
-                <Route path="/planets/mars" component={Mars} />
-                <Route path="/planets/earth" component={Earth} />
-                <Route path="/planets/venus" component={Venus} />
-                <Route path="/spacex" component={Spacex} />
-                <Route path="/planets/jupiter" component={Jupiter} />
-                <Route path="/planets/pluto" component={Pluto} />
-                <Route path="/planets/uranus" component={Uranus} />
-                <Route path="/planets/saturn" component={Saturn} />
-                <Route path="/planets/mercury" component={Mercury} />
-                <Route path="/planets/earth" component={Earth} />
-                <Route path="/nasaDetailedData" component={NasaDetailedData} />
-                <Route path="/Todo" component={Todo} />
-                <Route path="/planets" component={Planets} />
-                <Route
-                  path="/international-Space-station"
-                  component={InternationalSpaceStation}
-                />
-                {userExists ? (
+            <Content
+              style={{
+                padding: "0 50px",
+                minHeight: "810px",
+                backgroundImage: `url(${space})`,
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "black",
+              }}
+            >
+              <main>
+                <Switch>
+                  {Counter ? (
+                    <Route path="/counter" component={Counter} />
+                  ) : (
+                    <Route path="/not-found" component={NotFound} />
+                  )}
+                  ,
+                  {Space_agencies ? (
+                    <Route path="/space_agencies" component={Space_agencies} />
+                  ) : (
+                    <Route path="/not-found" component={NotFound} />
+                  )}
+                  ,
+                  {About ? (
+                    <Route path="/about" component={About} />
+                  ) : (
+                    <Route path="/not-found" component={NotFound} />
+                  )}
+                  <Route path="/contact" component={Contact} />
+                  <Route path="/dashboard" component={Dashboard} />
+                  <Route path="/moon" component={MoonExploration} />
+                  <Route path="/deepspace" component={DeepSpaceNetwork} />
+                  <Route path="/agency/:id" component={Agency} />
+                  <Route path="/agencyinfo/:info" component={AgencyInfo} />
+                  <Route
+                    path="/chinese-space-station"
+                    component={ChineseSpaceStation}
+                  />
+                  <Route path="/planets/mars" component={Mars} />
+                  <Route path="/planets/earth" component={Earth} />
+                  <Route path="/planets/venus" component={Venus} />
+                  <Route path="/spacex" component={Spacex} />
+                  <Route path="/planets/jupiter" component={Jupiter} />
+                  <Route path="/planets/pluto" component={Pluto} />
+                  <Route path="/planets/uranus" component={Uranus} />
+                  <Route path="/planets/saturn" component={Saturn} />
+                  <Route path="/planets/mercury" component={Mercury} />
+                  <Route path="/planets/earth" component={Earth} />
+                  <Route
+                    path="/nasaDetailedData"
+                    component={NasaDetailedData}
+                  />
+                  <Route path="/Todo" component={Todo} />
+                  <Route path="/planets" component={Planets} />
+                  <Route
+                    path="/international-Space-station"
+                    component={InternationalSpaceStation}
+                  />
                   <Route path="/" component={Space_insight} />
-                ) : (
                   <Route path="/" component={Login} />
-                )}
-              </Switch>
-            </main>
-          </Content>
-
-          {userExists ? (
+                </Switch>
+              </main>
+            </Content>
             <div className="footer">
               <hr
                 className="home-horizontal-line"
@@ -229,8 +257,10 @@ const App = () => {
                 <span style={{ color: "red" }}>{currerntYear}</span>{" "}
               </Footer>
             </div>
-          ) : null}
-        </Layout>
+          </Layout>
+        ) : (
+          <p>Loading...</p>
+        )}
       </BrowserRouter>
     </div>
   );
