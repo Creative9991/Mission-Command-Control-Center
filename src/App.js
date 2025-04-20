@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Contact from "./components/contact";
 import Space_agencies from "./components/space_agencies";
-import About from "./components/about";
 import { Layout, Menu } from "antd";
 import {
   BrowserRouter,
@@ -16,7 +15,7 @@ import Space_insight from "./components/space_insight";
 import Planets from "./components/Planets";
 import Agency from "./components/agency";
 import InternationalSpaceStation from "./components/InternationlSpaceStation";
-import space from "./assets/spaceTwo.jpeg";
+import { s3Images } from "./services/s3Images";
 import {
   faUserAstronaut,
   faEnvelope,
@@ -79,6 +78,7 @@ const App = () => {
     window.sessionStorage.removeItem("username");
     window.location.reload(false);
   };
+  const [imageList, setImageList] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,6 +104,17 @@ const App = () => {
 
     fetchData();
   }, [token]);
+
+  useEffect(() => {
+    fetch("http://localhost:3100/api/images") // Replace with your actual backend endpoint
+      .then((res) => res.json())
+      .then((data) => {
+        setImageList(data);
+      })
+      .catch((err) => {
+        console.error("Error fetching images:", err);
+      });
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -149,17 +160,13 @@ const App = () => {
                     />
                   </Menu.Item>
                 )}
-
-                <Menu.Item key="4">
-                  <Link to="/about">About</Link>
-                </Menu.Item>
                 <Menu.Item
                   key="5"
                   style={{ float: "right" }}
                   onClick={usernameDelete}
                 >
                   <Link to="/login" onClick={handleLogout}>
-                    Hej..
+                    Logout
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="6" style={{ float: "right" }}>
@@ -188,9 +195,7 @@ const App = () => {
               style={{
                 padding: "0 50px",
                 minHeight: "810px",
-                backgroundImage: `url(${space})`,
-                backgroundRepeat: "no-repeat",
-                backgroundColor: "black",
+                backgroundColor: "wheat",
               }}
             >
               <main>
@@ -207,11 +212,6 @@ const App = () => {
                     <Route path="/not-found" component={NotFound} />
                   )}
                   ,
-                  {About ? (
-                    <Route path="/about" component={About} />
-                  ) : (
-                    <Route path="/not-found" component={NotFound} />
-                  )}
                   <Route path="/contact" component={Contact} />
                   <Route path="/dashboard" component={Dashboard} />
                   <Route path="/moon" component={MoonExploration} />

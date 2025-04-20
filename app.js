@@ -46,21 +46,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const listOfUsernames = [
-  {
-    username: "Mukesh",
-    title: "Post 1",
-  },
-  {
-    username: "Katipally",
-    title: "Post 2",
-  },
-];
-
-app.get("/usernames", authenticateToken, (req, res) => {
-  res.json(listOfUsernames.filter((e) => e.username === req.user.name));
-});
-
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
@@ -89,14 +74,6 @@ app.get("/protected", (req, res) => {
 
     res.json({ message: "Protected data", userId: decoded.id });
   });
-});
-
-app.post("/login", (req, res) => {
-  const username = req.body.username;
-  const user = { name: username };
-
-  const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
-  res.json({ accessToken: accessToken });
 });
 
 function authenticateToken(req, res, next) {
@@ -226,6 +203,62 @@ app.get("/spacecrafts/:id", async (req, res) => {
     console.error(error);
     res.status(500).json({ err: "something went wrong" });
   }
+});
+
+const {
+  S3Client,
+  ListObjectsV2Command,
+  GetObjectCommand,
+} = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+
+const s3 = new S3Client({
+  region: process.env.AWS_DEFAULT_REGION, // e.g. 'us-east-1'
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRETE_ACCESS_KEY,
+  },
+});
+
+async function getAllImageUrls(spaceagencies, prefix = "") {
+  const command = new ListObjectsV2Command({
+    Bucket: spaceagencies,
+    Prefix: prefix, // optional: to target a folder inside the bucket
+  });
+
+  const response = await s3.send(command);
+
+  if (!response.Contents) return [];
+
+  // Filter to get only images (e.g., jpg, png, etc.)
+  const imageKeys = response.Contents.map((item) => item.Key).filter((key) =>
+    /\.(jpe?g|png|gif|webp)$/i.test(key)
+  );
+
+  // Generate pre-signed URLs
+  const urlPromises = imageKeys.map(async (key) => {
+    const getObjectParams = {
+      Bucket: spaceagencies,
+      Key: key,
+    };
+    const command = new GetObjectCommand(getObjectParams);
+    const url = await getSignedUrl(s3, command, { expiresIn: 3600 }); // 1 hour expiry
+    return { key, url };
+  });
+
+  return Promise.all(urlPromises);
+}
+
+// Usage example
+app.get("/api/images", (req, res) => {
+  getAllImageUrls("spaceagencies")
+    .then((urls) => {
+      res.json(urls);
+      console.log("All image URLs:", urls);
+    })
+    .catch((err) => {
+      console.error("Error:", err);
+    });
 });
 
 app.listen(port, () => {
