@@ -31,6 +31,7 @@ You will also see any lint errors in the console.
 
 ## Sequence Diagram for Nasa APIs
 
-<img width="1032" height="303" alt="image" src="https://github.com/user-attachments/assets/456a01d4-4fc7-4067-87ab-e37d6ef44738" />
+<img width="1027" height="318" alt="image" src="https://github.com/user-attachments/assets/5fcd62fd-26ce-4259-81c6-59f74d0866fc" />
+
 
 
