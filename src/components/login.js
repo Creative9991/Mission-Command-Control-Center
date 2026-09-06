@@ -28,7 +28,7 @@ function Login({ onLogin }) {
   return (
     <div style={styles.container}>
       <Card style={styles.card}>
-        <Title level={2} style={{ textAlign: "center" }}>
+        <Title level={2} style={styles.title}>
           Login
         </Title>
         <Form
@@ -68,12 +68,18 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "#f0f2f5",
+    background: "var(--bg)",
   },
   card: {
     width: 350,
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
     borderRadius: 8,
+    background: "var(--bg-elevated)",
+    border: "1px solid var(--border)",
+  },
+  title: {
+    textAlign: "center",
+    color: "var(--text)",
   },
 };
 

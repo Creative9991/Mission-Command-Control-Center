@@ -5,11 +5,13 @@ import { Card } from "antd";
 import { planets } from "../constants/planets";
 
 function changeBackground(e) {
-  e.target.style.opacity = "80%";
+  // currentTarget (not target) so this always affects the Card itself,
+  // not whichever child element (e.g. the hover label) triggered the bubble.
+  e.currentTarget.style.opacity = "80%";
 }
 
 function outBackground(e) {
-  e.target.style.opacity = "100%";
+  e.currentTarget.style.opacity = "100%";
 }
 
 // const fontAwesomeStyle = {
@@ -50,7 +52,9 @@ class Planets extends Component {
                 onMouseOver={changeBackground}
                 onMouseOut={outBackground}
                 style={{ backgroundImage: `url(${planet.imgAsset})` }}
-              ></Card>
+              >
+                <span className="planet-label">{planet.imgName}</span>
+              </Card>
             ))}
           </div>
         </div>

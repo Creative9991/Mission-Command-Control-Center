@@ -20,6 +20,7 @@ import {
   faUserAstronaut,
   faEnvelope,
   faBackward,
+  faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Login from "./components/login";
@@ -42,6 +43,7 @@ import ChineseSpaceStation from "./components/ChineseSpaceStation";
 import Mercury from "./components/Planets/Mercury";
 import Pluto from "./components/Planets/Pluto";
 import Uranus from "./components/Planets/Uranus";
+import AIAssistant from "./components/AIAssistant";
 
 const { Header, Content, Footer } = Layout;
 
@@ -67,9 +69,6 @@ const App = () => {
   let date = new Date();
   let utc_string = date.toUTCString().match(/..:..:.. .*/)[0];
   let currerntYear = date.getFullYear();
-  function headerOver(e) {
-    e.target.style.backgroundColor = "";
-  }
   let history = useHistory();
   const goToPreviousPath = () => {
     history.goBack();
@@ -129,12 +128,11 @@ const App = () => {
           <Login onLogin={setToken} />
         ) : data ? (
           <Layout className="layout">
-            <Header style={{ height: "100px" }} onMouseOver={headerOver}>
+            <Header style={{ height: "100px" }}>
               <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-                {location === "http://localhost:3000" ||
-                "/" ||
-                "http://localhost:3000/space_insight" ? (
-                  <Menu.Item ley="1">
+                {location.pathname === "/" ||
+                location.pathname === "/space_insight" ? (
+                  <Menu.Item key="1a">
                     <Link to="/space_insight">
                       {" "}
                       <FontAwesomeIcon
@@ -142,20 +140,20 @@ const App = () => {
                         style={{
                           width: "80px",
                           height: "80px",
-                          color: "yellow",
+                          color: "var(--accent)",
                         }}
                       />
                     </Link>
                   </Menu.Item>
                 ) : (
-                  <Menu.Item ley="1" onClick={goToPreviousPath}>
+                  <Menu.Item key="1b" onClick={goToPreviousPath}>
                     {" "}
                     <FontAwesomeIcon
                       icon={faBackward}
                       style={{
                         width: "80px",
                         height: "80px",
-                        color: "yellow",
+                        color: "var(--accent)",
                       }}
                     />
                   </Menu.Item>
@@ -176,7 +174,19 @@ const App = () => {
                       style={{
                         width: "20px",
                         height: "20px",
-                        color: "yellow",
+                        color: "var(--accent)",
+                      }}
+                    />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="7" style={{ float: "right" }}>
+                  <Link to="/ai-assistant" title="AI Assistant">
+                    <FontAwesomeIcon
+                      icon={faRobot}
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        color: "var(--accent)",
                       }}
                     />
                   </Link>
@@ -195,7 +205,6 @@ const App = () => {
               style={{
                 padding: "0 50px",
                 minHeight: "810px",
-                backgroundColor: "wheat",
               }}
             >
               <main>
@@ -205,15 +214,14 @@ const App = () => {
                   ) : (
                     <Route path="/not-found" component={NotFound} />
                   )}
-                  ,
                   {Space_agencies ? (
                     <Route path="/space_agencies" component={Space_agencies} />
                   ) : (
                     <Route path="/not-found" component={NotFound} />
                   )}
-                  ,
                   <Route path="/contact" component={Contact} />
                   <Route path="/dashboard" component={Dashboard} />
+                  <Route path="/ai-assistant" component={AIAssistant} />
                   <Route path="/moon" component={MoonExploration} />
                   <Route path="/deepspace" component={DeepSpaceNetwork} />
                   <Route path="/agency/:id" component={Agency} />
