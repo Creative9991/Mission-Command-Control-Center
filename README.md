@@ -17,6 +17,33 @@ International space station current location tracker (Open Notify APIS)
 Reactjs, Nodejs, Expressjs, AWS Dynamodb,jspdf, html2canvas etc
 
 
+## AI Assistant
+
+The app now includes an AI Assistant page (click the robot icon in the nav, or go to
+`/ai-assistant`) — a chat interface for asking about rockets, space missions, and
+uploaded documents. It's powered by a separate project,
+[rockets-and-space](https://github.com/Creative9991/rockets-and-space) (Next.js +
+FastAPI/LangGraph agent backend), which this app talks to directly over HTTP/SSE —
+Mission Control's React frontend is just a second client of that API, same as
+rockets-and-space's own frontend.
+
+**To use it locally:**
+
+1. Clone and run `rockets-and-space` per its own README (`docker compose up --build`,
+   with `ANTHROPIC_API_KEY` set in its `.env`). It serves its API at
+   `http://localhost:8000` by default.
+2. In this repo, copy `.env.example` to `.env` (defaults already point at
+   `http://localhost:8000` — only change `REACT_APP_AI_API_URL` if rockets-and-space
+   is running somewhere else).
+3. `npm start` as usual — the AI Assistant page will stream chat responses once both
+   apps are running.
+
+Note: as of now, rockets-and-space's API has no authentication of its own — the AI
+Assistant page here is only gated by this app's existing login, not by the backend
+itself. Don't point `REACT_APP_AI_API_URL` at a publicly deployed instance without
+adding real auth + rate limiting first.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
