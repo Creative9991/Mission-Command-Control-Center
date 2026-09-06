@@ -1,0 +1,66 @@
+.ai-assistant {
+  max-width: 800px;
+  margin: 24px auto;
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+}
+
+.ai-assistant-thread {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-elevated-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.ai-assistant-message {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ai-assistant-message.user {
+  flex-direction: row-reverse;
+}
+
+.ai-assistant-bubble {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ai-assistant-message.user .ai-assistant-bubble {
+  background: var(--accent);
+  color: #06202a;
+}
+
+.ai-assistant-message.assistant .ai-assistant-bubble {
+  background: var(--bg-elevated);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.ai-assistant-status {
+  padding: 8px 16px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.ai-assistant-status.error {
+  color: var(--danger);
+  font-style: normal;
+}
+
+.ai-assistant-input {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.ai-assistant-input .ant-input {
+  flex: 1;
+}
