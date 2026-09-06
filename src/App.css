@@ -154,7 +154,54 @@ margin-left: 200px;
 }
 
 .ant-carousel{
-  margin-top: 150px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.mission-carousel {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.mission-carousel-slide {
+  position: relative;
+  height: 500px;
+  background-color: var(--bg-elevated);
+}
+
+.mission-carousel-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mission-carousel-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 28px 48px;
+  max-width: 720px;
+  text-align: left;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.5;
+  background: linear-gradient(to top, rgba(10, 14, 20, 0.92), rgba(10, 14, 20, 0));
+}
+
+.mission-carousel .slick-dots li button {
+  background: var(--text-muted);
+  opacity: 0.6;
+}
+
+.mission-carousel .slick-dots li.slick-active button {
+  background: var(--accent);
+  opacity: 1;
 }
 
 .menuItems  > .columnClass{

@@ -120,37 +120,17 @@ class Space_insight extends Component {
             </Link>
           </Col>
         </Row>
-        <Carousel
-          id="carousel"
-          autoplay
-          style={{
-            height: "500px",
-            color: "#fff",
-            lineHeight: "160px",
-            borderRadius: "20px",
-            textAlign: "center",
-            background: "#364d79",
-          }}
-        >
-          {carouselContent.map((headerText, id) => {
-            return (
+        <Carousel id="carousel" autoplay className="mission-carousel">
+          {carouselContent.map((item) => (
+            <div key={item.id} className="mission-carousel-slide">
               <div
-                key={id}
-                style={{
-                  backgroundImage: `url(../assets/${headerText})`,
-                  height: "500px",
-                }}
-              >
-                {headerText.scrollText}
-              </div>
-            );
-          })}
+                className="mission-carousel-image"
+                style={{ backgroundImage: `url(${item.imgUrl})` }}
+              />
+              <p className="mission-carousel-caption">{item.scrollText}</p>
+            </div>
+          ))}
         </Carousel>
-        <br />
-        <br />
-        <br /> <br />
-        <br />
-        <br />
       </div>
     );
   }
