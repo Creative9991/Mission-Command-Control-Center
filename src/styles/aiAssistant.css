@@ -1,13 +1,30 @@
 .ai-assistant {
   max-width: 800px;
   margin: 24px auto;
+  height: 720px;
+}
+
+/* The thread pane needs to be a direct flex child of the element that owns
+   the fixed height in order for `flex: 1` + `overflow-y: auto` below to
+   actually bound its size instead of growing to fit every message — but it
+   renders inside antd's Card body, so the Card and its body have to join
+   the same flex column first. */
+.ai-assistant .ant-card {
   display: flex;
   flex-direction: column;
-  height: 720px;
+  height: 100%;
+}
+
+.ai-assistant .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0; /* let this shrink below content size so children can scroll */
 }
 
 .ai-assistant-thread {
   flex: 1;
+  min-height: 0; /* same reason as above */
   overflow-y: auto;
   background: var(--bg-elevated-2);
   border: 1px solid var(--border);

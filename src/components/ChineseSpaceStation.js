@@ -5,17 +5,35 @@ import { Card } from "antd";
 import logoIss from "../assets/chineseSpaceStation.jpg";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { text } from "../constants/internationSpaceStations";
+import { spaceStationMarkerIcon } from "../constants/mapIcons";
 const ChineseSpaceStation = () => {
   const [currentPosition, setCurrentPosition] = useState({});
+  // The map's own center is locked once, separately from the live marker
+  // position — otherwise binding `center` to the same live coordinates as
+  // the marker recenters the map on every poll, so the icon always sits
+  // dead-center and never appears to move.
+  const [lockedCenter, setLockedCenter] = useState(null);
   useEffect(() => {
-    chineseTiangongApi().then((data) => {
-      if (data.positions[0]) {
-        setCurrentPosition(data.positions[0]);
-      } else {
-        setCurrentPosition(data);
-      }
-    });
-  }, [currentPosition]);
+    let isMounted = true;
+    const fetchPosition = () => {
+      chineseTiangongApi().then((data) => {
+        if (!isMounted) return;
+        if (data.positions[0]) {
+          setCurrentPosition(data.positions[0]);
+        } else {
+          setCurrentPosition(data);
+        }
+      });
+    };
+
+    fetchPosition();
+    const intervalId = setInterval(fetchPosition, 30000); // refresh every 30s
+
+    return () => {
+      isMounted = false;
+      clearInterval(intervalId);
+    };
+  }, []);
   const containerStyle = {
     width: "100%",
     height: "400px",
@@ -24,10 +42,17 @@ const ChineseSpaceStation = () => {
   const issLatitude = Number(currentPosition.satlatitude);
   const issLongitude = Number(currentPosition.satlongitude);
 
-  const mapCenter = {
+  const markerPosition = {
     lat: issLatitude, // Latitude
-    lng: issLongitude, // Longitude (San Francisco)
+    lng: issLongitude, // Longitude
   };
+
+  useEffect(() => {
+    if (!lockedCenter && !Number.isNaN(issLatitude) && !Number.isNaN(issLongitude)) {
+      setLockedCenter(markerPosition);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [issLatitude, issLongitude, lockedCenter]);
 
   return (
     <div className="international-space-station">
@@ -43,9 +68,7 @@ const ChineseSpaceStation = () => {
         <img src={logoIss} alt="LogoIss" style={{ width: "100%" }} />
       </Card>
 
-      {mapCenter.length === 0 ||
-      !currentPosition ||
-      currentPosition === undefined ? (
+      {!lockedCenter ? (
         <FaSpinner
           icon="spinner"
           className="spinner"
@@ -59,11 +82,11 @@ const ChineseSpaceStation = () => {
           <LoadScript googleMapsApiKey={process.env.GOOGLE_MAPS_API_KEY}>
             <GoogleMap
               mapContainerStyle={containerStyle}
-              center={mapCenter}
+              center={lockedCenter}
               zoom={3}
             >
-              {/* Marker can be added to indicate a location */}
-              <Marker position={mapCenter} />
+              {/* Marker tracks the live position; the map's own center stays put */}
+              <Marker position={markerPosition} icon={spaceStationMarkerIcon} />
             </GoogleMap>
           </LoadScript>
         </Card>

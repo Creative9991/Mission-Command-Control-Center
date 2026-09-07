@@ -1,18 +1,26 @@
 require("dotenv").config();
 const axios = require("axios");
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 
 const cors = require("cors");
 
+const {
+  CognitoIdentityProviderClient,
+  AdminInitiateAuthCommand,
+} = require("@aws-sdk/client-cognito-identity-provider");
+
 const JWT_SECRET = "your_secret_key";
 
-const user = {
-  id: 1,
-  username: "testuser",
-  password: bcrypt.hashSync("test1234", 8), // hashed password
-};
+// Credentials come from the real Cognito User Pool below -- there's no local
+// user table; AdminInitiateAuth is the source of truth for username/password.
+const cognitoClient = new CognitoIdentityProviderClient({
+  region: process.env.AWS_DEFAULT_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRETE_ACCESS_KEY,
+  },
+});
 
 // Allow CORS for your frontend (localhost:3000)
 const corsOptions = {
@@ -46,21 +54,49 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
-  if (username !== user.username) {
-    return res.status(401).json({ message: "Invalid username" });
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password are required" });
   }
 
-  const passwordIsValid = bcrypt.compareSync(password, user.password);
-  if (!passwordIsValid) {
-    return res.status(401).json({ message: "Invalid password" });
+  try {
+    const authResult = await cognitoClient.send(
+      new AdminInitiateAuthCommand({
+        UserPoolId: process.env.COGNITO_USER_POOL_ID,
+        ClientId: process.env.COGNITO_CLIENT_ID,
+        AuthFlow: "ADMIN_USER_PASSWORD_AUTH",
+        AuthParameters: { USERNAME: username, PASSWORD: password },
+      })
+    );
+
+    if (!authResult.AuthenticationResult) {
+      // e.g. NEW_PASSWORD_REQUIRED or another challenge -- this app doesn't
+      // have a UI for that flow, so surface it rather than pretending to log in.
+      return res.status(401).json({
+        message: `Additional step required: ${authResult.ChallengeName}`,
+      });
+    }
+
+    // Cognito already verified the password; decode (not re-verify) its token
+    // just to carry the user's real Cognito id (`sub`) into our own JWT below.
+    const { sub } = jwt.decode(authResult.AuthenticationResult.AccessToken);
+    const token = jwt.sign({ id: sub, username }, JWT_SECRET, { expiresIn: "1h" });
+
+    res.json({ auth: true, token });
+  } catch (error) {
+    if (
+      error.name === "NotAuthorizedException" ||
+      error.name === "UserNotFoundException"
+    ) {
+      // Deliberately vague (not "invalid username" vs "invalid password")
+      // so failed logins can't be used to enumerate valid usernames.
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
+    console.error("Cognito login error:", error);
+    res.status(500).json({ message: "Something went wrong during login" });
   }
-
-  const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1h" });
-
-  res.json({ auth: true, token });
 });
 
 app.get("/protected", (req, res) => {
@@ -134,10 +170,26 @@ app.get("/spacecrafts", async (req, res) => {
   }
 });
 
+// Shared server-side cache: every browser tab/user hitting this route reads
+// the same cached N2YO response instead of each one triggering its own
+// upstream call, which keeps us within N2YO's request quota no matter how
+// many clients are polling.
+const TIANGONG_CACHE_TTL_MS = 30000;
+let tiangongCache = { data: null, fetchedAt: 0 };
+
 app.get("/chineseTiangong", async (req, res) => {
+  const isFresh =
+    tiangongCache.data &&
+    Date.now() - tiangongCache.fetchedAt < TIANGONG_CACHE_TTL_MS;
+
+  if (isFresh) {
+    return res.json(tiangongCache.data);
+  }
+
   try {
     // Call the external API using axios
     const response = await axios.get(process.env.CHINESETIANGONG); // External API endpoint
+    tiangongCache = { data: response.data, fetchedAt: Date.now() };
     res.json(response.data); // Send the data received from the external API as the response
   } catch (error) {
     // Handle any errors that occur during the request
