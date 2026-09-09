@@ -1,0 +1,86 @@
+.dsn {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.dsn-header-card p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.dsn-header-card a {
+  color: var(--accent);
+}
+
+.dsn-error {
+  margin-top: 16px;
+  color: var(--danger);
+}
+
+.dsn-stations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.dsn-station-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.dsn-dish {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.dsn-dish:last-child {
+  border-bottom: none;
+}
+
+.dsn-dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.dsn-dish-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.dsn-dish.idle .dsn-dish-name {
+  color: var(--text-muted);
+}
+
+.dsn-dish-target {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.dsn-dish-target strong {
+  color: var(--text);
+}
+
+.dsn-signals {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dsn-signal {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.dsn-signal.down {
+  color: var(--accent);
+  border-color: var(--accent);
+}
