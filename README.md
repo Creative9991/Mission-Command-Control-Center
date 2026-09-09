@@ -17,6 +17,77 @@ International space station current location tracker (Open Notify APIS)
 Reactjs, Nodejs, Expressjs, AWS Dynamodb,jspdf, html2canvas etc
 
 
+## Architecture
+
+How the pieces fit together: the React frontend, its Express backend, AWS, the
+public space-data APIs it reads live, and the companion AI agent service.
+
+```mermaid
+flowchart TD
+    subgraph Browser["Browser — React SPA (:3000)"]
+        Shell["App.js router shell"]
+        Login["Login"]
+        Trackers["Live Trackers<br/>ISS · Chinese Space Station · Deep Space Network"]
+        Agencies["Agencies & Posts<br/>Dashboard · CreatePost · AllPosts"]
+        Content["NASA · Planets · SpaceX"]
+        AI["AI Assistant"]
+        Shell --> Login & Trackers & Agencies & Content & AI
+    end
+
+    subgraph Backend["Express backend — app.js (:3100)"]
+        RLogin["POST /login"]
+        RData["/agencies · /spacecrafts · /posts"]
+        RTiangong["/chineseTiangong<br/>(30s shared cache)"]
+        RImages["/api/images"]
+    end
+
+    subgraph AWS["AWS"]
+        Cognito["Cognito User Pool"]
+        DynamoDB["DynamoDB"]
+        S3["S3"]
+    end
+
+    subgraph PublicAPIs["Public APIs"]
+        N2YO["N2YO"]
+        NasaAPI["NASA Open APIs"]
+        SpaceXAPI["SpaceX API"]
+        OpenNotify["Open Notify (ISS)"]
+        DSNFeed["JPL DSN Now feed"]
+        GMaps["Google Maps JavaScript API"]
+    end
+
+    subgraph Agent["rockets-and-space — separate repo (:8000)"]
+        FastAPI["FastAPI + LangGraph agent"]
+        Ingest["Ingestion pipeline<br/>Celery · Redis · Postgres/pgvector · MinIO"]
+        Claude["Anthropic Claude"]
+        OpenAI["OpenAI embeddings"]
+        Tavily["Tavily search"]
+        FastAPI --> Claude
+        FastAPI --> Tavily
+        FastAPI --> Ingest
+        Ingest --> OpenAI
+    end
+
+    Login -->|POST| RLogin
+    Agencies -->|CRUD, JSON| RData
+    Agencies -->|GET| RImages
+    Trackers -->|GET, cached| RTiangong
+    Trackers -.-> OpenNotify
+    Trackers -.-> DSNFeed
+    Trackers -.-> GMaps
+    Content -.-> NasaAPI
+    Content -.-> SpaceXAPI
+    AI -->|SSE| FastAPI
+
+    RLogin -->|AdminInitiateAuth| Cognito
+    RData -->|via dynamodb.js| DynamoDB
+    RImages -->|presigned URLs| S3
+    RTiangong --> N2YO
+```
+
+Solid arrows are network calls; dashed arrows are public APIs called directly
+from the browser rather than through the Express backend.
+
 ## AI Assistant
 
 The app now includes an AI Assistant page (click the robot icon in the nav, or go to
