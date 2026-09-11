@@ -51,6 +51,8 @@ const AgencyInfo = (props) => {
   }, [currentAgency, props.match.params.info]);
 
   const agencySatelittes = agencySpaceCraft.satelittes;
+  const agencyLaunchVehicles = agencySpaceCraft.spacecrafts;
+  const agencyCenters = agencySpaceCraft.centers;
 
   return (
     <>
@@ -63,28 +65,78 @@ const AgencyInfo = (props) => {
           ) : (
             <>
               <Button type="primary" onClick={GenericPdfDownloader}>
-                Download {currentAgency} Data
+                Download {currentAgency} Mission Report
               </Button>
-              <table className="isro" id="invoiceCapture">
-                <tbody id="isro-body">
-                  <tr>
-                    <th className="isro-tablehead">Agency</th>
-                    <th className="isro-tablehead">Mission Id</th>
-                    <th className="isro-tablehead">Mission Year</th>
-                    <th className="isro-tablehead">Mission Name</th>
-                  </tr>
-                  {agencySatelittes.map((spacecraft) => {
-                    return (
-                      <tr key={spacecraft.id} className="isro-table-row">
-                        <td>{agencySpaceCraft.agency}</td>
-                        <td>{spacecraft.id}</td>
-                        <td>{spacecraft.year}</td>
-                        <td>{spacecraft.spacecraftName}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <div id="invoiceCapture">
+                <table className="isro">
+                  <tbody id="isro-body">
+                    <tr>
+                      <th className="isro-tablehead">Agency</th>
+                      <th className="isro-tablehead">Mission Id</th>
+                      <th className="isro-tablehead">Mission Year</th>
+                      <th className="isro-tablehead">Mission Name</th>
+                    </tr>
+                    {agencySatelittes.map((spacecraft) => {
+                      return (
+                        <tr key={spacecraft.id} className="isro-table-row">
+                          <td>{agencySpaceCraft.agency}</td>
+                          <td>{spacecraft.id}</td>
+                          <td>{spacecraft.year}</td>
+                          <td>{spacecraft.spacecraftName}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+
+                {agencyLaunchVehicles && agencyLaunchVehicles.length > 0 && (
+                  <>
+                    <h2 className="header-agency">
+                      Launch vehicles operated by {currentAgency}
+                    </h2>
+                    <table className="isro">
+                      <tbody>
+                        <tr>
+                          <th className="isro-tablehead">Vehicle Id</th>
+                          <th className="isro-tablehead">First Flown</th>
+                          <th className="isro-tablehead">Vehicle Name</th>
+                        </tr>
+                        {agencyLaunchVehicles.map((vehicle) => (
+                          <tr key={vehicle.id} className="isro-table-row">
+                            <td>{vehicle.id}</td>
+                            <td>{vehicle.year}</td>
+                            <td>{vehicle.spacecraftName}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </>
+                )}
+
+                {agencyCenters && agencyCenters.length > 0 && (
+                  <>
+                    <h2 className="header-agency">
+                      Launch centers used by {currentAgency}
+                    </h2>
+                    <table className="isro">
+                      <tbody>
+                        <tr>
+                          <th className="isro-tablehead">Center Id</th>
+                          <th className="isro-tablehead">Space Center</th>
+                          <th className="isro-tablehead">Location</th>
+                        </tr>
+                        {agencyCenters.map((center) => (
+                          <tr key={center.id} className="isro-table-row">
+                            <td>{center.id}</td>
+                            <td>{center.spaceCenter}</td>
+                            <td>{center.place}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </>
+                )}
+              </div>
             </>
           )}
         </div>
