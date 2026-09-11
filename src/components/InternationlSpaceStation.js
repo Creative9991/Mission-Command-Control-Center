@@ -3,11 +3,13 @@ import "../App.css";
 import "../styles/internationalSpaceStation.css";
 import { FaSpinner } from "react-icons/fa";
 import { Card, Button, Modal } from "antd";
-import logoIss from "../assets/iss.png";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { issDataList } from "../services/internationSpaceAPI";
 import { text, sizaMass } from "../constants/internationSpaceStations";
 import { spaceStationMarkerIcon } from "../constants/mapIcons";
+import { assetUrl } from "../constants/assetUrls";
+
+const logoIss = assetUrl("iss.png");
 const InternationalSpaceStation = () => {
   const [currentPosition, setCurrentPosition] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);

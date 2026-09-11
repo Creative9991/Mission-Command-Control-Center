@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { chineseTiangongApi } from "../services/chineseSpaceStation";
 import { FaSpinner } from "react-icons/fa";
 import { Card } from "antd";
-import logoIss from "../assets/chineseSpaceStation.jpg";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { text } from "../constants/internationSpaceStations";
 import { spaceStationMarkerIcon } from "../constants/mapIcons";
+import { assetUrl } from "../constants/assetUrls";
+
+const logoIss = assetUrl("chineseSpaceStation.jpg");
 const ChineseSpaceStation = () => {
   const [currentPosition, setCurrentPosition] = useState({});
   // The map's own center is locked once, separately from the live marker

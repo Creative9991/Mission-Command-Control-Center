@@ -1,22 +1,24 @@
+import { assetUrl } from "./assetUrls";
+
 export const nasaInfo = [
     {
       id : 1,
       info: "Astronomy of the Day",
-      imgAsset: require("../assets/astronomy.jpeg")
+      imgAsset: assetUrl("astronomy.jpeg")
     },
     {
       id : 2,
       info: "Mars",
-      imgAsset: require("../assets/mars.jpeg"),
+      imgAsset: assetUrl("mars.jpeg"),
     },
     {
       id : 3,
       info: "Moon",
-      imgAsset: require("../assets/moon.jpeg"),
+      imgAsset: assetUrl("moon.jpeg"),
     },
     {
         id : 4,
         info: "Images and Video",
-        imgAsset: require("../assets/image.jpeg"),
+        imgAsset: assetUrl("image.jpeg"),
       },
   ]

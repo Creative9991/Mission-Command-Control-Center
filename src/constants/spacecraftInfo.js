@@ -1,26 +1,28 @@
+import { assetUrl } from "./assetUrls";
+
 export const spacecraftInfo = [
     {
       info: "spacecrafts",
       imgName: "spacecrafts",
-      imgAsset: require("../assets/spacecraft.jpeg"),
+      imgAsset: assetUrl("spacecraft.jpeg"),
       agency: 'spacecrafts'
     },
     {
       info: "launchers",
       imgName: "launchers",
-      imgAsset: require("../assets/launcher.jpeg"),
+      imgAsset: assetUrl("launcher.jpeg"),
       agency: 'launchers'
     },
     {
       info: "satellites",
       imgName: "satellites",
-      imgAsset: require("../assets/satellite.jpeg"),
+      imgAsset: assetUrl("satellite.jpeg"),
       agency: 'satellites'
     },
     {
       info: "centers",
       imgName: "centers",
-      imgAsset: require("../assets/spacecenter.jpeg"),
+      imgAsset: assetUrl("spacecenter.jpeg"),
       agency: 'centes'
     }
   ]
