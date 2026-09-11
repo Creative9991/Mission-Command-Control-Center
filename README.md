@@ -44,7 +44,9 @@ flowchart TD
     subgraph AWS["AWS"]
         Cognito["Cognito User Pool"]
         DynamoDB["DynamoDB"]
-        S3["S3"]
+        S3["S3<br/>spaceagencies bucket"]
+        CloudFront["CloudFront<br/>static UI images"]
+        CloudFront -->|ui-assets/ prefix| S3
     end
 
     subgraph PublicAPIs["Public APIs"]
@@ -77,6 +79,7 @@ flowchart TD
     Trackers -.-> GMaps
     Content -.-> NasaAPI
     Content -.-> SpaceXAPI
+    Shell -.->|flags, logos, planets, etc.| CloudFront
     AI -->|SSE| FastAPI
 
     RLogin -->|AdminInitiateAuth| Cognito
@@ -85,8 +88,13 @@ flowchart TD
     RTiangong --> N2YO
 ```
 
-Solid arrows are network calls; dashed arrows are public APIs called directly
-from the browser rather than through the Express backend.
+Solid arrows are network calls; dashed arrows are public APIs (or the static
+asset CDN) called directly from the browser rather than through the Express
+backend. Static UI images (flags, agency logos, planet renders, carousel
+photos) are pulled from CloudFront at build/render time via
+`src/constants/assetUrls.js` — the `/api/images` route above is a separate,
+unrelated feature (a dynamic photo gallery using presigned URLs against the
+same bucket's default prefix).
 
 ## AI Assistant
 
