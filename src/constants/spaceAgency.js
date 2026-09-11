@@ -1,9 +1,11 @@
+import { assetUrl } from "./assetUrls";
+
 export const spaceAgencies = [
   {
     id: "NASA",
     imgName: "NASA",
-    imgAsset: require("../assets/nasa.jpg"),
-    countryFlag: require("../assets/usaFlag.jpg"),
+    imgAsset: assetUrl("nasa.jpg"),
+    countryFlag: assetUrl("usaFlag.jpg"),
     agency: "/NASA",
     details: `The National Aeronautics and Space Administration (NASA /ˈnæsə/) is an independent agency of the US federal government responsible for the civil space program, aeronautics research, and space research
       NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics (NACA), to give the U.S. space development effort a distinctly civilian orientation, 
@@ -15,8 +17,8 @@ export const spaceAgencies = [
   {
     id: "ROSCOSMOS",
     imgName: "ROSCOSMOS",
-    imgAsset: require("../assets/roscosmos.png"),
-    countryFlag: require("../assets/russianFlag.png"),
+    imgAsset: assetUrl("roscosmos.png"),
+    countryFlag: assetUrl("russianFlag.png"),
     agency: "/ROSCOSMOS",
     details: `The State Space Corporation "Roscosmos"[2] (Russian: Государственная корпорация по космической деятельности «Роскосмос»), 
         commonly known simply as Roscosmos (Russian: Роскосмос), is a state corporation of the Russian Federation responsible for space flights, 
@@ -35,8 +37,8 @@ export const spaceAgencies = [
   {
     id: "ESA",
     imgName: "ESA",
-    imgAsset: require("../assets/esa.jpg"),
-    countryFlag: require("../assets/esaCountryFlag.png"),
+    imgAsset: assetUrl("esa.jpg"),
+    countryFlag: assetUrl("esaCountryFlag.png"),
     agency: "/ESA",
     details: `The European Space Agency (ESA; French: Agence spatiale européenne pronunciation (help·info), ASE;[5][6] German: Europäische Weltraumorganisation) is an 
       intergovernmental organisation of 22 member states[7] dedicated to the exploration of space. Established 
@@ -50,8 +52,8 @@ export const spaceAgencies = [
   {
     id: "CNSA",
     imgName: "CNSA",
-    imgAsset: require("../assets/cnsa.png"),
-    countryFlag: require("../assets/chineseFlag.png"),
+    imgAsset: assetUrl("cnsa.png"),
+    countryFlag: assetUrl("chineseFlag.png"),
     agency: "/CNSA",
     details: `China National Space Administration (CNSA; Chinese: 中国国家航天局; pinyin: 
         Zhōngguó Guójiā Hángtiān Jú) is the government agency of the People's Republic of China 
@@ -63,8 +65,8 @@ export const spaceAgencies = [
   {
     id: "ISRO",
     imgName: "ISRO",
-    imgAsset: require("../assets/isro.jpg"),
-    countryFlag: require("../assets/indianFlag.png"),
+    imgAsset: assetUrl("isro.jpg"),
+    countryFlag: assetUrl("indianFlag.png"),
     agency: "/ISRO",
     details: `The Indian Space Research Organisation[a] (ISRO; /ˈɪsroʊ/) is the national 
       space agency of India, headquartered in Bangalore. It operates under the Department of 
@@ -77,8 +79,8 @@ export const spaceAgencies = [
   {
     id: "JAXA",
     imgName: "JAXA",
-    imgAsset: require("../assets/jaxa.jpg"),
-    countryFlag: require("../assets/japaneseFlag.png"),
+    imgAsset: assetUrl("jaxa.jpg"),
+    countryFlag: assetUrl("japaneseFlag.png"),
     agency: "/JAXA",
     details: `The Japan Aerospace Exploration Agency (JAXA) (国立研究開発法人宇宙航空研究開発機構, Kokuritsu-kenkyū-kaihatsu-hōjin Uchū Kōkū Kenkyū Kaihatsu Kikō, 
             literally "National Research and Development Agency Aerospace Research and Development Organisation") is the Japanese national air and space agency. 
@@ -89,8 +91,8 @@ export const spaceAgencies = [
   {
     id: "SPACEX",
     imgName: "SPACEX",
-    imgAsset: require("../assets/spacex.jpeg"),
-    countryFlag: require("../assets/usaFlag.jpg"),
+    imgAsset: assetUrl("spacex.jpeg"),
+    countryFlag: assetUrl("usaFlag.jpg"),
     agency: "/SPACEX",
     details: `Space Exploration Technologies Corp. (doing business as SpaceX) is an American spacecraft manufacturer,
        space launch provider, and a satellite communications corporation headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk, with the goal of reducing space 
@@ -107,8 +109,8 @@ export const spaceAgencies = [
   {
     id: "BLUEORIGIN",
     imgName: "BLUEORIGIN",
-    imgAsset: require("../assets/blueorigin.png"),
-    countryFlag: require("../assets/usaFlag.jpg"),
+    imgAsset: assetUrl("blueorigin.png"),
+    countryFlag: assetUrl("usaFlag.jpg"),
     agency: "/BLUEORIGIN",
     details: `Blue Origin, LLC is an American privately funded aerospace manufacturer and sub-orbital spaceflight services company
          headquartered in Kent, Washington.[3][4] Founded in 2000 by Jeff Bezos, the founder and executive chairman of Amazon, the company 
@@ -129,8 +131,8 @@ export const spaceAgencies = [
   {
     id: "VIRGINGALACTIC",
     imgName: "VIRGINGALACTIC",
-    imgAsset: require("../assets/virgin-galactic.png"),
-    countryFlag: require("../assets/usaFlag.jpg"),
+    imgAsset: assetUrl("virgin-galactic.png"),
+    countryFlag: assetUrl("usaFlag.jpg"),
     agency: "/VIRGINGALACTIC",
     details: `Virgin Galactic is an American spaceflight company founded by Richard Branson and his British Virgin Group retains an 11.9% stake through Virgin
          Investments Limited.[1] It is headquartered in California, USA, and operates from New Mexico. The company is developing commercial spacecraft and aims to 
@@ -151,8 +153,8 @@ export const spaceAgencies = [
   {
     id: "BOEING",
     imgName: "BOEING",
-    imgAsset: require("../assets/boeing.png"),
-    countryFlag: require("../assets/usaFlag.jpg"),
+    imgAsset: assetUrl("boeing.png"),
+    countryFlag: assetUrl("usaFlag.jpg"),
     agency: "/BOEING",
     details: `Boeing Defense, Space & Security (BDS) is a division (business unit) of The Boeing Company based in Arlington, Virginia. It is responsible for defense and aerospace products and services. It was formerly known as Boeing Integrated Defense Systems (IDS).
         Boeing Integrated Defense Systems was formed in 2002 by combining the former "Military Aircraft and Missile Systems" and "Space and Communications" divisions.[4] Boeing Defense, Space & Security makes Boeing the second-largest defense contractor in the world, and was responsible for 45% of the company's income in 2011.`,

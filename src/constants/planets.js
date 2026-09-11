@@ -1,8 +1,10 @@
+import { assetUrl } from "./assetUrls";
+
 export const planets = [
   {
     id: "MERCURY",
     imgName: "MERCURY",
-    imgAsset: require("../assets/mercury.jpeg"),
+    imgAsset: assetUrl("mercury.jpeg"),
     agency: "/MERCURY",
     details: `The National Aeronautics and Space Administration (NASA /ˈnæsə/) is an independent agency of the US federal government responsible for the civil space program, aeronautics research, and space research
       NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics (NACA), to give the U.S. space development effort a distinctly civilian orientation, 
@@ -14,7 +16,7 @@ export const planets = [
   {
     id: "VENUS",
     imgName: "VENUS",
-    imgAsset: require("../assets/venus.jpeg"),
+    imgAsset: assetUrl("venus.jpeg"),
     agency: "/VENUS",
     details: `The State Space Corporation "Roscosmos"[2] (Russian: Государственная корпорация по космической деятельности «Роскосмос»), 
         commonly known simply as Roscosmos (Russian: Роскосмос), is a state corporation of the Russian Federation responsible for space flights, 
@@ -33,7 +35,7 @@ export const planets = [
   {
     id: "EARTH",
     imgName: "EARTH",
-    imgAsset: require("../assets/earth.jpeg"),
+    imgAsset: assetUrl("earth.jpeg"),
     agency: "/EARTH",
     details: `The European Space Agency (ESA; French: Agence spatiale européenne pronunciation (help·info), ASE;[5][6] German: Europäische Weltraumorganisation) is an 
       intergovernmental organisation of 22 member states[7] dedicated to the exploration of space. Established 
@@ -47,7 +49,7 @@ export const planets = [
   {
     id: "MARS",
     imgName: "MARS",
-    imgAsset: require("../assets/mars-planet.jpeg"),
+    imgAsset: assetUrl("mars-planet.jpeg"),
     agency: "/MARS",
     details: `China National Space Administration (CNSA; Chinese: 中国国家航天局; pinyin: 
         Zhōngguó Guójiā Hángtiān Jú) is the government agency of the People's Republic of China 
@@ -59,7 +61,7 @@ export const planets = [
   {
     id: "JUIPTER",
     imgName: "JUIPTER",
-    imgAsset: require("../assets/juitar.jpeg"),
+    imgAsset: assetUrl("juitar.jpeg"),
     agency: "/JUIPTER",
     details: `The Indian Space Research Organisation[a] (ISRO; /ˈɪsroʊ/) is the national 
       space agency of India, headquartered in Bangalore. It operates under the Department of 
@@ -72,7 +74,7 @@ export const planets = [
   {
     id: "SATURN",
     imgName: "SATURN",
-    imgAsset: require("../assets/saturn.png"),
+    imgAsset: assetUrl("saturn.png"),
     agency: "/SATURN",
     details: `The Japan Aerospace Exploration Agency (JAXA) (国立研究開発法人宇宙航空研究開発機構, Kokuritsu-kenkyū-kaihatsu-hōjin Uchū Kōkū Kenkyū Kaihatsu Kikō, 
             literally "National Research and Development Agency Aerospace Research and Development Organisation") is the Japanese national air and space agency. 
@@ -83,7 +85,7 @@ export const planets = [
   {
     id: "URANUS",
     imgName: "URANUS",
-    imgAsset: require("../assets/uranus.jpeg"),
+    imgAsset: assetUrl("uranus.jpeg"),
     agency: "/URANUS",
     details: `Space Exploration Technologies Corp. (doing business as SpaceX) is an American spacecraft manufacturer,
        space launch provider, and a satellite communications corporation headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk, with the goal of reducing space 
@@ -100,7 +102,7 @@ export const planets = [
   {
     id: "NEPTUNE",
     imgName: "NEPTUNE",
-    imgAsset: require("../assets/neptune.jpg"),
+    imgAsset: assetUrl("neptune.jpg"),
     agency: "/NEPTUNE",
     details: `Blue Origin, LLC is an American privately funded aerospace manufacturer and sub-orbital spaceflight services company
          headquartered in Kent, Washington.[3][4] Founded in 2000 by Jeff Bezos, the founder and executive chairman of Amazon, the company 
