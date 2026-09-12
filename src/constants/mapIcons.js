@@ -14,3 +14,33 @@ export const spaceStationMarkerIcon = {
         `</svg>`
     ),
 };
+
+// A distinct glyph for Tiangong: a modular space station (central module +
+// solar-panel wings) rather than ISS's satellite-dish icon, so the two
+// tracker maps don't share the same marker. Red evokes the Chinese flag.
+export const chineseSpaceStationMarkerIcon = {
+  url:
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36">` +
+        `<circle cx="32" cy="32" r="32" fill="#0b1220" fill-opacity="0.85"/>` +
+        // solar panel arrays (left + right), each with a few grid lines
+        `<g fill="#ef4444">` +
+        `<rect x="4" y="23" width="15" height="18" rx="1.5"/>` +
+        `<rect x="45" y="23" width="15" height="18" rx="1.5"/>` +
+        `</g>` +
+        `<g stroke="#0b1220" stroke-width="1.4">` +
+        `<line x1="11.5" y1="23" x2="11.5" y2="41"/>` +
+        `<line x1="4" y1="32" x2="19" y2="32"/>` +
+        `<line x1="52.5" y1="23" x2="52.5" y2="41"/>` +
+        `<line x1="45" y1="32" x2="60" y2="32"/>` +
+        `</g>` +
+        // trusses connecting panels to the core module
+        `<rect x="19" y="30.5" width="6" height="3" fill="#ef4444"/>` +
+        `<rect x="39" y="30.5" width="6" height="3" fill="#ef4444"/>` +
+        // core module + docking node
+        `<rect x="25" y="27" width="14" height="10" rx="2" fill="#ef4444"/>` +
+        `<rect x="29.5" y="19" width="5" height="8" rx="1.5" fill="#ef4444"/>` +
+        `</svg>`
+    ),
+};

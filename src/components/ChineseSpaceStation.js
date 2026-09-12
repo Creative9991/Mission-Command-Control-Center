@@ -4,7 +4,7 @@ import { FaSpinner } from "react-icons/fa";
 import { Card } from "antd";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { text } from "../constants/internationSpaceStations";
-import { spaceStationMarkerIcon } from "../constants/mapIcons";
+import { chineseSpaceStationMarkerIcon } from "../constants/mapIcons";
 import { assetUrl } from "../constants/assetUrls";
 
 const logoIss = assetUrl("chineseSpaceStation.jpg");
@@ -88,7 +88,7 @@ const ChineseSpaceStation = () => {
               zoom={3}
             >
               {/* Marker tracks the live position; the map's own center stays put */}
-              <Marker position={markerPosition} icon={spaceStationMarkerIcon} />
+              <Marker position={markerPosition} icon={chineseSpaceStationMarkerIcon} />
             </GoogleMap>
           </LoadScript>
         </Card>
