@@ -30,8 +30,9 @@ flowchart TD
         Trackers["Live Trackers<br/>ISS · Chinese Space Station · Deep Space Network"]
         Agencies["Agencies & Posts<br/>Dashboard · CreatePost · AllPosts"]
         Content["NASA · Planets · SpaceX"]
+        Moon["Moon Exploration"]
         AI["AI Assistant"]
-        Shell --> Login & Trackers & Agencies & Content & AI
+        Shell --> Login & Trackers & Agencies & Content & Moon & AI
     end
 
     subgraph Backend["Express backend — app.js (:3100)"]
@@ -56,6 +57,8 @@ flowchart TD
         OpenNotify["Open Notify (ISS)"]
         DSNFeed["JPL DSN Now feed"]
         GMaps["Google Maps JavaScript API"]
+        USNO["US Naval Observatory<br/>(Moon phase)"]
+        LL2["Launch Library 2<br/>(lunar missions)"]
     end
 
     subgraph Agent["rockets-and-space — separate repo (:8000)"]
@@ -79,6 +82,8 @@ flowchart TD
     Trackers -.-> GMaps
     Content -.-> NasaAPI
     Content -.-> SpaceXAPI
+    Moon -.->|GET, 1h cache| USNO
+    Moon -.->|GET, 1h cache| LL2
     Shell -.->|flags, logos, planets, etc.| CloudFront
     AI -->|SSE| FastAPI
 
