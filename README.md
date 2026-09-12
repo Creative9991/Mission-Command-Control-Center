@@ -1,20 +1,46 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## Mission Command Control  Application
+## Mission Command Control Application
 
-As a space exploration enthusiat, I have created a small app that gives you more insight in to the space agencies around the world and other outer space related information. 
+A full-stack dashboard for space exploration data — space agencies, live spacecraft
+tracking, and mission information — built by a space exploration enthusiast and
+backed by real public APIs and a custom AWS backend rather than static content.
 
-Special thanks to:
+### Features
 
-Nasa Open Public APIs
-Isro/api github
-International space station current location tracker (Open Notify APIS)
+- **World Space Agencies** — profiles for NASA, ESA, ISRO, JAXA, CNSA, Roscosmos,
+  SpaceX, Blue Origin, Virgin Galactic, and Boeing, each with real satellites/
+  spacecraft, launch vehicles, and launch centers (backed by DynamoDB), plus a
+  downloadable PDF mission report per agency.
+- **Live space-object tracking** — three real-time trackers on Google Maps: the
+  **ISS** (Open Notify), the **Chinese Space Station/Tiangong** (N2YO, proxied and
+  cached through the backend to protect API quota), and the **Deep Space Network**
+  (NASA/JPL's live DSN Now feed — which antennas at Goldstone, Madrid, and Canberra
+  are tracking which spacecraft right now, with live signal data).
+- **Moon Exploration** — live lunar phase/illumination data from the US Naval
+  Observatory, and real upcoming lunar missions (Blue Moon, VIPER, LUPEX, etc.)
+  from Launch Library 2.
+- **NASA content** — Astronomy Picture of the Day and Mars rover photos via
+  `api.nasa.gov`, plus SpaceX launch data.
+- **AI Assistant** — a streaming chat interface backed by a companion agent service
+  (FastAPI + LangGraph + Claude) that can answer questions, search the web, and
+  reference uploaded documents. See the [AI Assistant](#ai-assistant) section below.
+- **Authentication** — real AWS Cognito-backed login, not a hardcoded credential.
 
+Special thanks to the public APIs and data sources this project relies on:
+NASA Open APIs, ISRO's public API, Open Notify (ISS location), N2YO (satellite
+tracking), JPL's DSN Now feed, the US Naval Observatory, and Launch Library 2.
 
 ## Technologies
 
-Reactjs, Nodejs, Expressjs, AWS Dynamodb,jspdf, html2canvas etc
+- **Frontend:** React, react-router, Ant Design, Google Maps JavaScript API
+- **Backend:** Node.js + Express
+- **Data:** AWS DynamoDB, AWS S3 + CloudFront (static UI assets), AWS Cognito (auth)
+- **AI companion:** a separate FastAPI/LangGraph service (Anthropic Claude, OpenAI
+  embeddings, Tavily search, Postgres/pgvector, Redis, Celery) — its own repo,
+  talked to directly over HTTP/SSE
+- **PDF export:** jsPDF + html2canvas
 
 
 ## Architecture
