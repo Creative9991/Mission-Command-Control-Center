@@ -1,0 +1,122 @@
+.moon-exploration {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.moon-header-card p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.moon-header-card a {
+  color: var(--accent);
+}
+
+.moon-error {
+  margin-top: 16px;
+  color: var(--danger);
+}
+
+.moon-phase-card,
+.moon-missions-card {
+  margin-top: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.moon-phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.moon-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--bg-elevated-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.moon-stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.moon-stat-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.moon-note {
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.moon-upcoming-phases {
+  margin-top: 18px;
+}
+
+.moon-upcoming-phases h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+
+.moon-phase-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.moon-phase-chip {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.moon-mission {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.moon-mission:last-child {
+  border-bottom: none;
+}
+
+.moon-mission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.moon-mission-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.moon-mission-meta {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.moon-mission-desc {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
