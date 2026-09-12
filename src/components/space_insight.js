@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { carouselContent } from "../constants/carouselContent";
+import { chineseSpaceStationMarkerIcon } from "../constants/mapIcons";
 
 //let loginInfo = sessionStorage.getItem("username");
 
@@ -115,7 +116,11 @@ class Space_insight extends Component {
             lg={{ span: 6, offset: 2 }}
           >
             <Link to="/chinese-space-station">
-              <FontAwesomeIcon icon={faSatellite} style={fontAwesomeStyle} />
+              <img
+                src={chineseSpaceStationMarkerIcon.url}
+                alt="Chinese Space Station"
+                style={fontAwesomeStyle}
+              />
               <h3 style={this.headeragecy()}>Chinese Space Station</h3>
             </Link>
           </Col>
